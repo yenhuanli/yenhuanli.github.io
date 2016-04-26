@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: 
+Disallow:
 
-Sitemap: http://yenhuanli.github.io/sitemap.xml 
+Sitemap: http://yenhuanli.github.io/sitemap.xml
