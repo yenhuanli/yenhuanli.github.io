@@ -137,9 +137,29 @@ MathJax.Hub.Config({
 <p>For a <em>smart enough</em> guy, studying empirical processes only requires knowing two fundamental results.</p>
 
 <ol>
-  <li><strong>Markov’s inequality:</strong> Let $X$ be a non-negative random variable. Markov’s inequality says that for any $t &gt; 0$, we have $\mathsf{P} \left( X \geq t \right) \leq t^{-1} \mathsf{E}\, X$. By Markov’s inequality it is not difficult to see the Cramer-Chernoff theorem, and then it should be <em>natural</em> to rediscover the entropy method.</li>
+  <li><strong>Markov’s inequality:</strong> Let $X$ be a non-negative random variable. Markov’s inequality says that for any $t &gt; 0$, we have $\mathsf{P} \left( X \geq t \right) \leq t^{-1} \mathsf{E}\, X$. By Markov’s inequality, it is not difficult to see the Cramer-Chernoff theorem, and then it should be <em>natural</em> to rediscover the entropy method.</li>
   <li><strong>Union bound:</strong> Let $\mathcal{E}_1$ and $\mathcal{E}_2$ be two events. The union bound says that $\mathsf{P} ( \mathcal{E}_1 \cap \mathcal{E}_2 ) \leq \mathsf{P} ( \mathcal{E}_1 ) + \mathsf{P} ( \mathcal{E}_2 )$. Applying the union bound in a <em>smart enough</em> way, one immediately sees the generic chaining argument.</li>
 </ol>
+
+<h3 id="the-pac-learning-framework">The PAC learning framework</h3>
+<p>The standard formulation of a learning problem consists of three ingredients:</p>
+
+<ol>
+  <li><strong>Training data:</strong> The training data is given by a sequence of i.i.d. random variables $Z_i = ( X_i, Y_i ) \in \mathcal{Z} = \mathcal{X} \times \mathcal{Y}$, each of which follows certain <em>unknown</em> probability distribution $\mathbb{P}$. For convenience, let us define $\mathcal{D}_n = \lbrace Z_i : 1 \leq i \leq n \rbrace$.</li>
+  <li><strong>Hypothesis class:</strong> A hypothesis class is a set $\mathcal{H}$ of functions $h: \mathcal{X} \to \mathbb{Y}$.</li>
+  <li><strong>Loss function:</strong> A loss function is a function $f: \mathcal{H} \times \mathcal{Z} \to \mathbb{R}$.</li>
+  <li><strong>Risk:</strong> Let $Z$ be an independent copy of $Z_1$. The risk is a function $F: \mathcal{H} \to \mathbb{R}$ defined as $F ( h ) = \mathsf{E}\, f ( h, Z )$.</li>
+</ol>
+
+<p>The goal of learning is to find a <em>good</em> hypothesis $\hat{h}_n \in \mathcal{H}$, based on $\mathcal{D}_n$, such that the resulting risk $F ( \hat{h}_n )$ is small.</p>
+
+<p>One example of a learning problem is binary classification, in which $X_i$’s may represent images, $Y_i \in \lbrace -1, 1 \rbrace$ indicates whether there is a cat in the image or not, the hypothesis class is a set of <em>classifiers</em> taking values in $\lbrace -1, 1 \rbrace$, and the loss function is given by $f ( h, z ) = \iota_{\lbrace h(x) \neq y\rbrace}$. It is easy to check that then the risk is the probabiity of false classification.</p>
+
+<p>We say that a hypothesis class is <strong>agnostic probably approximately correct (PAC) learnable</strong>, if there exists an algorithm $\mathcal{A}: \mathcal{Z}^n \to \mathcal{H}$ and a function $n_{\mathcal{H}} ( \varepsilon, \delta )$, such that for every probability distribution $\mathbb{P}$ and every $\varepsilon, \delta \in ( 0, 1 )$, we have 
+<script type="math/tex">\begin{equation}
+F ( \mathcal{A} ( \mathcal{D}_n ) ) - \inf_{h \in \mathcal{H}} F ( h ) \leq \varepsilon 
+\end{equation}</script>
+with probability at least $1 - \delta$.</p>
 </div>
   
   
