@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2016-04-28T01:06:54+02:00</updated>
+  <updated>2016-04-28T01:20:07+02:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -39,7 +39,9 @@
   <li><strong>Risk:</strong> Let $Z$ be an independent copy of $Z_1$. The risk is a function $F: \mathcal{H} \to \mathbb{R}$ defined as $F ( h ) = \mathsf{E}\, f ( h, Z )$.</li>
 </ol>
 
-<p>The goal of learning is to find a <em>good</em> hypothesis $\hat{h}_n \in \mathcal{H}$, based on $\mathcal{D}_n$, such that the resulting risk $F ( \hat{h}_n )$ is small.</p>
+<p>The goal of learning is to find a <em>good</em> hypothesis $\hat{h}_n \in \mathcal{H}$, based on $\mathcal{D}_n$, such that the resulting risk $F ( \hat{h}_n )$ is small. While at first glance we only need to solve the optimization problem 
+    <script type="math/tex">h^\star \in \arg \min_{h \in \mathcal{H}} F ( h )</script>, 
+since the probability distribution $\mathbb{P}$ is assumed unknown, $F$ is not explicitly specified and we cannot directly solve this optimization problem.</p>
 
 <p>One example of a learning problem is binary classification, in which $X_i$’s may represent images, $Y_i \in \mathcal{Y} = \lbrace -1, 1 \rbrace$ indicates whether there is a cat in the image or not, the hypothesis class is a set of <em>classifiers</em> taking values in $\mathcal{Y}$, and the loss function is given by $f ( h, z ) = \iota_{\lbrace h(x) \neq y\rbrace}$, where $\iota$ denotes the indicator function. It is easy to check that then the risk is the probabiity of false classification.</p>
 
