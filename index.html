@@ -155,9 +155,9 @@ MathJax.Hub.Config({
     <script type="math/tex">h^\star \in \arg \min_{h \in \mathcal{H}} F ( h )</script>, 
 since the probability distribution $\mathbb{P}$ is assumed unknown, $F$ is not explicitly specified and we cannot directly solve this optimization problem.</p>
 
-<p>One example of a learning problem is binary classification, in which $X_i$’s may represent images, $Y_i \in \mathcal{Y} = \lbrace -1, 1 \rbrace$ indicates whether there is a cat in the image or not, the hypothesis class is a set of <em>classifiers</em> taking values in $\mathcal{Y}$, and the loss function is given by $f ( h, z ) = \iota_{\lbrace h(x) \neq y\rbrace}$, where $\iota$ denotes the indicator function. It is easy to check that then the risk is the probabiity of false classification.</p>
+<p>One example of a learning problem is binary classification, in which each $X_i$ may represent an image, each $Y_i \in \mathcal{Y} = \lbrace -1, 1 \rbrace$ may indicate whether there is a cat in $X_i$ or not, the hypothesis class is a set of <em>classifiers</em> taking values in $\mathcal{Y}$, and the loss function is given by $f ( h, z ) = \iota_{\lbrace h(x) \neq y\rbrace}$, where $\iota$ denotes the indicator function. It is easy to check that then the risk is the probabiity of false classification.</p>
 
-<p>We say that a hypothesis class is <strong>agnostic probably approximately correct (PAC) learnable</strong>, if there exists an algorithm $\mathcal{A}: \mathcal{Z}^n \to \mathcal{H}$ and a function $n_{\mathcal{H}} ( \varepsilon, \delta )$, such that for every probability distribution $\mathbb{P}$ and every $\varepsilon, \delta \in ( 0, 1 )$, we have 
+<p>We say that a hypothesis class $\mathcal{H}$ is <strong>agnostic probably approximately correct (PAC) learnable</strong>, if there exists an algorithm $\mathcal{A}: \mathcal{Z}^n \to \mathcal{H}$ and a function $n_{\mathcal{H}} ( \varepsilon, \delta )$, such that for every probability distribution $\mathbb{P}$ and every $\varepsilon, \delta \in ( 0, 1 )$, we have 
 <script type="math/tex">\begin{equation}
 F ( \mathcal{A} ( \mathcal{D}_n ) ) - \inf_{h \in \mathcal{H}} F ( h ) \leq \varepsilon 
 \end{equation}</script>
