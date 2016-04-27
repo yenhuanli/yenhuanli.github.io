@@ -9,7 +9,9 @@
   <meta name="author" content="yhli">
 
   
-  <meta name="description" content="hello world! For a smart enough guy, studying concentration of measure only requires the knowledge of two results. The first result is Markov’s &hellip;">
+  <meta name="description" content="Hello world!
+Hello world! Empirical processes
+For a smart enough guy, studying empirical processes only requires knowing two fundamental results. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -128,13 +130,16 @@ MathJax.Hub.Config({
   </header>
 
 
-  <div class="entry-content"><p>hello world!</p>
+  <div class="entry-content"><h3 id="hello-world">Hello world!</h3>
+<p>Hello world!</p>
 
-<p>For a smart enough guy, studying concentration of measure only requires the knowledge of two results.</p>
+<h3 id="empirical-processes">Empirical processes</h3>
+<p>For a <em>smart enough</em> guy, studying empirical processes only requires knowing two fundamental results.</p>
 
-<p>The first result is Markov’s inequality: Let $X$ be a non-negative random variable. Markov’s inequality says that for any $t &gt; 0$, we have $\mathsf{P} \left( X \geq t \right) \leq t^{-1} \mathsf{E}\, X$.</p>
-
-<p>The other result is the union bound: Let $\mathcal{E}_1$ and $\mathcal{E}_2$ be two events. The union bound says that <script type="math/tex">\mathsf{P} ( \mathcal{E}_1 \cap \mathcal{E}_2 ) \leq \mathsf{P} ( \mathcal{E}_1 ) + \mathsf{P} ( \mathcal{E}_2 ).</script></p>
+<ol>
+  <li><strong>Markov’s inequality:</strong> Let $X$ be a non-negative random variable. Markov’s inequality says that for any $t &gt; 0$, we have $\mathsf{P} \left( X \geq t \right) \leq t^{-1} \mathsf{E}\, X$. By Markov’s inequality it is not difficult to see Cramer-Chernoff theorem, and then it should be <em>natural</em> to rediscover the entropy method.</li>
+  <li><strong>Union bound:</strong> Let $\mathcal{E}_1$ and $\mathcal{E}_2$ be two events. The union bound says that $\mathsf{P} ( \mathcal{E}_1 \cap \mathcal{E}_2 ) \leq \mathsf{P} ( \mathcal{E}_1 ) + \mathsf{P} ( \mathcal{E}_2 )$. Applying the union bound in a <em>smart enough</em> way, one immediately sees the generic chaining argument.</li>
+</ol>
 </div>
   
   
