@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2016-04-27T21:18:55+02:00</updated>
+  <updated>2016-04-27T23:07:42+02:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -19,6 +19,10 @@
     <updated>2016-04-26T23:25:33+02:00</updated>
     <id>http://yenhuanli.github.io/blog/2016/04/26/this-is-a-test</id>
     <content type="html"><![CDATA[<p>hello world!</p>
+
+<script type="math/tex; mode=display">\begin{equation}
+f: x \mapsto \log x
+\end{equation}</script>
 ]]></content>
   </entry>
   

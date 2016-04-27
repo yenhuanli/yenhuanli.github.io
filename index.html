@@ -9,8 +9,7 @@
   <meta name="author" content="yhli">
 
   
-  <meta name="description" content="hello world!
-">
+  <meta name="description" content="hello world! ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -33,6 +32,23 @@
 <link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
 <!--- MathJax Configuration -->
 <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
   
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -113,6 +129,10 @@
 
 
   <div class="entry-content"><p>hello world!</p>
+
+<script type="math/tex; mode=display">\begin{equation}
+f: x \mapsto \log x
+\end{equation}</script>
 </div>
   
   
