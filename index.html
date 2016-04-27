@@ -142,7 +142,7 @@ MathJax.Hub.Config({
 </ol>
 
 <h3 id="the-pac-learning-framework">The PAC learning framework</h3>
-<p>The standard formulation of a learning problem consists of three ingredients:</p>
+<p>The standard formulation of a learning problem consists of four ingredients:</p>
 
 <ol>
   <li><strong>Training data:</strong> The training data is given by a sequence of i.i.d. random variables $Z_i = ( X_i, Y_i ) \in \mathcal{Z} = \mathcal{X} \times \mathcal{Y}$, each of which follows certain <em>unknown</em> probability distribution $\mathbb{P}$. For convenience, let us define $\mathcal{D}_n = \lbrace Z_i : 1 \leq i \leq n \rbrace$.</li>
@@ -153,13 +153,13 @@ MathJax.Hub.Config({
 
 <p>The goal of learning is to find a <em>good</em> hypothesis $\hat{h}_n \in \mathcal{H}$, based on $\mathcal{D}_n$, such that the resulting risk $F ( \hat{h}_n )$ is small.</p>
 
-<p>One example of a learning problem is binary classification, in which $X_i$’s may represent images, $Y_i \in \lbrace -1, 1 \rbrace$ indicates whether there is a cat in the image or not, the hypothesis class is a set of <em>classifiers</em> taking values in $\lbrace -1, 1 \rbrace$, and the loss function is given by $f ( h, z ) = \iota_{\lbrace h(x) \neq y\rbrace}$. It is easy to check that then the risk is the probabiity of false classification.</p>
+<p>One example of a learning problem is binary classification, in which $X_i$’s may represent images, $Y_i \in \mathcal{Y} = \lbrace -1, 1 \rbrace$ indicates whether there is a cat in the image or not, the hypothesis class is a set of <em>classifiers</em> taking values in $\mathcal{Y}$, and the loss function is given by $f ( h, z ) = \iota_{\lbrace h(x) \neq y\rbrace}$, where $\iota$ denotes the indicator function. It is easy to check that then the risk is the probabiity of false classification.</p>
 
 <p>We say that a hypothesis class is <strong>agnostic probably approximately correct (PAC) learnable</strong>, if there exists an algorithm $\mathcal{A}: \mathcal{Z}^n \to \mathcal{H}$ and a function $n_{\mathcal{H}} ( \varepsilon, \delta )$, such that for every probability distribution $\mathbb{P}$ and every $\varepsilon, \delta \in ( 0, 1 )$, we have 
 <script type="math/tex">\begin{equation}
 F ( \mathcal{A} ( \mathcal{D}_n ) ) - \inf_{h \in \mathcal{H}} F ( h ) \leq \varepsilon 
 \end{equation}</script>
-with probability at least $1 - \delta$.</p>
+with probability at least $1 - \delta$ whenever $n \geq n_{\mathcal{H}} ( \varepsilon, \delta )$.</p>
 </div>
   
   
