@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2016-04-28T09:28:54+02:00</updated>
+  <updated>2016-04-28T11:42:10+02:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -25,8 +25,8 @@
 <p>For a <em>smart enough</em> guy, studying empirical processes only requires knowing two fundamental results.</p>
 
 <ol>
-  <li><strong>Markov’s inequality:</strong> Let $X$ be a non-negative random variable. Markov’s inequality says that for any $t &gt; 0$, we have $\mathsf{P} \left( X \geq t \right) \leq t^{-1} \mathsf{E}\, X$. By Markov’s inequality, it is not difficult to see the Cramer-Chernoff theorem, and then it should be <em>natural</em> to rediscover the entropy method.</li>
-  <li><strong>Union bound:</strong> Let $\mathcal{E}_1$ and $\mathcal{E}_2$ be two events. The union bound says that $\mathsf{P} ( \mathcal{E}_1 \cup \mathcal{E}_2 ) \leq \mathsf{P} ( \mathcal{E}_1 ) + \mathsf{P} ( \mathcal{E}_2 )$. Applying the union bound in a <em>smart enough</em> way, one can immediately rediscover the generic chaining argument.</li>
+  <li><strong>Markov’s inequality:</strong> Let $X$ be a non-negative random variable. Markov’s inequality says that for any $t &gt; 0$, we have $\mathsf{P} \left( X \geq t \right) \leq t^{-1} \mathsf{E}\, X$. By Markov’s inequality, it is not difficult to see the Cramer-Chernoff theorem, and then it should be <em>natural</em> to rediscover the <a href="http://www.ams.org/books/surv/089/" target="_blank">entropy method</a>.</li>
+  <li><strong>Union bound:</strong> Let $\mathcal{E}_1$ and $\mathcal{E}_2$ be two events. The union bound says that $\mathsf{P} ( \mathcal{E}_1 \cup \mathcal{E}_2 ) \leq \mathsf{P} ( \mathcal{E}_1 ) + \mathsf{P} ( \mathcal{E}_2 )$. Applying the union bound in a <em>smart enough</em> way, one can immediately rediscover the <a href="http://www.springer.com/us/book/9783642540745" target="_blank">generic chaining argument</a>.</li>
 </ol>
 
 <p>Unfortunately it seems that I’m not smart enough :D</p>
@@ -47,7 +47,7 @@ since the probability distribution $\mathbb{P}$ is assumed unknown, $F$ is not e
 
 <p>One example of a learning problem is binary classification, in which each $X_i$ may represent an image, each $Y_i \in \mathcal{Y} = \lbrace -1, 1 \rbrace$ may indicate whether there is a cat in $X_i$ or not, the hypothesis class is a set of <em>classifiers</em> taking values in $\mathcal{Y}$, and the loss function is given by $f ( h, z ) = \iota_{\lbrace h(x) \neq y\rbrace}$, where $\iota$ denotes the indicator function. It is easy to check that then the risk is the probabiity of false classification.</p>
 
-<p>We say that a hypothesis class $\mathcal{H}$ is <strong>agnostic probably approximately correct (PAC) learnable</strong>, if there exists an algorithm $\mathcal{A}: \mathcal{Z}^n \to \mathcal{H}$ and a function $n_{\mathcal{H}} ( \varepsilon, \delta )$, such that for every probability distribution $\mathbb{P}$ and every $\varepsilon, \delta \in ( 0, 1 )$, we have 
+<p>We say that a hypothesis class $\mathcal{H}$ is <strong>agnostic probably approximately correctly (PAC) learnable</strong>, if there exists an algorithm $\mathcal{A}: \mathcal{Z}^n \to \mathcal{H}$ and a function $n_{\mathcal{H}} ( \varepsilon, \delta )$, such that for every probability distribution $\mathbb{P}$ and every $\varepsilon, \delta \in ( 0, 1 )$, we have 
 <script type="math/tex">\begin{equation}
 F ( \mathcal{A} ( \mathcal{D}_n ) ) - \inf_{h \in \mathcal{H}} F ( h ) \leq \varepsilon 
 \end{equation}</script>
