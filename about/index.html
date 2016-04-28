@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Que-sais je?</title>
+  <title>About Me - Que-sais je?</title>
   <meta name="author" content="yhli">
 
   
-  <meta name="description" content="Hello world!
-Hello world! Empirical processes
-For a smart enough guy, studying empirical processes only requires knowing two fundamental results. &hellip;">
+  <meta name="description" content="About Me Apr 28th, 2016 9:10 pm | Edit I am a Ph.D. candidate in École Polytechnique Fédérale de Lausanne, Switzerland. I do researchers on learning &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ For a smart enough guy, studying empirical processes only requires knowing two f
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yenhuanli.github.io">
+  <link rel="canonical" href="http://yenhuanli.github.io/about">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Que-sais je?" type="application/atom+xml">
@@ -106,83 +104,42 @@ MathJax.Hub.Config({
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
+    <h1 class="entry-title">About Me</h1>
     
-      <h1 class="entry-title"><a href="/blog/2016/04/26/this-is-a-test/">This Is a Test</a></h1>
-    
-    
-      <p class="meta">
-        
+        <p class="meta">
+            
 
 
 
 
-<time class='entry-date' datetime='2016-04-26T23:25:33+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>11:25 pm</span></time>
-        
-        
-      </p>
+<time class='entry-date' datetime='2016-04-28T21:10:00+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:10 pm</span></time> | 
+            <a href="/about/index.markdown">Edit</a>
+        </p>
     
   </header>
+  
+  <p>I am a Ph.D. candidate in <a href="http://www.epfl.ch/" target="_blank">École Polytechnique Fédérale de Lausanne</a>, Switzerland.</p>
+
+<p>I do researchers on learning theory, mathematical statistics, optimization theory, and quantum information.</p>
+
+<p>More information about me can be found on <a href="https://sites.google.com/site/yenhuanli/" target="_blank">my personal website</a></p>
+
+  
+</article>
 
 
-  <div class="entry-content"><h3 id="hello-world">Hello world!</h3>
-<p>Hello world!</p>
-
-<h3 id="empirical-processes">Empirical processes</h3>
-<p>For a <em>smart enough</em> guy, studying empirical processes only requires knowing two fundamental results.</p>
-
-<ol>
-  <li><strong>Markov’s inequality:</strong> Let $X$ be a non-negative random variable. Markov’s inequality says that for any $t &gt; 0$, we have $\mathsf{P} \left( X \geq t \right) \leq t^{-1} \mathsf{E}\, X$. By Markov’s inequality, it is not difficult to see the Cramer-Chernoff theorem, and then it should be <em>natural</em> to rediscover the <a href="http://www.ams.org/books/surv/089/" target="_blank">entropy method</a>.</li>
-  <li><strong>Union bound:</strong> Let $\mathcal{E}_1$ and $\mathcal{E}_2$ be two events. The union bound says that $\mathsf{P} ( \mathcal{E}_1 \cup \mathcal{E}_2 ) \leq \mathsf{P} ( \mathcal{E}_1 ) + \mathsf{P} ( \mathcal{E}_2 )$. Applying the union bound in a <em>smart enough</em> way, one can immediately rediscover the <a href="http://www.springer.com/us/book/9783642540745" target="_blank">generic chaining argument</a>.</li>
-</ol>
-
-<p>Unfortunately it seems that I’m not smart enough :D</p>
-
-<h3 id="the-pac-learning-framework">The PAC learning framework</h3>
-<p>The standard formulation of a learning problem consists of four ingredients:</p>
-
-<ol>
-  <li><strong>Training data:</strong> The training data is given by a sequence of i.i.d. random variables $Z_i = ( X_i, Y_i ) \in \mathcal{Z} = \mathcal{X} \times \mathcal{Y}$, each of which follows certain <em>unknown</em> probability distribution $\mathbb{P}$. For convenience, let us define $\mathcal{D}_n = \lbrace Z_i : 1 \leq i \leq n \rbrace$.</li>
-  <li><strong>Hypothesis class:</strong> A hypothesis class is a set $\mathcal{H}$ of functions $h: \mathcal{X} \to \mathbb{Y}$.</li>
-  <li><strong>Loss function:</strong> A loss function is a function $f: \mathcal{H} \times \mathcal{Z} \to \mathbb{R}$.</li>
-  <li><strong>Risk:</strong> Let $Z$ be an independent copy of $Z_1$. The risk is a function $F: \mathcal{H} \to \mathbb{R}$ defined as $F ( h ) = \mathsf{E}\, f ( h, Z )$.</li>
-</ol>
-
-<p>The goal of learning is to find a <em>good</em> hypothesis $\hat{h}_n \in \mathcal{H}$, based on $\mathcal{D}_n$, such that the resulting risk $F ( \hat{h}_n )$ is small. While at first glance we only need to solve the optimization problem 
-    <script type="math/tex">h^\star \in \arg \min_{h \in \mathcal{H}} F ( h )</script>, 
-since the probability distribution $\mathbb{P}$ is assumed unknown, $F$ is not explicitly specified and we cannot directly solve this optimization problem.</p>
-
-<p>One example of a learning problem is binary classification, in which each $X_i$ may represent an image, each $Y_i \in \mathcal{Y} = \lbrace -1, 1 \rbrace$ may indicate whether there is a cat in $X_i$ or not, the hypothesis class is a set of <em>classifiers</em> taking values in $\mathcal{Y}$, and the loss function is given by $f ( h, z ) = \iota_{\lbrace h(x) \neq y\rbrace}$, where $\iota$ denotes the indicator function. It is easy to check that then the risk is the probabiity of false classification.</p>
-
-<p>We say that a hypothesis class $\mathcal{H}$ is <strong>agnostic probably approximately correctly (PAC) learnable</strong>, if there exists an algorithm $\mathcal{A}: \mathcal{Z}^n \to \mathcal{H}$ and a function $n_{\mathcal{H}} ( \varepsilon, \delta )$, such that for every probability distribution $\mathbb{P}$ and every $\varepsilon, \delta \in ( 0, 1 )$, we have 
-<script type="math/tex">\begin{equation}
-F ( \mathcal{A} ( \mathcal{D}_n ) ) - \inf_{h \in \mathcal{H}} F ( h ) \leq \varepsilon 
-\end{equation}</script>
-with probability at least $1 - \delta$ whenever $n \geq n_{\mathcal{H}} ( \varepsilon, \delta )$.</p>
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     
   
 </aside>
+
 
     </div>
   </div>
