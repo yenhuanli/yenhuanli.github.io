@@ -6,7 +6,7 @@ group :development do
   gem 'octopress-hooks', '~> 2.2'
   gem 'octopress-date-format', '~> 2.0'
   gem 'jekyll-sitemap'
-  gem 'rdiscount', '~> 2.0'
+  gem 'kramdown' 
   gem 'RedCloth', '~> 4.2.9'
   gem 'haml', '~> 4.0'
   gem 'compass', '~> 1.0.1'
@@ -16,3 +16,4 @@ group :development do
 end
 
 gem 'sinatra', '~> 1.4.2'
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
