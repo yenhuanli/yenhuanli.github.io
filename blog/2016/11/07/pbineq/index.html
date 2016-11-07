@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>This Is a Test - Que-sais je?</title>
+  <title>On Peierls-Bogoliubov Inequalities - Que-sais je?</title>
   <meta name="author" content="yhli">
 
   
-  <meta name="description" content="Hello world!
-Hello world! Empirical processes
-For a smart enough guy, studying empirical processes only requires knowing two fundamental results. &hellip;">
+  <meta name="description" content="The term Peierls-Bogoliubov inequality in fact refers to a collection of several similar results. Let $A$ and $B$ be two Hermitian matrices. Consider &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ For a smart enough guy, studying empirical processes only requires knowing two f
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yenhuanli.github.io/blog/2016/04/26/this-is-a-test">
+  <link rel="canonical" href="http://yenhuanli.github.io/blog/2016/11/07/pbineq">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Que-sais je?" type="application/atom+xml">
@@ -112,7 +110,7 @@ MathJax.Hub.Config({
   <header>
     
       
-        <h1 class="entry-title">This Is a Test</h1>
+        <h1 class="entry-title">On Peierls-Bogoliubov Inequalities</h1>
       
     
     
@@ -122,7 +120,7 @@ MathJax.Hub.Config({
 
 
 
-<time class='entry-date' datetime='2016-04-26T23:25:33+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>11:25 pm</span></time>
+<time class='entry-date' datetime='2016-11-07T09:53:18+01:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:53 am</span></time>
         
         
       </p>
@@ -130,40 +128,42 @@ MathJax.Hub.Config({
   </header>
 
 
-<div class="entry-content"><h3 id="hello-world">Hello world!</h3>
-<p>Hello world!</p>
+<div class="entry-content"><p>The term <em>Peierls-Bogoliubov inequality</em> in fact refers to a collection of several similar results. 
+Let $A$ and $B$ be two Hermitian matrices. 
+Consider the function</p>
 
-<h3 id="empirical-processes">Empirical processes</h3>
-<p>For a <em>smart enough</em> guy, studying empirical processes only requires knowing two fundamental results.</p>
-
-<ol>
-  <li><strong>Markov’s inequality:</strong> Let $X$ be a non-negative random variable. Markov’s inequality says that for any $t &gt; 0$, we have $\mathsf{P} \left( X \geq t \right) \leq t^{-1} \mathsf{E}\, X$. By Markov’s inequality, it is not difficult to see the Cramer-Chernoff theorem, and then it should be <em>natural</em> to rediscover the <a href="http://www.ams.org/books/surv/089/" target="_blank">entropy method</a>.</li>
-  <li><strong>Union bound:</strong> Let $\mathcal{E}_1$ and $\mathcal{E}_2$ be two events. The union bound says that $\mathsf{P} ( \mathcal{E}_1 \cup \mathcal{E}_2 ) \leq \mathsf{P} ( \mathcal{E}_1 ) + \mathsf{P} ( \mathcal{E}_2 )$. Applying the union bound in a <em>smart enough</em> way, one can immediately rediscover the <a href="http://www.springer.com/us/book/9783642540745" target="_blank">generic chaining argument</a>.</li>
-</ol>
-
-<p>Unfortunately it seems that I’m not smart enough :D</p>
-
-<h3 id="the-pac-learning-framework">The PAC learning framework</h3>
-<p>The standard formulation of a learning problem consists of four ingredients:</p>
-
-<ol>
-  <li><strong>Training data:</strong> The training data is given by a sequence of i.i.d. random variables $Z_i = ( X_i, Y_i ) \in \mathcal{Z} = \mathcal{X} \times \mathcal{Y}$, each of which follows certain <em>unknown</em> probability distribution $\mathbb{P}$. For convenience, let us define $\mathcal{D}_n = \lbrace Z_i : 1 \leq i \leq n \rbrace$.</li>
-  <li><strong>Hypothesis class:</strong> A hypothesis class is a set $\mathcal{H}$ of functions $h: \mathcal{X} \to \mathbb{Y}$.</li>
-  <li><strong>Loss function:</strong> A loss function is a function $f: \mathcal{H} \times \mathcal{Z} \to \mathbb{R}$.</li>
-  <li><strong>Risk:</strong> Let $Z$ be an independent copy of $Z_1$. The risk is a function $F: \mathcal{H} \to \mathbb{R}$ defined as $F ( h ) = \mathsf{E}\, f ( h, Z )$.</li>
-</ol>
-
-<p>The goal of learning is to find a <em>good</em> hypothesis $\hat{h}_n \in \mathcal{H}$, based on $\mathcal{D}_n$, such that the resulting risk $F ( \hat{h}_n )$ is small. While at first glance we only need to solve the optimization problem 
-    <script type="math/tex">h^\star \in \arg \min_{h \in \mathcal{H}} F ( h )</script>, 
-since the probability distribution $\mathbb{P}$ is assumed unknown, $F$ is not explicitly specified and we cannot directly solve this optimization problem.</p>
-
-<p>One example of a learning problem is binary classification, in which each $X_i$ may represent an image, each $Y_i \in \mathcal{Y} = \lbrace -1, 1 \rbrace$ may indicate whether there is a cat in $X_i$ or not, the hypothesis class is a set of <em>classifiers</em> taking values in $\mathcal{Y}$, and the loss function is given by $f ( h, z ) = \iota_{\lbrace h(x) \neq y\rbrace}$, where $\iota$ denotes the indicator function. It is easy to check that then the risk is the probabiity of false classification.</p>
-
-<p>We say that a hypothesis class $\mathcal{H}$ is <strong>agnostic probably approximately correctly (PAC) learnable</strong>, if there exists an algorithm $\mathcal{A}: \mathcal{Z}^n \to \mathcal{H}$ and a function $n_{\mathcal{H}} ( \varepsilon, \delta )$, such that for every probability distribution $\mathbb{P}$ and every $\varepsilon, \delta \in ( 0, 1 )$, we have 
-<script type="math/tex">\begin{equation}
-F ( \mathcal{A} ( \mathcal{D}_n ) ) - \inf_{h \in \mathcal{H}} F ( h ) \leq \varepsilon 
+<script type="math/tex; mode=display">\begin{equation}
+f (t) = \log \mathrm{Tr}\, \exp ( A + t B ) .
 \end{equation}</script>
-with probability at least $1 - \delta$ whenever $n \geq n_{\mathcal{H}} ( \varepsilon, \delta )$.</p>
+
+<p>Let $B = \sum_{j \in \mathcal{J}} \lambda_i P_i$ be the spectral decomposition of $B$. 
+Consider the random variable $\xi_t$ satisfying</p>
+
+<script type="math/tex; mode=display">\begin{equation}
+\mathsf{P} ( \xi_t = \lambda_j ) = \frac{ \mathrm{Tr} ( P_i \exp ( A + t B ) ) }{\mathrm{Tr}\, \exp ( A + t B )}, \quad \text{for all } j \in \mathcal{J} .
+\end{equation}</script>
+
+<p>Then it can be easily verified that</p>
+
+<script type="math/tex; mode=display">\begin{equation}
+f' (t) = \mathsf{E}\, \xi_t , \quad f'' (t) = \mathsf{E}\, \xi_t ^ 2 - ( \mathsf{E}\, \xi_t )^2 = \mathsf{var} ( \xi_t ) .
+\end{equation}</script>
+
+<p>Therefore, $f’’ (t) \geq 0$ for all $t$, which implies the following theorem.</p>
+
+<p><strong>Theorem.</strong> The function $f$ is convex.</p>
+
+<p>The first Peierls-Bogoliubov inequality immediately follows.</p>
+
+<p><strong>Corollary.</strong> The mapping $A \mapsto \log \mathrm{Tr}\, \exp (A)$ is convex.</p>
+
+<p>The arguably <a href="https://en.wikipedia.org/wiki/Trace_inequalities#Peierls.E2.80.93Bogoliubov_inequality">most well-known version</a> of the Peierls-Bogoliubov inequality is also a simple consequence of the convexity of $f$.</p>
+
+<p><strong>Corollary.</strong> It holds that $f(1) \geq f(0) + f’(0) \cdot ( 1 - 0 )$, i.e,</p>
+
+<script type="math/tex; mode=display">\begin{equation}
+\log \mathrm{Tr}\, \exp ( A + B ) \geq \log \mathrm{Tr}\, \exp ( A ) + \frac{ \mathrm{Tr} ( B \exp A ) }{ \mathrm{Tr}\, \exp ( A ) } . 
+\end{equation}</script>
 </div>
 
 
@@ -186,7 +186,7 @@ with probability at least $1 - \delta$ whenever $n \geq n_{\mathcal{H}} ( \varep
 
 
 
-<time class='entry-date' datetime='2016-04-26T23:25:33+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>11:25 pm</span></time>
+<time class='entry-date' datetime='2016-11-07T09:53:18+01:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:53 am</span></time>
       
       
 
@@ -195,7 +195,7 @@ with probability at least $1 - \delta$ whenever $n \geq n_{\mathcal{H}} ( \varep
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yenhuanli.github.io/blog/2016/04/26/this-is-a-test/" data-via="" data-counturl="http://yenhuanli.github.io/blog/2016/04/26/this-is-a-test/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yenhuanli.github.io/blog/2016/11/07/pbineq/" data-via="" data-counturl="http://yenhuanli.github.io/blog/2016/11/07/pbineq/" >Tweet</a>
   
   
   
