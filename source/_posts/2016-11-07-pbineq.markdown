@@ -11,7 +11,7 @@ Consider the function
 
 $$
 \begin{equation}
-f (t) = \log \mathrm{Tr}\, \exp ( A + t B ) .
+\varphi (t) = \log \mathrm{Tr}\, \exp ( A + t B ) .
 \end{equation}
 $$
 
@@ -28,21 +28,21 @@ Then it can be easily verified that
 
 $$
 \begin{equation}
-f' (t) = \mathsf{E}\, \xi_t , \quad f'' (t) = \mathsf{E}\, \xi_t ^ 2 - ( \mathsf{E}\, \xi_t )^2 = \mathsf{var} ( \xi_t ) .
+\varphi' (t) = \mathsf{E}\, \xi_t , \quad \varphi'' (t) = \mathsf{E}\, \xi_t ^ 2 - ( \mathsf{E}\, \xi_t )^2 = \mathsf{var} ( \xi_t ) .
 \end{equation}
 $$
 
-Therefore, $f'' (t) \geq 0$ for all $t$, which implies the following theorem.
+Therefore, $\varphi'' (t) \geq 0$ for all $t$, which implies the following theorem.
 
-**Theorem.** The function $f$ is convex.  
+**Theorem.** The function $\varphi$ is convex.  
 
-The first Peierls-Bogoliubov inequality immediately follows.
+The follwing Peierls-Bogoliubov inequality in the [lecture notes by Eric Carlen](http://math.arizona.edu/events/AZschool/material/AZ09-carlen.pdf) immediately follows.
 
 **Corollary.** The mapping $A \mapsto \log \mathrm{Tr}\, \exp (A)$ is convex.
 
-The arguably [most well-known version](https://en.wikipedia.org/wiki/Trace_inequalities#Peierls.E2.80.93Bogoliubov_inequality) of the Peierls-Bogoliubov inequality is also a simple consequence of the convexity of $f$.
+The arguably [most well-known version](https://en.wikipedia.org/wiki/Trace_inequalities#Peierls.E2.80.93Bogoliubov_inequality) of the Peierls-Bogoliubov inequality also follows from the convexity of $\varphi$.
 
-**Corollary.** It holds that $f(1) \geq f(0) + f'(0) \cdot ( 1 - 0 )$, i.e., 
+**Corollary.** It holds that $\varphi(1) \geq \varphi(0) + \varphi'(0) \cdot ( 1 - 0 )$, i.e., 
 
 $$
 \begin{equation}
