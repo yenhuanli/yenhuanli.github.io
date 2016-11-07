@@ -1,19 +1,19 @@
 ---
 layout: post
-title: "On Peierls-Bogoliubov Inequalities"
+title: "Peierls-Bogoliubov Inequalities"
 date: 2016-11-07 09:53:18 +0100
 comments: true
 categories: 
 ---
-The term *Peierls-Bogoliubov inequality* in fact refers to a collection of several similar results. 
-Let $A$ and $B$ be two Hermitian matrices. 
-Consider the function  
+The term *Peierls-Bogoliubov inequality* in fact refers to several similar results on the following function: 
 
 $$
 \begin{equation}
-\varphi (t) = \log \mathrm{Tr}\, \exp ( A + t B ) .
+\varphi (t) = \log \mathrm{Tr}\, \exp ( A + t B ) , \quad t \in \mathbb{R} .
 \end{equation}
 $$
+
+for any two given Hermitian matrices $A$ and $B$. 
 
 Let $B = \sum_{j \in \mathcal{J}} \lambda_i P_i$ be the spectral decomposition of $B$. 
 Consider the random variable $\xi_t$ satisfying
@@ -36,7 +36,7 @@ Therefore, $\varphi'' (t) \geq 0$ for all $t$, which implies the following theor
 
 **Theorem.** The function $\varphi$ is convex.  
 
-The follwing Peierls-Bogoliubov inequality in the [lecture notes by Eric Carlen](http://math.arizona.edu/events/AZschool/material/AZ09-carlen.pdf) immediately follows.
+The following Peierls-Bogoliubov inequality in the [lecture notes by Eric Carlen](http://math.arizona.edu/events/AZschool/material/AZ09-carlen.pdf) immediately follows.
 
 **Corollary.** The mapping $A \mapsto \log \mathrm{Tr}\, \exp (A)$ is convex.
 
