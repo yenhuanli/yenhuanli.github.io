@@ -42,7 +42,7 @@ The first Peierls-Bogoliubov inequality immediately follows.
 
 The arguably [most well-known version](https://en.wikipedia.org/wiki/Trace_inequalities#Peierls.E2.80.93Bogoliubov_inequality) of the Peierls-Bogoliubov inequality is also a simple consequence of the convexity of $f$.
 
-**Corollary.** It holds that $f(1) \geq f(0) + f'(0) \cdot ( 1 - 0 )$, i.e, 
+**Corollary.** It holds that $f(1) \geq f(0) + f'(0) \cdot ( 1 - 0 )$, i.e., 
 
 $$
 \begin{equation}
