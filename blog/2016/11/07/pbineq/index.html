@@ -133,7 +133,7 @@ Let $A$ and $B$ be two Hermitian matrices.
 Consider the function</p>
 
 <script type="math/tex; mode=display">\begin{equation}
-f (t) = \log \mathrm{Tr}\, \exp ( A + t B ) .
+\varphi (t) = \log \mathrm{Tr}\, \exp ( A + t B ) .
 \end{equation}</script>
 
 <p>Let $B = \sum_{j \in \mathcal{J}} \lambda_i P_i$ be the spectral decomposition of $B$. 
@@ -146,20 +146,20 @@ Consider the random variable $\xi_t$ satisfying</p>
 <p>Then it can be easily verified that</p>
 
 <script type="math/tex; mode=display">\begin{equation}
-f' (t) = \mathsf{E}\, \xi_t , \quad f'' (t) = \mathsf{E}\, \xi_t ^ 2 - ( \mathsf{E}\, \xi_t )^2 = \mathsf{var} ( \xi_t ) .
+\varphi' (t) = \mathsf{E}\, \xi_t , \quad \varphi'' (t) = \mathsf{E}\, \xi_t ^ 2 - ( \mathsf{E}\, \xi_t )^2 = \mathsf{var} ( \xi_t ) .
 \end{equation}</script>
 
-<p>Therefore, $f’’ (t) \geq 0$ for all $t$, which implies the following theorem.</p>
+<p>Therefore, $\varphi’’ (t) \geq 0$ for all $t$, which implies the following theorem.</p>
 
-<p><strong>Theorem.</strong> The function $f$ is convex.</p>
+<p><strong>Theorem.</strong> The function $\varphi$ is convex.</p>
 
-<p>The first Peierls-Bogoliubov inequality immediately follows.</p>
+<p>The follwing Peierls-Bogoliubov inequality in the <a href="http://math.arizona.edu/events/AZschool/material/AZ09-carlen.pdf">lecture notes by Eric Carlen</a> immediately follows.</p>
 
 <p><strong>Corollary.</strong> The mapping $A \mapsto \log \mathrm{Tr}\, \exp (A)$ is convex.</p>
 
-<p>The arguably <a href="https://en.wikipedia.org/wiki/Trace_inequalities#Peierls.E2.80.93Bogoliubov_inequality">most well-known version</a> of the Peierls-Bogoliubov inequality is also a simple consequence of the convexity of $f$.</p>
+<p>The arguably <a href="https://en.wikipedia.org/wiki/Trace_inequalities#Peierls.E2.80.93Bogoliubov_inequality">most well-known version</a> of the Peierls-Bogoliubov inequality also follows from the convexity of $\varphi$.</p>
 
-<p><strong>Corollary.</strong> It holds that $f(1) \geq f(0) + f’(0) \cdot ( 1 - 0 )$, i.e,</p>
+<p><strong>Corollary.</strong> It holds that $\varphi(1) \geq \varphi(0) + \varphi’(0) \cdot ( 1 - 0 )$, i.e.,</p>
 
 <script type="math/tex; mode=display">\begin{equation}
 \log \mathrm{Tr}\, \exp ( A + B ) \geq \log \mathrm{Tr}\, \exp ( A ) + \frac{ \mathrm{Tr} ( B \exp A ) }{ \mathrm{Tr}\, \exp ( A ) } . 
