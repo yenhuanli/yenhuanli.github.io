@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2016-11-10T11:03:01+01:00</updated>
+  <updated>2016-11-10T11:08:13+01:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -27,7 +27,7 @@ The <em>pinching map</em> defined by $A$ is given by</p>
 
 <p>for any Hermitian matrix $X$.</p>
 
-<p><strong>Theorem 1.</strong> Let $A$ be a positive definite matrix and $B$ be a Hermitian matrix. 
+<p><strong>Theorem 1.</strong> Let $A$ be a positive semi-definite matrix and $B$ be a Hermitian matrix. 
 The following statements hold.</p>
 
 <ol>
