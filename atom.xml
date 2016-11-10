@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2016-11-07T12:28:20+01:00</updated>
+  <updated>2016-11-10T11:03:01+01:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -14,11 +14,81 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Peierls-Bogoliubov Inequalities]]></title>
-    <link href="http://yenhuanli.github.io/blog/2016/11/07/pbineq/"/>
-    <updated>2016-11-07T09:53:18+01:00</updated>
-    <id>http://yenhuanli.github.io/blog/2016/11/07/pbineq</id>
-    <content type="html"><![CDATA[<p>The term <em>Peierls-Bogoliubov inequality</em> in fact refers to several similar results on the following function:</p>
+    <title type="html"><![CDATA[The Pinching Trick and the Golden-Thompson Inequality]]></title>
+    <link href="http://yenhuanli.github.io/blog/2016/11/10/the-pinching-trick-and-the-golden-thompson-inequality/"/>
+    <updated>2016-11-10T11:10:24+01:00</updated>
+    <id>http://yenhuanli.github.io/blog/2016/11/10/the-pinching-trick-and-the-golden-thompson-inequality</id>
+    <content type="html"><![CDATA[<h3 id="pinching">Pinching</h3>
+
+<p>Let $A$ be a Hermitian matrix, and $A = \sum_j \lambda_j P_j$ be the spectral decomposition of $A$. 
+The <em>pinching map</em> defined by $A$ is given by</p>
+
+<script type="math/tex; mode=display">\mathcal{P}_A (X) = \sum_j P_j X P_j ,</script>
+
+<p>for any Hermitian matrix $X$.</p>
+
+<p><strong>Theorem 1.</strong> Let $A$ be a positive definite matrix and $B$ be a Hermitian matrix. 
+The following statements hold.</p>
+
+<ol>
+  <li>$\mathcal{P}_B (A)$ commutes with $B$.</li>
+  <li>$\mathrm{Tr} ( \mathcal{P}_B (A) B ) = \mathrm{Tr} ( A B )$.</li>
+  <li><em>(Pinching inequality)</em> $\vert \mathrm{spec} (B) \vert \, \mathcal{P}_B (A) \geq A$, where $\mathrm{spec} (B)$ denotes the set of eigenvalues of $B$.</li>
+</ol>
+
+<p>The first two statements are easy to check.
+The earliest reference on the pinching inequality I can find is the <a href="https://www.elsevier.com/books/von-neumann-algebras/dixmier/978-0-444-86308-9">classic book by Jacques Dixmier</a>.
+A simple proof of the pinching inequality can be found in the <a href="http://www.springer.com/us/book/9783540302650">textbook by Masahito Hayashi</a>.</p>
+
+<p>One main issue in matrix analysis is non-commutativity. 
+The first statement in Theorem 1 hints that pinching can be an useful tool to deal with this issue. 
+In the next section, the pinching trick is illustrated using the Golden-Thompson inequality as an example.</p>
+
+<h3 id="a-proof-of-the-golden-thompson-inequality">A proof of the Golden-Thompson Inequality</h3>
+
+<p>The <a href="https://en.wikipedia.org/wiki/Golden%E2%80%93Thompson_inequality">Golden-Thompson inequality</a> says that</p>
+
+<script type="math/tex; mode=display">\mathrm{Tr} ( \exp ( A + B ) ) \leq \mathrm{Tr} ( \exp (A) \exp (B) ) ,</script>
+
+<p>for any two Hermitian matrices $A$ and $B$. 
+Obviously, if $A$ commutes with $B$, the Golden-Thompson inequality holds with an equality; however, in general one needs to take non-commutativity into consideration.
+Below we present a very elegant proof using the pinching trick from a <a href="https://arxiv.org/abs/1604.03023">recent paper by D. Sutter et al</a>.</p>
+
+<p>The key observation is that $\vert \mathrm{spec} ( A^{\otimes n} ) \vert$ does not grow rapidly with $n$ for any Hermitian matrix $A$.</p>
+
+<p><strong>Lemma 1.</strong> One has $\vert \mathrm{spec} ( A^{\otimes n} ) \vert = O ( \mathsf{poly} (n) )$ for any Hermitian matrix $A$.</p>
+
+<p><em>Proof (Golden-Thompson inequality).</em></p>
+
+<p>Let $X$ and $Y$ be two positive definite matrices. 
+Then one can write</p>
+
+<script type="math/tex; mode=display">\log \mathrm{Tr} ( \exp ( \log X + \log Y ) ) = \frac{1}{n} \log \mathrm{Tr} ( \exp ( \log X^{\otimes n} + \log Y^{\otimes n} ) ),</script>
+
+<p>for any positive integer $n$. 
+By the pinching inequality, one has</p>
+
+<script type="math/tex; mode=display">\frac{1}{n} \log \mathrm{Tr} ( \exp ( \log X^{\otimes n} + \log Y^{\otimes n} ) ) \leq \frac{1}{n} \log \mathrm{Tr} \{ \exp [ \log ( \vert \mathrm{spec} ( Y^{\otimes n} ) \vert \, \mathcal{P}_{Y^{\otimes n}} ( X^{\otimes n} ) ] + \log Y^{\otimes n} ) \}</script>
+
+<p>By the first two statements in Theorem 1 and Lemma 1, one has</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\begin{align}
+\text{RHS} & = \frac{1}{n} \log \mathrm{Tr}\, ( \mathcal{P}_{Y^{\otimes n}} ( X^{\otimes n} ) Y^{\otimes n} ) + \frac{\log \mathsf{poly} (n)}{n} \notag \\
+& = \frac{1}{n} \log \mathrm{Tr} ( X^{\otimes n} Y^{\otimes n} ) + \frac{\log \mathsf{poly} (n)}{n} \notag \\
+& = \log \mathrm{Tr}\, ( X Y ) + \frac{\log \mathsf{poly} (n)}{n} . 
+\end{align} %]]&gt;</script>
+
+<p>Then one obtains the Golden-Thompson Inequality by letting $n \to \infty$.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Peierls-Bogoliubov Inequality]]></title>
+    <link href="http://yenhuanli.github.io/blog/2016/11/09/pbineq/"/>
+    <updated>2016-11-09T23:39:18+01:00</updated>
+    <id>http://yenhuanli.github.io/blog/2016/11/09/pbineq</id>
+    <content type="html"><![CDATA[<p>The term <em>Peierls-Bogoliubov inequality</em> in fact refers to convexity of the function:</p>
 
 <script type="math/tex; mode=display">\begin{equation}
 \varphi (t) = \log \mathrm{Tr}\, \exp ( A + t B ) , \quad t \in \mathbb{R} .
@@ -52,7 +122,7 @@ Consider the random variable $\xi_t$ satisfying</p>
 <p><strong>Corollary.</strong> It holds that $\varphi(1) \geq \varphi(0) + \varphi’(0) \cdot ( 1 - 0 )$, i.e.,</p>
 
 <script type="math/tex; mode=display">\begin{equation}
-\log \mathrm{Tr}\, \exp ( A + B ) \geq \log \mathrm{Tr}\, \exp ( A ) + \frac{ \mathrm{Tr} ( B \exp A ) }{ \mathrm{Tr}\, \exp ( A ) } . 
+\log \mathrm{Tr}\, \exp ( A + B ) \geq \log \mathrm{Tr}\, \exp ( A ) + \frac{ \mathrm{Tr} ( B \exp ( A )  }{ \mathrm{Tr}\, \exp ( A ) } . 
 \end{equation}</script>
 ]]></content>
   </entry>
