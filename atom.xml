@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2016-11-10T11:08:13+01:00</updated>
+  <updated>2016-12-12T22:59:20+01:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -12,6 +12,61 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Interesting Talks in NIPS 2016]]></title>
+    <link href="http://yenhuanli.github.io/blog/2016/12/12/interesting-talks-in-nips-2016/"/>
+    <updated>2016-12-12T22:57:59+01:00</updated>
+    <id>http://yenhuanli.github.io/blog/2016/12/12/interesting-talks-in-nips-2016</id>
+    <content type="html"><![CDATA[<p>NIPS 2016 is quite successful, in the sense that most of the papers interesting to me were chosen as oral presentations:)
+The list below is of course biased towards my personal research interests. 
+The order is alphabetical, according to the last names of the presenters/first authors.</p>
+
+<ul>
+  <li>“Kernel-based Methods for Bandit Convex Optimization” by S. Bubeck
+    <ul>
+      <li>Bubeck wrote two blog articles on this paper: <a href="https://blogs.princeton.edu/imabandit/2016/08/06/kernel-based-methods-for-bandit-convex-optimization-part-1/">part 1</a> and <a href="https://blogs.princeton.edu/imabandit/2016/08/09/kernel-based-methods-for-convex-bandits-part-2/">part 2</a>.</li>
+    </ul>
+  </li>
+  <li><a href="http://papers.nips.cc/paper/6490-supervised-learning-through-the-lens-of-compression">“Supervised learning through the lens of compression”</a> by O. David, S. Moran, and A. Yehudayoff
+    <ul>
+      <li>Roughly speaking, a function class is learnable if it allows (approximate) compression. Notice that the <a href="https://users.soe.ucsc.edu/~manfred/pubs/T1.pdf">compression</a> is not defined in the Shannon-theoretic way.</li>
+    </ul>
+  </li>
+  <li><a href="http://papers.nips.cc/paper/6467-generalization-of-erm-in-stochastic-convex-optimization-the-dimension-strikes-back">“Generalization of ERM in stochastic convex optimization: The dimension strikes back”</a> by V. Feldman
+    <ul>
+      <li>This papers shows that minimizing the empirical average is not an optimal strategy for stochastic approximation in general.</li>
+    </ul>
+  </li>
+  <li>“Safe testing: An adaptive alternative to p-value-based testing” by P. Grunwald
+    <ul>
+      <li>Grunwald proposed the notion of safe test, which is robust against possible abuse of statistical methods, such as collecting data until the p-value is large enough. He also provided an algorithm for safe testing, based on the so-called reverse I-projection.</li>
+      <li>Unfortunately, it seems that the paper has not been available on the internet.</li>
+    </ul>
+  </li>
+  <li><a href="https://nips.cc/Conferences/2016/Schedule?showEvent=6206">“Theory and algorithms for forecasting non-stationary time series”</a> by V. Kuznetsov and M. Mohri
+    <ul>
+      <li>This is a tutorial talk mainly based on their <a href="http://papers.nips.cc/paper/5836-learning-theory-and-algorithms-for-forecasting-non-stationary-time-series">NIPS’15 paper</a> and <a href="http://www.jmlr.org/proceedings/papers/v49/kuznetsov16.html">COLT’16 paper</a>.</li>
+    </ul>
+  </li>
+  <li><a href="http://papers.nips.cc/paper/6245-without-replacement-sampling-for-stochastic-gradient-methods">“Without-replacement sampling for stochastic gradient methods”</a> by O. Shamir
+    <ul>
+      <li>This paper provides convergence guarantees for the setting mentioned in its title.</li>
+    </ul>
+  </li>
+  <li><a href="https://nips.cc/Conferences/2016/Schedule?showEvent=6200">“Stochastic optimization: Beyond stochastic gradients and convexity: Part 2”</a> by S. Sra
+    <ul>
+      <li>The <a href="http://suvrit.de/talks/vr_nips16_sra.pdf">slides</a> can serve as a good bibliography on solving non-convex finite-sum optimization problems.</li>
+    </ul>
+  </li>
+  <li><a href="http://papers.nips.cc/paper/6268-metagrad-multiple-learning-rates-in-online-learning">“MetaGrad: Multiple learning rates in online learning”</a> by T. Tim van Erven and W. M. Koolen
+    <ul>
+      <li>This paper proposes a somewhat universally optimal scheme for online learning. The idea is to discretize the interval of possible step sizes, treat each candidate step size as an expert, and then do prediction with experts to choose the step size.</li>
+    </ul>
+  </li>
+</ul>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Pinching Trick and the Golden-Thompson Inequality]]></title>
