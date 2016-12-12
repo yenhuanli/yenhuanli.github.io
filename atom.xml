@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2016-12-12T22:59:20+01:00</updated>
+  <updated>2016-12-12T23:04:00+01:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -14,11 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Interesting Talks in NIPS 2016]]></title>
+    <title type="html"><![CDATA[Some Interesting Talks in NIPS 2016]]></title>
     <link href="http://yenhuanli.github.io/blog/2016/12/12/interesting-talks-in-nips-2016/"/>
     <updated>2016-12-12T22:57:59+01:00</updated>
     <id>http://yenhuanli.github.io/blog/2016/12/12/interesting-talks-in-nips-2016</id>
-    <content type="html"><![CDATA[<p>NIPS 2016 is quite successful, in the sense that most of the papers interesting to me were chosen as oral presentations:)
+    <content type="html"><![CDATA[<p>NIPS 2016 was quite successful, in the sense that most of the papers interesting to me were chosen as oral presentations:)
 The list below is of course biased towards my personal research interests. 
 The order is alphabetical, according to the last names of the presenters/first authors.</p>
 
