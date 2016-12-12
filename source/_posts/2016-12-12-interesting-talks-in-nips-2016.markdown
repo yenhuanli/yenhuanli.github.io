@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Some Interesting Talks in NIPS 2016"
-date: 2016-12-12 20:29:25 +0100
+title: "Interesting Talks in NIPS 2016"
+date: 2016-12-12 22:57:59 +0100
 comments: true
 categories: 
 ---
 
-NIPS 2016 is quite successful, in the sense that most of the papers interesting to me were chosen as oral presentations :)
+NIPS 2016 is quite successful, in the sense that most of the papers interesting to me were chosen as oral presentations:)
 The list below is of course biased towards my personal research interests. 
-The order is alphabetical, according to the last names of the presenters.
+The order is alphabetical, according to the last names of the presenters/first authors.
 
 * "Kernel-based Methods for Bandit Convex Optimization" by S. Bubeck
     * Bubeck wrote two blog articles on this paper: [part 1](https://blogs.princeton.edu/imabandit/2016/08/06/kernel-based-methods-for-bandit-convex-optimization-part-1/) and [part 2](https://blogs.princeton.edu/imabandit/2016/08/09/kernel-based-methods-for-convex-bandits-part-2/).
