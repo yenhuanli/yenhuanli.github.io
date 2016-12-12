@@ -7,7 +7,7 @@ categories:
 ---
 
 NIPS 2016 was quite successful, in the sense that most of the papers interesting to me were chosen as oral presentations:)
-The list below is of course biased towards my personal research interests. 
+The list below is of course non-exhaustive and biased.
 The order is alphabetical, according to the last names of the presenters/first authors.
 
 * "Kernel-based Methods for Bandit Convex Optimization" by S. Bubeck
