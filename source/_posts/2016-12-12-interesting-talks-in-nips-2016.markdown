@@ -32,5 +32,5 @@ The order is alphabetical, according to the last names of the presenters/first a
 * ["Stochastic optimization: Beyond stochastic gradients and convexity: Part 2"](https://nips.cc/Conferences/2016/Schedule?showEvent=6200) by S. Sra
     * The [slides](http://suvrit.de/talks/vr_nips16_sra.pdf) can serve as a good bibliography on solving non-convex finite-sum optimization problems.
 
-* ["MetaGrad: Multiple learning rates in online learning"](http://papers.nips.cc/paper/6268-metagrad-multiple-learning-rates-in-online-learning) by T. Tim van Erven and W. M. Koolen
+* ["MetaGrad: Multiple learning rates in online learning"](http://papers.nips.cc/paper/6268-metagrad-multiple-learning-rates-in-online-learning) by T. van Erven and W. M. Koolen
     * This paper proposes a somewhat universally optimal scheme for online learning. The idea is to discretize the interval of possible step sizes, treat each candidate step size as an expert, and then do prediction with experts to choose the step size.
