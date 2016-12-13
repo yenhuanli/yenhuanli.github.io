@@ -11,13 +11,13 @@ The list below is of course non-exhaustive and biased.
 The order is alphabetical, according to the last names of the presenters/first authors.
 
 * "Kernel-based Methods for Bandit Convex Optimization" by S. Bubeck
-    * Bubeck wrote three blog articles on this paper: [part 1](https://blogs.princeton.edu/imabandit/2016/08/06/kernel-based-methods-for-bandit-convex-optimization-part-1/), [part 2](https://blogs.princeton.edu/imabandit/2016/08/09/kernel-based-methods-for-convex-bandits-part-2/), and [part 3](https://blogs.princeton.edu/imabandit/2016/08/10/kernel-based-methods-for-convex-bandits-part-3/).
+    * Bubeck wrote a blog article on this paper: [part 1](https://blogs.princeton.edu/imabandit/2016/08/06/kernel-based-methods-for-bandit-convex-optimization-part-1/), [part 2](https://blogs.princeton.edu/imabandit/2016/08/09/kernel-based-methods-for-convex-bandits-part-2/), and [part 3](https://blogs.princeton.edu/imabandit/2016/08/10/kernel-based-methods-for-convex-bandits-part-3/).
 
 * ["Supervised learning through the lens of compression"](http://papers.nips.cc/paper/6490-supervised-learning-through-the-lens-of-compression) by O. David, S. Moran, and A. Yehudayoff
     * Roughly speaking, a function class is learnable if it allows (approximate) compression. Notice that the [compression](https://users.soe.ucsc.edu/~manfred/pubs/T1.pdf) is not defined in the Shannon-theoretic way.
 
 * ["Generalization of ERM in stochastic convex optimization: The dimension strikes back"](http://papers.nips.cc/paper/6467-generalization-of-erm-in-stochastic-convex-optimization-the-dimension-strikes-back) by V. Feldman
-    * This papers shows that minimizing the empirical average is not an optimal strategy for stochastic approximation in general.  
+    * This paper shows that minimizing the empirical average is not an optimal strategy for stochastic approximation in general.  
 
 * "Safe testing: An adaptive alternative to p-value-based testing" by P. Grunwald
     * Grunwald proposed the notion of safe test, which is robust against possible abuse of statistical methods, such as collecting data until the p-value is large enough. He also provided an algorithm for safe testing, based on the so-called reverse I-projection.
