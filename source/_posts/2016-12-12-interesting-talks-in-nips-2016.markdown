@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Some Interesting Talks in NIPS 2016"
+title: "Some Interesting Talks at NIPS 2016"
 date: 2016-12-12 22:57:59 +0100
 comments: true
-categories: 
+categories:
 ---
 
 NIPS 2016 was quite successful, in the sense that most of the papers interesting to me were chosen as oral presentations:)
@@ -13,7 +13,7 @@ The order is alphabetical, according to the last names of the presenters/first a
 * "Kernel-based Methods for Bandit Convex Optimization" by S. Bubeck
     * Bubeck wrote a blog article on this paper: [part 1](https://blogs.princeton.edu/imabandit/2016/08/06/kernel-based-methods-for-bandit-convex-optimization-part-1/), [part 2](https://blogs.princeton.edu/imabandit/2016/08/09/kernel-based-methods-for-convex-bandits-part-2/), and [part 3](https://blogs.princeton.edu/imabandit/2016/08/10/kernel-based-methods-for-convex-bandits-part-3/).
     * It seems Bubeck had given basically the same talk in the Simon's Institute [(youtube video)](https://youtu.be/fV4qd43OsY8).
-    
+
 * ["Supervised learning through the lens of compression"](http://papers.nips.cc/paper/6490-supervised-learning-through-the-lens-of-compression) by O. David, S. Moran, and A. Yehudayoff
     * Roughly speaking, a function class is learnable if it allows (approximate) compression. Notice that the [compression](https://users.soe.ucsc.edu/~manfred/pubs/T1.pdf) is not defined in the Shannon-theoretic way.
 
@@ -23,10 +23,10 @@ The order is alphabetical, according to the last names of the presenters/first a
 * "Safe testing: An adaptive alternative to p-value-based testing" by P. Grunwald
     * Grunwald proposed the notion of safe test, which is robust against possible abuse of statistical methods, such as collecting data until the p-value is large enough. He also provided an algorithm for safe testing, based on the so-called reverse I-projection.
     * Unfortunately, it seems that the paper has not been available on the internet.     
-    
+
 * ["Theory and algorithms for forecasting non-stationary time series"](https://nips.cc/Conferences/2016/Schedule?showEvent=6206) by V. Kuznetsov and M. Mohri
     * This is a tutorial talk mainly based on their [NIPS'15 paper](http://papers.nips.cc/paper/5836-learning-theory-and-algorithms-for-forecasting-non-stationary-time-series) and [COLT'16 paper](http://www.jmlr.org/proceedings/papers/v49/kuznetsov16.html).
-    
+
 * ["Without-replacement sampling for stochastic gradient methods"](http://papers.nips.cc/paper/6245-without-replacement-sampling-for-stochastic-gradient-methods) by O. Shamir
     * This paper provides convergence guarantees for the setting mentioned in its title.
 
