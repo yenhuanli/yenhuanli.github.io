@@ -12,6 +12,7 @@ The order is alphabetical, according to the last names of the presenters/first a
 
 * "Kernel-based Methods for Bandit Convex Optimization" by S. Bubeck
     * Bubeck wrote a blog article on this paper: [part 1](https://blogs.princeton.edu/imabandit/2016/08/06/kernel-based-methods-for-bandit-convex-optimization-part-1/), [part 2](https://blogs.princeton.edu/imabandit/2016/08/09/kernel-based-methods-for-convex-bandits-part-2/), and [part 3](https://blogs.princeton.edu/imabandit/2016/08/10/kernel-based-methods-for-convex-bandits-part-3/).
+    * Bubeck had given basically the same talk at the Simons Institute [(youtube video)](https://youtu.be/fV4qd43OsY8).
 
 * ["Supervised learning through the lens of compression"](http://papers.nips.cc/paper/6490-supervised-learning-through-the-lens-of-compression) by O. David, S. Moran, and A. Yehudayoff
     * Roughly speaking, a function class is learnable if it allows (approximate) compression. Notice that the [compression](https://users.soe.ucsc.edu/~manfred/pubs/T1.pdf) is not defined in the Shannon-theoretic way.
