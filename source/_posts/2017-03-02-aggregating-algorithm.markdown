@@ -69,7 +69,7 @@ Because of the $\eta$-mixability assumption, the AA is well-defined.
 **Lemma.** For each $t \in \mathbb{N}$, one has 
 
 $$
-\exp ( - \eta L_t ) \geq \sum_{i \leq n} \pi_0 ( i ) \, \exp ( - \eta L_t ( i ) ) , \quad \text{for all } i \leq n . 
+\exp ( - \eta L_t ) \geq \sum_{i \leq n} \pi_0 ( i ) \, \exp ( - \eta L_t ( i ) ) . 
 $$
 
 **Proof.** We prove by induction. 
