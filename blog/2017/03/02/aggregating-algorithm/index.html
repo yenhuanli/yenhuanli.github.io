@@ -174,9 +174,10 @@ At each trial $t \in \mathbb{N}$, the AA outputs a prediction $\gamma_t \in \Gam
 
 <p>and after observing $\omega_t$, the AA updates the probability vector as</p>
 
-<script type="math/tex; mode=display">\pi_t ( i ) := \pi_{t - 1} ( i ) \exp ( - \eta \, \lambda ( \omega_t, \gamma_t ( i ) ) ) , \quad \text{for all } i \leq n .</script>
+<script type="math/tex; mode=display">\pi_t ( i ) := z_t^{-1} \pi_{t - 1} ( i ) \exp ( - \eta \, \lambda ( \omega_t, \gamma_t ( i ) ) ) , \quad \text{for all } i \leq n ,</script>
 
-<p>Because of the $\eta$-mixability assumption, the AA is well-defined.</p>
+<p>where $z_t$ is a normalizing constant such that $( \pi_t (i) )_{i \leq n}$ is also a probability vector.
+Because of the $\eta$-mixability assumption, the AA is well-defined.</p>
 
 <p><strong>Lemma.</strong> For each $t \in \mathbb{N}$, one has</p>
 
