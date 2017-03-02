@@ -34,7 +34,7 @@ $$
 
 The learner's goal is to make predictions almost as well as the *best expert*, in the sense that $L_t \leq L_t(i) + \varepsilon$ for all $i \leq n$, $t \in \mathbb{N}$, and some *small enough* $\varepsilon$.
 
-**Definition.** We say the game is *$\eta$-mixable* if for any probability distribution $P$ on $\Gamma$, there exists a $\gamma^\star \in \Gamma$, such that
+**Definition.** We say the game is *$\eta$-mixable*, if for any probability distribution $P$ on $\Gamma$, there exists a $\gamma^\star \in \Gamma$, such that
 
 $$
 \exp ( - \eta \lambda ( \omega, \gamma^\star ) ) \geq \int \exp ( - \eta \lambda( \omega, \gamma ) ) \, P( \mathrm{d} \gamma ), \quad \text{for all } \omega \in \Omega . \notag
