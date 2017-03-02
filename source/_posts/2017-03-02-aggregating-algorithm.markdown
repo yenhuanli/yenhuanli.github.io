@@ -74,7 +74,7 @@ $$
 
 **Proof.** We prove by induction. 
 Obviously, the inequality holds for $t = 0$ (for which we set $L_t = L_t (i) = 0$ for all $i$).
-Assume the inequality to be prove holds for $t = T$.
+Assume the inequality to be proved holds for $t = T$.
 First we write
 
 $$
