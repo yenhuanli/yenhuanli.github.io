@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2016-12-13T20:18:32+01:00</updated>
+  <updated>2017-03-02T21:21:16+01:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -12,6 +12,94 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Aggregating Algorithm]]></title>
+    <link href="http://yenhuanli.github.io/blog/2017/03/02/aggregating-algorithm/"/>
+    <updated>2017-03-02T18:57:06+01:00</updated>
+    <id>http://yenhuanli.github.io/blog/2017/03/02/aggregating-algorithm</id>
+    <content type="html"><![CDATA[<p>This post is essentially a summary of some results in the classical paper <a href="http://dx.doi.org/10.1006/jcss.1997.1556">``A game of prediction with expert advice’’</a> by V. Vovk.</p>
+
+<p><strong>Definition.</strong> A <em>game</em> is a triple $( \Omega, \Gamma, \lambda )$, where $\Omega$ is the <em>outcome space</em>, $\Gamma$ is the <em>prediction space</em>, and $\lambda: \Omega \times \Gamma \to [0, \infty]$ is a <em>loss function</em>.</p>
+
+<p>Consider the standard <em>learning with expert advice</em> setting, in which a <em>learner</em> tries to predict the state of the <em>nature</em> sequentially, with the help of $n$ experts. 
+Precisely speaking, at each trial $t \in \mathbb{N}$:</p>
+
+<ol>
+  <li>Each expert $i$ makes a prediction $\gamma_t (i)$.</li>
+  <li>The learner makes a prediction $\gamma_t \in \Gamma$.</li>
+  <li>The nature chooses an outcome $\omega_t \in \Omega$.</li>
+  <li>The learner suffers for the loss $\lambda ( \omega_t, \gamma_t )$.</li>
+</ol>
+
+<p>Before making his prediction at the trial $T$, the learner has access to the past history of the nature (up to trial $t - 1$) and all of the experts (up to trial $t$).</p>
+
+<p>For every $t \in \mathbb{N}$, let us define the learner’s accumulative loss as</p>
+
+<script type="math/tex; mode=display">L_t := \lambda( \omega_1, \gamma_1 ) + \cdots + \lambda ( \omega_t, \gamma_t ),</script>
+
+<p>and each expert’s accumulative loss as</p>
+
+<script type="math/tex; mode=display">L_t ( i ) := \lambda( \omega_1, \gamma_1 ( i ) ) + \cdots + \lambda( \omega_t, \gamma_t ( i ) ), \quad i = 1, \ldots, n .</script>
+
+<p>The learner’s goal is to make predictions as well as the <em>best expert</em>, in the sense that $L_t \leq L_t(i) + \varepsilon$ for all $i \leq n$, $t \in \mathbb{N}$, and some <em>small enough</em> $\varepsilon$.</p>
+
+<p><strong>Definition.</strong> We say the game is <em>$\eta$-mixable</em> if for any probability distribution $P$ on $\Gamma$, there exists a $\gamma^\star \in \Gamma$, such that</p>
+
+<script type="math/tex; mode=display">\exp ( - \eta \lambda ( \omega, \gamma^\star ) ) \geq \int \exp ( - \eta \lambda( \omega, \gamma ) ) \, P( \mathrm{d} \gamma ), \quad \text{for all } \omega \in \Omega . \notag</script>
+
+<p><strong>Remark.</strong> By Jensen’s inequality, if the mapping $\gamma \mapsto \exp ( - \eta \lambda ( \omega, \gamma ) )$ for all $\omega$ is concave, then the game is $\eta$-mixable.
+Any such loss function is called <em>exp-concave</em>. 
+Obviously, one can simply choose $\gamma^\star = \int \gamma \, P ( \mathrm{d} \gamma )$ if the loss is exp-concave.</p>
+
+<p><strong>Proposition.</strong> <em>If a game is $\eta$-mixable, there exists a prediction algorithm for the learner, such that</em></p>
+
+<script type="math/tex; mode=display">L_t \leq L_t ( i ) + \eta^{-1} \ln n , \quad \text{for all } i \leq n .</script>
+
+<p>The prediction algorithm is called the <em>aggregating algorithm (AA)</em>, first introduced in the paper <a href="http://vovk.net/aa/index.html">``Aggregating strategies’’</a> by V. Vovk.
+Let $( \pi_0 ( i ) )_{i \leq n}$ be a probability vector whose entries are all non-zero. 
+At each trial $t \in \mathbb{N}$, the AA outputs a prediction $\gamma_t \in \Gamma$ satisfying</p>
+
+<script type="math/tex; mode=display">\exp ( - \eta \lambda ( \omega_t, \gamma_t ) ) \geq \sum_{i \leq n} \pi_{t - 1} ( i ) \exp ( - \eta \lambda( \omega_t, \gamma_t ( i ) ) ) ,</script>
+
+<p>and after observing $\omega_t$, the AA updates the probability vector as</p>
+
+<script type="math/tex; mode=display">\pi_t ( i ) := \pi_{t - 1} ( i ) \exp ( - \eta \, \lambda ( \omega_t, \gamma_t ( i ) ) ) , \quad \text{for all } i \leq n .</script>
+
+<p>Because of the $\eta$-mixability assumption, the AA is well-defined.</p>
+
+<p><strong>Lemma.</strong> For each $t \in \mathbb{N}$, one has</p>
+
+<script type="math/tex; mode=display">\exp ( - \eta L_t ) \geq \sum_{i \leq n} \pi_0 ( i ) \, \exp ( - \eta L_t ( i ) ) , \quad \text{for all } i .</script>
+
+<p><strong>Proof.</strong> We prove by induction. 
+Obviously, the inequality holds for $t = 0$ (for which we set $L_t = L_t (i) = 0$ for all $i$).
+Assume the inequality to be prove holds for $t = T$.
+First we write</p>
+
+<script type="math/tex; mode=display">\exp ( - \eta L_{T + 1} ) = \exp ( - \eta L_T ) \exp ( - \eta \lambda ( \omega_{T + 1}, \gamma_{T + 1}(i) ) )</script>
+
+<p>By the definition of the AA, the RHS is bounded below by</p>
+
+<script type="math/tex; mode=display">\exp ( - \eta L_T ) \frac{ \sum_{i \leq n} \exp ( - \eta \lambda ( \omega_T, \lambda_T ( i ) ) ) \, \pi_0 ( i ) \, \exp ( - \eta L_T ( i ) ) }{ \sum_{i \leq n} \pi_0 ( i ) \, \exp ( - \eta L_T ( i ) ) } .</script>
+
+<p>By assumption, the RHS is bounded below by</p>
+
+<script type="math/tex; mode=display">\sum_{i \leq n} \exp ( - \eta \lambda ( \omega_T, \lambda_T ( i ) ) ) \, \pi_0 ( i ) \, \exp ( - \eta L_T ( i ) ) = \sum_{i \leq n} \pi_0 ( i ) \exp ( \eta L_{T+1} ( i ) ) .</script>
+
+<p>This proves the lemma. <em>Q.E.D.</em></p>
+
+<p>By the lemma, we have</p>
+
+<script type="math/tex; mode=display">\exp ( - \eta L_t ) \geq \pi_0 ( i ) \, \exp ( - \eta L_t ( i ) ) , \quad \text{for all } i .</script>
+
+<p>Hence we obtain</p>
+
+<script type="math/tex; mode=display">L_t \leq L_t ( i ) + \frac{1}{ \eta } \log \left( \frac{1}{ \pi_0 ( i ) } \right) .</script>
+
+<p>Choosing $\pi_0 ( i ) = 1 / n$ for all $i$ (the uniform distribution) proves the proposition.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Some Interesting Talks at NIPS 2016]]></title>
