@@ -61,9 +61,10 @@ $$
 and after observing $\omega_t$, the AA updates the probability vector as
 
 $$
-\pi_t ( i ) := \pi_{t - 1} ( i ) \exp ( - \eta \, \lambda ( \omega_t, \gamma_t ( i ) ) ) , \quad \text{for all } i \leq n . 
+\pi_t ( i ) := z_t^{-1} \pi_{t - 1} ( i ) \exp ( - \eta \, \lambda ( \omega_t, \gamma_t ( i ) ) ) , \quad \text{for all } i \leq n , 
 $$
 
+where $z_t$ is a normalizing constant such that $( \pi_t (i) )_{i \leq n}$ is also a probability vector.
 Because of the $\eta$-mixability assumption, the AA is well-defined.
 
 **Lemma.** For each $t \in \mathbb{N}$, one has 
