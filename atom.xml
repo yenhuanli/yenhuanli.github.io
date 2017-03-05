@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2017-03-04T21:38:34+01:00</updated>
+  <updated>2017-03-05T20:32:37+01:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -225,50 +225,6 @@ By the pinching inequality, one has</p>
 \end{align} %]]&gt;</script>
 
 <p>Then one obtains the Golden-Thompson Inequality by letting $n \to \infty$.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Peierls-Bogoliubov Inequality]]></title>
-    <link href="http://yenhuanli.github.io/blog/2016/11/09/pbineq/"/>
-    <updated>2016-11-09T23:39:18+01:00</updated>
-    <id>http://yenhuanli.github.io/blog/2016/11/09/pbineq</id>
-    <content type="html"><![CDATA[<p>The term <em>Peierls-Bogoliubov inequality</em> in fact refers to convexity of the function:</p>
-
-<script type="math/tex; mode=display">\begin{equation}
-\varphi (t) = \log \mathrm{Tr}\, \exp ( A + t B ) , \quad t \in \mathbb{R} .
-\end{equation}</script>
-
-<p>for any two given Hermitian matrices $A$ and $B$.</p>
-
-<p>Let $B = \sum_{j \in \mathcal{J}} \lambda_i P_i$ be the spectral decomposition of $B$. 
-Consider the random variable $\xi_t$ satisfying</p>
-
-<script type="math/tex; mode=display">\begin{equation}
-\mathsf{P} ( \xi_t = \lambda_j ) = \frac{ \mathrm{Tr} ( P_i \exp ( A + t B ) ) }{\mathrm{Tr}\, \exp ( A + t B )}, \quad \text{for all } j \in \mathcal{J} .
-\end{equation}</script>
-
-<p>Then it can be easily verified that</p>
-
-<script type="math/tex; mode=display">\begin{equation}
-\varphi' (t) = \mathsf{E}\, \xi_t , \quad \varphi'' (t) = \mathsf{E}\, \xi_t ^ 2 - ( \mathsf{E}\, \xi_t )^2 = \mathsf{var} ( \xi_t ) .
-\end{equation}</script>
-
-<p>Therefore, $\varphi’’ (t) \geq 0$ for all $t$, which implies the following theorem.</p>
-
-<p><strong>Theorem.</strong> The function $\varphi$ is convex.</p>
-
-<p>The following Peierls-Bogoliubov inequality in the <a href="http://math.arizona.edu/events/AZschool/material/AZ09-carlen.pdf">lecture notes by Eric Carlen</a> immediately follows.</p>
-
-<p><strong>Corollary.</strong> The mapping $A \mapsto \log \mathrm{Tr}\, \exp (A)$ is convex.</p>
-
-<p>The arguably <a href="https://en.wikipedia.org/wiki/Trace_inequalities#Peierls.E2.80.93Bogoliubov_inequality">most well-known version</a> of the Peierls-Bogoliubov inequality also follows from the convexity of $\varphi$.</p>
-
-<p><strong>Corollary.</strong> It holds that $\varphi(1) \geq \varphi(0) + \varphi’(0) \cdot ( 1 - 0 )$, i.e.,</p>
-
-<script type="math/tex; mode=display">\begin{equation}
-\log \mathrm{Tr}\, \exp ( A + B ) \geq \log \mathrm{Tr}\, \exp ( A ) + \frac{ \mathrm{Tr} ( B \exp ( A )  }{ \mathrm{Tr}\, \exp ( A ) } . 
-\end{equation}</script>
 ]]></content>
   </entry>
   
