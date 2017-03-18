@@ -21,7 +21,7 @@ For each $t \in \mathbb{N}$,
 4. Each expert $\theta \in \Theta$ suffers for the loss $\lambda ( \omega_t, \gamma_t ( \theta ) )$. Learner suffers for the loss $\lambda ( \omega_t, \gamma_t )$.
 
 The WAA works as follows. 
-Let $\eta_t$ be the *learning rate* to be chosen.
+Let $( \eta_t )_{t \in \mathbb{N}}$ be a given sequence of *learning rates*.
 Let $P_0$ be a probability measure on $\Theta$.
 For each $t \in \mathbb{N}$, Learner chooses as his prediction any $\gamma_t$ such that
 
@@ -32,7 +32,13 @@ $$
 After observing the losses, Learner constructs a probability measure $P_t$ such that for any $\mathcal{A} \subseteq \Theta$
 
 $$
-P_t ( \mathcal{A} ) = \int_{\mathcal{A}} \exp \left( - \eta_t L_t ( \theta ) \right) \, P_{t-1} ( \mathrm{d} \theta ) .
+P_t ( \mathcal{A} ) = \int_{\mathcal{A}} \exp \left( - \eta_{t + 1} L_t ( \theta ) \right) \, P_0 ( \mathrm{d} \theta ) ,
+$$
+
+where $L_t ( \theta )$ denotes the *accumulative loss* of expert $\theta$, i.e., 
+
+$$
+L_t ( \theta ) := \lambda ( \omega_1, \gamma_1 ( \theta ) ) + \lambda ( \omega_2, \gamma_2 ( \theta ) ) + \cdots + \lambda ( \omega_t, \gamma_t ( \theta ) ) .
 $$
 
 Of course, the rule of choosing $\gamma_t$ does not apply to any PEA game.
@@ -55,10 +61,10 @@ If a game is $\eta$-mixable for some $\eta > 0$, then it is convex.
 
 ###Regret Analysis###
 
-For any $T \in \mathbb{N}, d$efine the *accumulative losses* of the experts and Learner as
+For any $T \in \mathbb{N}, d$efine the accumulative losses of Learner as
 
 $$
-L_T ( \theta ) := \sum_{t \leq T} \lambda ( \omega_t, \gamma_t ( \theta ) ), \quad L_T := \sum_{t \leq T} \lambda ( \omega_t, \gamma ) . 
+L_T := \lambda ( \omega_1, \gamma_1 ) + \lambda ( \omega_2, \gamma_2 ) + \cdots + \lambda ( \omega_T, \gamma_T ) . 
 $$
 
 Set $L_0 = L_0 ( \theta ) = 0$ for all $\theta \in \Theta$.
@@ -73,13 +79,13 @@ $$
 where 
 
 $$
-\delta_t := \int_\Theta \lambda ( \omega_t, \gamma_t (\theta) ) \, P_{t - 1} ( \mathrm{d} \theta ) - \log \int_\Theta \exp \left( - \eta_t \lambda ( \omega_t, \gamma_t (\theta) ) \right) \, P_{t - 1} ( \mathrm{d} \theta ) . 
+\delta_t := \int_\Theta \lambda ( \omega_t, \gamma_t (\theta) ) \, P_{t - 1} ( \mathrm{d} \theta ) + \eta_t^{-1} \log \int_\Theta \exp \left( - \eta_t \lambda ( \omega_t, \gamma_t (\theta) ) \right) \, P_{t - 1} ( \mathrm{d} \theta ) . 
 $$
 
 **Proof.**
 We prove by induction.
 Assume the lemma holds for $t = T \in \mathbb{N}$.
-For $t = T + 1$, one can write
+For $t = T + 1$, one writes
 
 $$
 \exp \left( - \eta_{T + 1} L_{T + 1} \right) = \exp \left( - \eta_{T + 1} L_T \right) \exp \left( - \eta_{T + 1} \lambda ( \omega_{T + 1}, \gamma_{T + 1} ) \right) .
@@ -97,7 +103,7 @@ $$
 \exp \left( - \eta_{T + 1} \sum_{t \leq T} \delta_t \right) \int_\Theta \exp \left( - \eta_{T + 1} L_T (\theta) \right) \, P_0 (\mathrm{d} \theta) . 
 $$
 
-By the WAA's rule of choosing $\gamma_{T + 1}$, one has
+By the rule of choosing $\gamma_{T + 1}$, one has
 
 $$
 \exp \left( - \eta_{T + 1} \lambda (\omega_{T + 1}, \gamma_{T + 1}) \right) \geq \exp \left( - \eta_{T + 1} \int_\Theta \lambda (\omega_{T + 1}, \gamma_{T + 1} ( \theta )) \, P_T ( \mathrm{d} \theta ) \right) .
@@ -108,3 +114,46 @@ One can write the RHS as
 $$
 \exp \left( - \eta_{T + 1} \delta_{T + 1} \right) \int_\Theta \exp \left( - \eta_{T + 1} \lambda ( \omega_{T + 1}, \gamma_{T + 1} ( \theta ) ) \right) \, P_T ( \mathrm{d} \theta ) . 
 $$
+
+The lemma follows, as
+
+$$
+\int_\Theta \exp \left( - \eta_{T + 1} \lambda ( \omega_{T + 1}, \gamma_{T + 1} ( \theta ) ) \right) \, P_T ( \mathrm{d} \theta ) = \frac{ \int_\Theta \exp \left( - \eta_{T + 1} \lambda ( \omega_{T + 1}, \gamma_{T + 1} (\theta) ) \right) \exp \left( - \eta_{T + 1} L_T ( \theta ) \right) \, P_0 ( \mathrm{d} \theta ) }{ \int_\Theta \exp \left( - \eta_{T + 1} L_T (\theta) \right) \, P_0 (\mathrm{d} \theta) } .
+$$
+
+*Q.E.D.*
+
+Let us use the lemma to derive a regret bound under the following two assumptions.
+
+1. The cardinality of $\Theta$ is finite.
+2. The loss $\lambda ( \omega, \gamma )$ is bounded above by some $M > 0$, for all $\omega \in \Omega$ and $\gamma \in \Gamma$.
+
+The lemma implies, for any $T \in \mathbb{N}$,
+
+$$
+L_T \leq L_T ( \theta ) + \eta_T^{-1} \log ( 1 / P_0 ( \theta ) ) + \sum_{t \leq T} \delta_t , \quad \text{for all } \theta \in \Theta.
+$$
+
+It remains to bound the term $\sum_{t \leq T} \delta_t$.
+For every $t \in \mathbb{N}$, define the random variable $X_t := - \lambda ( \omega_t, \gamma_t ( \theta ) )$.
+Using Hoeffding's lemma, one obtians
+
+$$
+\delta_t = - \mathbb{E}\, X_t + \eta_t^{-1} \log \mathbb{E}\, \exp ( \eta_t X_t ) \leq \frac{\eta_t M^2}{8} , \quad \text{for all } t \in \mathbb{N}. 
+$$ 
+
+Therefore, 
+
+$$
+L_T \leq L_T ( \theta ) + \eta_T^{-1} \log ( 1 / P_0 ( \theta ) ) + \frac{\eta_T M^2 T}{8} . 
+$$
+
+Minimizing the bound with respect to $\eta_T$, one obtains the following regret bound. 
+
+**Theorem.** Suppose that $\vert \Theta \vert = N < + \infty$, and the loss function is bounded above by $M > 0$. Then the WAA with $P_0 ( \theta ) = 1 / N$ for all $\theta$ and $\eta_t = M^{-1} \sqrt{ T^{-1} 8 \log N }$ achieves
+
+$$
+L_T \leq L_T (\theta) + M \sqrt{ \frac{T \log N}{8} } , \quad \text{for all } \theta \in \Theta.
+$$
+
+**Remark.** We have used Hoeffding's lemma to simplify a little bit the original proof.
