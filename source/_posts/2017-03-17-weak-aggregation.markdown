@@ -150,7 +150,7 @@ $$
 
 Minimizing the bound with respect to $\eta_T$, one obtains the following regret bound. 
 
-**Theorem.** Suppose that $\vert \Theta \vert = N < + \infty$, and the loss function is bounded above by $M > 0$. Then the WAA with $P_0 ( \theta ) = 1 / N$ for all $\theta$ and $\eta_t = M^{-1} \sqrt{ T^{-1} 8 \log N }$ achieves
+**Theorem.** Suppose that $\vert \Theta \vert = N < + \infty$, and the loss function is bounded above by $M > 0$. Then the WAA with $P_0 ( \theta ) = 1 / N$ for all $\theta$ and $\eta_t = M^{-1} \sqrt{ t^{-1} 8 \log N }$ achieves, for all $T \in \mathbb{N}$, 
 
 $$
 L_T \leq L_T (\theta) + M \sqrt{ \frac{T \log N}{8} } , \quad \text{for all } \theta \in \Theta.
