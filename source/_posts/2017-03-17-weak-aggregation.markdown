@@ -61,13 +61,11 @@ If a game is $\eta$-mixable for some $\eta > 0$, then it is convex.
 
 ###Regret Analysis###
 
-For any $T \in \mathbb{N}, d$efine the accumulative losses of Learner as
+For any $T \in \mathbb{N}, d$efine the accumulative loss of Learner as
 
 $$
 L_T := \lambda ( \omega_1, \gamma_1 ) + \lambda ( \omega_2, \gamma_2 ) + \cdots + \lambda ( \omega_T, \gamma_T ) . 
 $$
-
-Set $L_0 = L_0 ( \theta ) = 0$ for all $\theta \in \Theta$.
 
 **Lemma.** Assume that the sequence $( \eta_t )_{t \in \mathbb{N}}$ is non-increasing. 
 For every $T \in \mathbb{N}$, one has
