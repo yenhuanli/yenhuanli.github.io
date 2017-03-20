@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Weak Aggregation - Que-sais je?</title>
+  <meta name="author" content="yhli">
+
+  
+  <meta name="description" content="The weak aggregating algorithm (WAA) was introduced in the paper “The weak aggregating algorithm and weak mixability” by Kalnishkan and V’yugin. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yenhuanli.github.io/blog/2017/03/17/weak-aggregation">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Que-sais je?" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-77006714-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Que-sais je?</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      <form action="https://www.google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="yenhuanli.github.io" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Weak Aggregation</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-03-17T16:53:40+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:53 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The <em>weak aggregating algorithm (WAA)</em> was introduced in the paper <a href="http://dx.doi.org/10.1016/j.jcss.2007.08.003">“The weak aggregating algorithm and weak mixability”</a> by Kalnishkan and V’yugin. 
+Unlike the aggregating algorithm (AA) by Vovk, the WAA does not require the mixability condition but a weaker convexity condition which will appear shortly.</p>
+
+<h3 id="weak-aggregating-algorithm">Weak Aggregating Algorithm</h3>
+
+<p>Recall the <em>prediction with expert advice (PEA)</em> game, which involves <em>Learner</em>, <em>Nature</em>, and a pool of experts indexed by a set $\Theta$. 
+Let $\Omega$ be the <em>outcome space</em>, $\Gamma$ be the <em>prediction space</em>, and $\lambda: \Omega \times \Gamma \to [ 0, + \infty )$ be a <em>loss function</em>.
+For each $t \in \mathbb{N}$,</p>
+
+<ol>
+  <li>Each expert $\theta \in \Theta$ chooses a prediction $\gamma_t ( \theta ) \in \Gamma$.</li>
+  <li>Learner chooses a prediction $\gamma_t \in \Gamma$, which can be dependent on all previous predictions by himself and the experts, and previous outcomes chosen by Nature.</li>
+  <li>Nature chooses $\omega_t \in \Omega$.</li>
+  <li>Each expert $\theta \in \Theta$ suffers for the loss $\lambda ( \omega_t, \gamma_t ( \theta ) )$. Learner suffers for the loss $\lambda ( \omega_t, \gamma_t )$.</li>
+</ol>
+
+<p>The WAA works as follows. 
+Let $( \eta_t )_{t \in \mathbb{N}}$ be a given sequence of <em>learning rates</em>.
+Let $P_0$ be a probability measure on $\Theta$.
+For each $t \in \mathbb{N}$, Learner chooses as his prediction any $\gamma_t$ such that</p>
+
+<script type="math/tex; mode=display">\lambda( \omega_t, \gamma_t ) \leq \int_\Theta \lambda ( \omega_t, \gamma_t (\theta) ) \, P_{t-1} ( \mathrm{d} \theta ) .</script>
+
+<p>After observing the losses, Learner constructs a probability measure $P_t$ such that for any $\mathcal{A} \subseteq \Theta$</p>
+
+<script type="math/tex; mode=display">P_t ( \mathcal{A} ) = \int_{\mathcal{A}} \exp \left( - \eta_{t + 1} L_t ( \theta ) \right) \, P_0 ( \mathrm{d} \theta ) ,</script>
+
+<p>where $L_t ( \theta )$ denotes the <em>accumulative loss</em> of expert $\theta$, i.e.,</p>
+
+<script type="math/tex; mode=display">L_t ( \theta ) := \lambda ( \omega_1, \gamma_1 ( \theta ) ) + \lambda ( \omega_2, \gamma_2 ( \theta ) ) + \cdots + \lambda ( \omega_t, \gamma_t ( \theta ) ) .</script>
+
+<p>Of course, the rule of choosing $\gamma_t$ does not apply to any PEA game.
+Hence we need to require the <em>convexity</em> of the game.</p>
+
+<p><strong>Definition.</strong>
+The game is said to be convex, if for any probability measure $P$ on $\Gamma$, there always exists some $\gamma^\star \in \Gamma$ such that</p>
+
+<script type="math/tex; mode=display">\lambda ( \omega, \gamma^\star ) \leq \int_\Gamma \lambda ( \omega, \gamma ) \, P ( \mathrm{d} \gamma ) , \quad \text{for any } \omega \in \Omega .</script>
+
+<p>By Jensen’s inequality, if $\Gamma$ is convex and the mapping $\gamma \mapsto \lambda ( \omega, \gamma )$ is also convex for all $\omega \in \Omega$, then one can simply choose</p>
+
+<script type="math/tex; mode=display">\gamma^\star = \int_\Gamma \gamma \, P ( \mathrm{d} \gamma ) .</script>
+
+<p>If a game is $\eta$-mixable for some $\eta &gt; 0$, then it is convex.</p>
+
+<h3 id="regret-analysis">Regret Analysis</h3>
+
+<p>For any $T \in \mathbb{N}$, define the accumulative loss of Learner as</p>
+
+<script type="math/tex; mode=display">L_T := \lambda ( \omega_1, \gamma_1 ) + \lambda ( \omega_2, \gamma_2 ) + \cdots + \lambda ( \omega_T, \gamma_T ) .</script>
+
+<p><strong>Lemma.</strong> Assume that the sequence $( \eta_t )_{t \in \mathbb{N}}$ is non-increasing. 
+For every $T \in \mathbb{N}$, one has</p>
+
+<script type="math/tex; mode=display">\exp \left( -\eta_T L_T \right) \geq \exp \left( - \eta_T \sum_{t \leq T} \delta_t \right) \int_{\Theta} \exp \left( - \eta_T L_T ( \theta ) \right) \, P_0 ( \mathrm{d} \theta ) ,</script>
+
+<p>where</p>
+
+<script type="math/tex; mode=display">\delta_t := \int_\Theta \lambda ( \omega_t, \gamma_t (\theta) ) \, P_{t - 1} ( \mathrm{d} \theta ) + \eta_t^{-1} \log \int_\Theta \exp \left( - \eta_t \lambda ( \omega_t, \gamma_t (\theta) ) \right) \, P_{t - 1} ( \mathrm{d} \theta ) .</script>
+
+<p><strong>Proof.</strong>
+We prove by induction.
+Assume the lemma holds for $t = T \in \mathbb{N}$.
+For $t = T + 1$, one writes</p>
+
+<script type="math/tex; mode=display">\exp \left( - \eta_{T + 1} L_{T + 1} \right) = \exp \left( - \eta_{T + 1} L_T \right) \exp \left( - \eta_{T + 1} \lambda ( \omega_{T + 1}, \gamma_{T + 1} ) \right) .</script>
+
+<p>Using the induction hypothesis, one can write</p>
+
+<script type="math/tex; mode=display">\exp \left( - \eta_{T + 1} L_T \right) = \left[ \exp \left( - \eta_T L_T \right) \right]^{\frac{\eta_{T + 1}}{\eta_T}} \geq \left[ \exp \left( - \eta_T \sum_{t \leq T} \delta_T \right) \int_\Theta \exp \left( - \eta_T L_T ( \theta ) \right) \, P_0 ( \mathrm{d} \theta ) \right]^{\frac{\eta_{T + 1}}{\eta_T}} .</script>
+
+<p>By Jensen’s inequality, the RHS is bounded below by</p>
+
+<script type="math/tex; mode=display">\exp \left( - \eta_{T + 1} \sum_{t \leq T} \delta_t \right) \int_\Theta \exp \left( - \eta_{T + 1} L_T (\theta) \right) \, P_0 (\mathrm{d} \theta) .</script>
+
+<p>By the rule of choosing $\gamma_{T + 1}$, one has</p>
+
+<script type="math/tex; mode=display">\exp \left( - \eta_{T + 1} \lambda (\omega_{T + 1}, \gamma_{T + 1}) \right) \geq \exp \left( - \eta_{T + 1} \int_\Theta \lambda (\omega_{T + 1}, \gamma_{T + 1} ( \theta )) \, P_T ( \mathrm{d} \theta ) \right) .</script>
+
+<p>One can write the RHS as</p>
+
+<script type="math/tex; mode=display">\exp \left( - \eta_{T + 1} \delta_{T + 1} \right) \int_\Theta \exp \left( - \eta_{T + 1} \lambda ( \omega_{T + 1}, \gamma_{T + 1} ( \theta ) ) \right) \, P_T ( \mathrm{d} \theta ) .</script>
+
+<p>The lemma follows, as</p>
+
+<script type="math/tex; mode=display">\int_\Theta \exp \left( - \eta_{T + 1} \lambda ( \omega_{T + 1}, \gamma_{T + 1} ( \theta ) ) \right) \, P_T ( \mathrm{d} \theta ) = \frac{ \int_\Theta \exp \left( - \eta_{T + 1} \lambda ( \omega_{T + 1}, \gamma_{T + 1} (\theta) ) \right) \exp \left( - \eta_{T + 1} L_T ( \theta ) \right) \, P_0 ( \mathrm{d} \theta ) }{ \int_\Theta \exp \left( - \eta_{T + 1} L_T (\theta) \right) \, P_0 (\mathrm{d} \theta) } .</script>
+
+<p><em>Q.E.D.</em></p>
+
+<p>Let us use the lemma to derive a regret bound under the following two assumptions.</p>
+
+<ol>
+  <li>The cardinality of $\Theta$ is finite.</li>
+  <li>The loss $\lambda ( \omega, \gamma )$ is bounded above by some $M &gt; 0$, for all $\omega \in \Omega$ and $\gamma \in \Gamma$.</li>
+</ol>
+
+<p>The lemma implies, for any $T \in \mathbb{N}$,</p>
+
+<script type="math/tex; mode=display">L_T \leq L_T ( \theta ) + \eta_T^{-1} \log ( 1 / P_0 ( \theta ) ) + \sum_{t \leq T} \delta_t , \quad \text{for all } \theta \in \Theta.</script>
+
+<p>It remains to bound the term $\sum_{t \leq T} \delta_t$.
+For every $t \in \mathbb{N}$, define the random variable $X_t := - \lambda ( \omega_t, \gamma_t ( \theta ) )$.
+Using Hoeffding’s lemma, one obtians</p>
+
+<script type="math/tex; mode=display">\delta_t = - \mathbb{E}\, X_t + \eta_t^{-1} \log \mathbb{E}\, \exp ( \eta_t X_t ) \leq \frac{\eta_t M^2}{8} , \quad \text{for all } t \in \mathbb{N}.</script>
+
+<p>Therefore,</p>
+
+<script type="math/tex; mode=display">L_T \leq L_T ( \theta ) + \eta_T^{-1} \log ( 1 / P_0 ( \theta ) ) + \frac{M^2}{8} \sum_{t \leq T} \eta_t .</script>
+
+<p>Choosing $\eta_t = c / \sqrt{t}$ for some $c &gt; 0$ yields</p>
+
+<script type="math/tex; mode=display">\sum_{t \leq T} \eta_t = c \sum_{t \leq T} \frac{1}{\sqrt{t}} \leq c \int_{[0,T]} \frac{1}{\sqrt{x}} \, \mathrm{d} x = 2 c \sqrt{T}.</script>
+
+<p>Minimizing the bound with respect to $c$, one obtains the following regret bound.</p>
+
+<p><strong>Theorem.</strong> Suppose that $\vert \Theta \vert = N &lt; + \infty$, and the loss function is bounded above by $M &gt; 0$. Then the WAA with $P_0 ( \theta ) = 1 / N$ for all $\theta$ and</p>
+
+<script type="math/tex; mode=display">\eta_t = \frac{2}{M} \sqrt{ \frac{\log N}{t} }</script>
+
+<p>achieves, for all $T \in \mathbb{N}$,</p>
+
+<script type="math/tex; mode=display">L_T \leq L_T (\theta) + M \sqrt{ T \log N } , \quad \text{for all } \theta \in \Theta.</script>
+
+<p><strong>Remark.</strong> We have used Hoeffding’s lemma to simplify a little bit the original proof.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    yhli
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2017-03-17T16:53:40+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:53 pm</span></time>
+      
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yenhuanli.github.io/blog/2017/03/17/weak-aggregation/" data-via="" data-counturl="http://yenhuanli.github.io/blog/2017/03/17/weak-aggregation/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2017/03/02/aggregating-algorithm/" title="Previous Post: Aggregating Algorithm">&laquo; Aggregating Algorithm</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2017/03/19/hedge/" title="Next Post: Hedge Algorithm (1/2)">Hedge Algorithm (1/2) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2017 - yhli -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
