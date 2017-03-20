@@ -9,7 +9,7 @@
   <meta name="author" content="yhli">
 
   
-  <meta name="description" content="The weak aggregating algorithm (WAA) was introduced in the paper “The weak aggregating algorithm and weak mixability” by Kalnishkan and V’yugin. &hellip;">
+  <meta name="description" content="Alice wants to win some money by betting on horce racing games. She knows nothing about horce racing. Fortunately, she knows that some of her friends &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -106,6 +106,94 @@ MathJax.Hub.Config({
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/03/19/hedge/">Hedge Algorithm (1/2)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-03-19T11:56:20+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:56 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Alice wants to win some money by betting on horce racing games. 
+She knows nothing about horce racing. 
+Fortunately, she knows that some of her friends are very good at betting on horce racing; however, she does not know who exactly is the best.
+Suppose Alice will bet on several rounds sequentially.
+Can Alice bet as well as the best among her friends <em>in the long run</em>?</p>
+
+<p>Indeed, there are algorithms for doing so. 
+A famous one is the so-called <em>hedge algorithm</em>, introduced in the paper <a href="http://dx.doi.org/10.1006/jcss.1997.1504">“A desicion-theoretic generalization of on-line learning and an application to boosting”</a> by Y. Freund and R. Schapire.</p>
+
+<p>The idea is to switch between Alice’s fridends’ strategies. 
+Assume for simplicity that Alice will always bet 1 unit of money for each round. 
+Alice keeps in her mind a <em>weight</em> for each of her friend. 
+At the beginning of each round, she chooses one of her friends with probability proportional to the weights, say Bob, and follows Bob’s bet. 
+Once a round finishes, Alice sees how much she would lose had she followed any of her friend. 
+She then updates the weights accordingly.
+Those who yielded smaller losses have higher weights, and vice versa.</p>
+
+<p>Let us formalize the idea. 
+We label the rounds by positive integers $t \in \mathbb{N}$.
+Suppse Alice has $N$ friends; let us index them by the set $[N] := \lbrace 1, \ldots, N \rbrace$.
+We summarize the weights before the $t$-th round by a weight vector $w_t := ( w_t (i) )_{i \in [N]} \in \mathbb{R}^N$ in the probability simplex, where $w_t (i)$ denotes the weight assigned to Friend $i$.
+We also summarize the losses yielded by each friend’s bet for the $t$-th round by a vector $x_t := ( x_t (i) ) \in [ 0, + \infty [^N$.
+Then for the $t$-th round, the expected loss of Alice is</p>
+
+<script type="math/tex; mode=display">\sum_{i \in [N] } x_t(i) w_t(i) := \langle x_t, w_t \rangle .</script>
+
+<p>Suppose Alice will bet on $T$ rounds.
+The goal of Alice is to have a small <em>regret</em></p>
+
+<script type="math/tex; mode=display">R_T := \sum_{t \in [T]} \langle x_t, w_t \rangle - \min_{i \in [N]} \sum_{t \in [T]} x_t(i) ,</script>
+
+<p>where $[T] := \lbrace 1, \ldots, T \rbrace$.</p>
+
+<p>The regret measures difference between Alice’s expected loss and the loss yielded by the best friend <em>in hindsight</em>.
+If $R_T = o(T)$, in hindsight, the difference between the average costs of Alice and the best friend converges to zero. 
+Notice that the <em>best friend</em> in general varies with $T$.</p>
+
+<p>The hedge algorithm is a specific rule of setting the weights. 
+Initially, Alice chooses any weight $w_1$ such that $w_1 (i) \neq 0$ for all $i$. 
+After observing the losses $x_t$, Alice updates the weights as</p>
+
+<script type="math/tex; mode=display">w_{t+1} (i) = Z_t^{-1} w_t(i) \, \mathrm{e}^{- \eta x_t (i)} , \quad i \in [N] ,</script>
+
+<p>where $Z_t := \sum_{i \in [N]} w_t (i) \, \mathrm{e}^{- \eta x_t (i)}$ is the normalizing constant, and $\eta$ is a properly chosen <em>learning rate</em>.</p>
+
+<p>The hedge algorithm looks similar to the aggregating algorithm (AA). 
+Indeed, the former can be viewed as an instance of the latter. 
+Recall the setting of prediction with expert advice (PEA). 
+Let Alice be Learner and her friends be the experts.
+Let Nature choose the loss vectors.
+Set the outcome space $\Omega$ as $[ 0, + \infty [^N$, prediction space $\Gamma$ as the probability simplex in $\mathbb{R}^N$, and loss function as</p>
+
+<script type="math/tex; mode=display">\lambda ( \omega, \gamma ) := \langle \omega, \gamma \rangle , \quad \omega \in \Omega, \gamma \in \Gamma.</script>
+
+<p>When each expert $i \in [N]$ chooses a fixed prediction $\gamma_t (i) = ( \delta_{i,j} )_{j \in [N]} \in \mathbb{R}^N$, we recover the original betting-horce-racing-games problem.
+It is easy to check that applying the AA on this specific PEA game recovers the hedge algorithm.</p>
+
+<p>Unfortunately, the PEA game does not satisfy the mixability condition, so we cannot apply the regret bound in <a href="http://localhost:4000/blog/2017/03/02/aggregating-algorithm/">this post on the AA</a>.
+We will see that by slightly generalizing the mixability condition, it is not difficult to show that the hedge algorithm yields $R_T = O (\sqrt{T})$, assuming bounded losses.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
