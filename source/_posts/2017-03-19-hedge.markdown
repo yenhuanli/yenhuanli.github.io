@@ -71,5 +71,5 @@ $$
 When each expert $i \in [N]$ chooses a fixed prediction $\gamma_t (i) = ( \delta_{i,j} )_{j \in [N]} \in \mathbb{R}^N$, we recover the original betting-horce-racing-games problem.
 It is easy to check that applying the AA on this specific PEA game recovers the hedge algorithm.
 
-Unfortunately, this specific PEA game does not satisfy the mixability condition, so we cannot apply the regret bound in [this post on the AA](http://localhost:4000/blog/2017/03/02/aggregating-algorithm/).
+Unfortunately, this specific PEA game does not satisfy the mixability condition, so we cannot apply the regret bound in [this post on the AA](http://yenhuanli.github.io/blog/2017/03/02/aggregating-algorithm/).
 We will see that by slightly generalizing the mixability condition, it is not difficult to show that the hedge algorithm yields $R_T = O (\sqrt{T})$, assuming bounded losses.
