@@ -7,8 +7,10 @@ sharing: false
 footer: false
 ---
 
-This site contains my notes on things I know or am learning (which might not be entirely correct!).
+This site contains my research notes.
+The notes are mostly on things I am learning or have just learned, possibly re-organized and/or modified according to my personal understanding, so I do not guarantee the correctness of the contents. 
 
-I am a Ph.D. candidate at [École Polytechnique Fédérale de Lausanne](http://www.epfl.ch/){:target="_blank"} (EPFL), working on machine learning, mathematical statistics, optimization theory, and quantum information.
+I am a Ph.D. candidate at [École Polytechnique Fédérale de Lausanne](http://www.epfl.ch/){:target="_blank"} (EPFL). 
+I do researches on machine learning, statistics, convex optimization, and quantum information.
 
-More information about me can be found on [my personal website](https://sites.google.com/site/yenhuanli/){:target="_blank"}
+You can find more information about me on [my personal website](https://sites.google.com/site/yenhuanli/){:target="_blank"}
