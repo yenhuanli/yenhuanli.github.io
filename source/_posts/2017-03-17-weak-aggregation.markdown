@@ -146,7 +146,7 @@ $$
 L_T \leq L_T ( \theta ) + \eta_T^{-1} \log ( 1 / P_0 ( \theta ) ) + \frac{M^2}{8} \sum_{t \leq T} \eta_t . 
 $$
 
-Choosing $\eta_t = c / \sqrt{t}$ for some $c > 0$ yields
+Choosing $\eta_t = c t^{-1/2}$ for some $c > 0$ yields
 
 $$
 \sum_{t \leq T} \eta_t = c \sum_{t \leq T} \frac{1}{\sqrt{t}} \leq c \int_{[0,T]} \frac{1}{\sqrt{x}} \, \mathrm{d} x = 2 c \sqrt{T}.
