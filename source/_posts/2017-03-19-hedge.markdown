@@ -48,8 +48,8 @@ $$
 
 where $[T] := \lbrace 1, \ldots, T \rbrace$.
 
-The regret measures difference between Alice's expected loss and the loss yielded by the best friend *in hindsight*.
-If $R_T = o(T)$, in hindsight, the difference between the average costs of Alice and the best friend converges to zero. 
+The regret measures the difference between Alice's expected loss and the loss yielded by the best friend *in hindsight*.
+If $R_T = o(T)$, in hindsight, the difference between the average expected costs of Alice and the best friend converges to zero. 
 Notice that the *best friend* in general varies with $T$.
 
 The hedge algorithm is a specific rule of setting the weights. 
