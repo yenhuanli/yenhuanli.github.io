@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2017-03-20T10:35:00+01:00</updated>
+  <updated>2017-03-20T10:37:25+01:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -38,8 +38,8 @@ Those who yielded smaller losses have higher weights, and vice versa.</p>
 <p>Let us formalize the idea. 
 We label the rounds by positive integers $t \in \mathbb{N}$.
 Suppse Alice has $N$ friends; let us index them by the set $[N] := \lbrace 1, \ldots, N \rbrace$.
-We summarize the weights before the $t$-th round by a weight vector $w_t := ( w_t (i) )_{i \in [N]} \in \mathbb{R}^N$ in the probability simplex, where $w_t (i)$ denotes the weight assigned to Friend $i$.
-We also summarize the losses yielded by each friend’s bet for the $t$-th round by a vector $x_t := ( x_t (i) ) \in [ 0, + \infty [^N$.
+We summarize the weights before the $t$-th round by a weight vector $w_t := ( w_t (i) )<em>{i \in [N]} \in \mathbb{R}^N$ in the probability simplex, where $w_t (i)$ denotes the weight assigned to Friend $i$.
+We also summarize the losses yielded by each friend’s bet for the $t$-th round by a vector $x_t := ( x_t (i) )</em>{i \in [N]} \in [ 0, + \infty [^N$.
 Then for the $t$-th round, the expected loss of Alice is</p>
 
 <script type="math/tex; mode=display">\sum_{i \in [N] } x_t(i) w_t(i) := \langle x_t, w_t \rangle .</script>
