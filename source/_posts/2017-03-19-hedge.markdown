@@ -49,7 +49,7 @@ $$
 where $[T] := \lbrace 1, \ldots, T \rbrace$.
 
 The regret measures the difference between Alice's expected loss and the loss yielded by the best friend *in hindsight*.
-If $R_T = o(T)$, in hindsight, the difference between the average expected costs of Alice and the best friend converges to zero. 
+If $R_T = o(T)$, in hindsight, the difference between the average expected losses of Alice and the best friend converges to zero. 
 Notice that the *best friend* in general varies with $T$.
 
 The hedge algorithm is a specific rule of setting the weights. 
@@ -63,8 +63,7 @@ $$
 where $Z_t := \sum_{i \in [N]} w_t (i) \, \mathrm{e}^{- \eta x_t (i)}$ is the normalizing constant, and $\eta$ is a properly chosen *learning rate*.
 
 The hedge algorithm looks similar to the aggregating algorithm (AA). 
-Indeed, the former can be viewed as an instance of the latter. 
-Recall the setting of prediction with expert advice (PEA). 
+Indeed, we can formulate the problem using the setting of prediction with expert advice (PEA). 
 Let Alice be Learner and her friends be the experts.
 Let Nature choose the loss vectors.
 Set the outcome space $\Omega$ as $[ 0, + \infty [^N$, prediction space $\Gamma$ as the probability simplex in $\mathbb{R}^N$, and loss function as
@@ -74,7 +73,6 @@ $$
 $$
 
 When each expert $i \in [N]$ chooses a fixed prediction $\gamma_t (i) = ( \delta_{i,j} )_{j \in [N]} \in \mathbb{R}^N$, we recover the original betting-horce-racing-games problem.
-It is easy to check that applying the AA on this specific PEA game recovers the hedge algorithm.
 
-Unfortunately, this specific PEA game does not satisfy the mixability condition, so we cannot apply the regret bound in [this post on the AA](http://yenhuanli.github.io/blog/2017/03/02/aggregating-algorithm/).
-We will see that by slightly generalizing the mixability condition, it is not difficult to show that the hedge algorithm yields $R_T = O (\sqrt{T})$, assuming bounded losses.
+However, applying the AA to this specific PEA game is not trivial, and requires some generalization of the mixability condition. 
+We will see that the resulting algorithm yields $R_T = O ( T )$, assuming bounded losses. 
