@@ -75,4 +75,4 @@ $$
 When each expert $i \in [N]$ chooses a fixed prediction $\gamma_t (i) = ( \delta_{i,j} )_{j \in [N]} \in \mathbb{R}^N$, we recover the original betting-horce-racing-games problem.
 
 However, applying the AA to this specific PEA game is not trivial, and requires some generalization of the mixability condition. 
-We will see that the resulting algorithm yields $R_T = O ( T )$, assuming bounded losses. 
+We will see that the resulting algorithm yields $R_T = O ( \sqrt{T} )$, assuming bounded losses. 
