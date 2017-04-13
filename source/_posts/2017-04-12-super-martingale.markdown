@@ -12,7 +12,7 @@ Although it seems that finally, defensive forecasting can be formulated without 
 
 ### Game-Theoretic Probability
 
-To get some idea about what the game-theoretic framework is, let us introduce an interesting result in this framework. 
+To get some idea about what the game-theoretic framework is, let us review an interesting result in this framework. 
 Consider the following probabiilty prediction game. 
 Let $K_0 = 1$.
 For every $n \in \mathbb{N}$, 
