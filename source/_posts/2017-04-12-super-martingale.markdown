@@ -102,7 +102,7 @@ $$
 $$
 
 This inequality, roughly speaking, guarantees that the forecasting strategy is *calibrated*, i.e., for any $p \in [ 0, 1 ]$, among those days with $p_n \approx p$, there are about $( 100 \times p ) \%$ of them that are actually rainy. 
-A precise intrepretation of the inequality is in fact much more complicated (for example, it is known that deterministic calibration is impossible), and hence skipped due to my lazziness ;)
+A precise intrepretation of the inequality is in fact much more complicated (for example, it is known that it is impossible to have a deterministic calibrated forecasting algorithm), and hence skipped due to my lazziness ;)
 Please find the references for details. 
 
 **Theorem.**
