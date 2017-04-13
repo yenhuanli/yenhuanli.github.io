@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2017-04-13T21:23:13+02:00</updated>
+  <updated>2017-04-13T21:29:29+02:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -24,7 +24,7 @@ Although it seems that finally, defensive forecasting can be formulated without 
 
 <h3 id="game-theoretic-probability">Game-Theoretic Probability</h3>
 
-<p>To get some idea about what the game-theoretic framework is, let us introduce an interesting result in this framework. 
+<p>To get some idea about what the game-theoretic framework is, let us review an interesting result in this framework. 
 Consider the following probabiilty prediction game. 
 Let $K_0 = 1$.
 For every $n \in \mathbb{N}$,</p>
