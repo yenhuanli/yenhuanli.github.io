@@ -205,7 +205,7 @@ There always exists a strategy for Forecaster, such that $K_0 \geq K_1 \geq K_2 
 <p><strong><em>Proof.</em></strong>
 If $s_n$ is strictly positive on $[ 0, 1 ]$, choose $p_n = 1$. 
 If $s_n$ is strictly negative on $[ 0, 1 ]$, choose $p_n = 0$.
-Otherwise, by continuity of $s_n$, there must exist some $p^\star$ such that $s_n ( p^\star ) = 0$; choose $p_n = p^\star$.
+Otherwise, by continuity of $s_n$, there must exist some $p^\star \in [0, 1]$ such that $s_n ( p^\star ) = 0$; choose $p_n = p^\star$.
 <em>Q.E.D.</em></p>
 
 <h3 id="k29">K29</h3>
@@ -220,7 +220,7 @@ For $n = 1, 2, \ldots, N$,</p>
 </ol>
 
 <p>Weather forecasting is an instance of this protocol. 
-One can associate $y_n = 1$ to a rainy day; then $p_n$ dentoes Forecaster’s estimate of the probability that a rainy day will happen.</p>
+One can associate $y_n = 1$ to a rainy day; then $p_n$ denotes Forecaster’s estimate of the probability that a rainy day will happen.</p>
 
 <p>Let $\kappa$ be a kernel on $[ 0, 1 ]$.
 The aim of K29 is to guarantee, for all $p \in [ 0, 1 ]$,</p>
