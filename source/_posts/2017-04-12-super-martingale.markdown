@@ -113,6 +113,8 @@ $$
 s_n: p \mapsto \sum_{i = 1}^n \kappa ( p, p_i ) ( y_i - p_i ) . 
 $$
 
+The resulting forecasting algorithm is called K29, because it is related to a paper of Kolmogorov published in 1929.
+
 ### References
 
 1. G. Shafer and S. Ring, "Predicting bond yields using defensive forecasting," 2010.
