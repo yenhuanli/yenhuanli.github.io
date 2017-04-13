@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2017-04-13T22:29:51+02:00</updated>
+  <updated>2017-04-13T22:34:46+02:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -108,7 +108,8 @@ For $n = 1, 2, \ldots, N$,</p>
   <li>Reality announces $y_n \in \lbrace 0, 1 \rbrace$.</li>
 </ol>
 
-<p>One can associate $y_n = 1$ to a rainy day; then $p_n$ dentoes Forecaster’s estimate of the probability that a rainy day will happen.</p>
+<p>Weather forecasting is an instance of this protocol. 
+One can associate $y_n = 1$ to a rainy day; then $p_n$ dentoes Forecaster’s estimate of the probability that a rainy day will happen.</p>
 
 <p>Let $\kappa$ be a kernel on $[ 0, 1 ]$.
 The aim of K29 is to guarantee, for all $p \in [ 0, 1 ]$,</p>
@@ -134,33 +135,6 @@ The inequality above can be achieved, if Forecaster applies the defensive foreca
   <li>V. Vovk, “Predictions as statements and decisions,” 2006.</li>
   <li>V. Vovk, A. Takemura, and G. Shafer, “Defensive forecasting,” 2005.</li>
 </ol>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hedge Algorithm (2/2)]]></title>
-    <link href="http://yenhuanli.github.io/blog/2017/03/22/hedge-2/"/>
-    <updated>2017-03-22T21:26:00+01:00</updated>
-    <id>http://yenhuanli.github.io/blog/2017/03/22/hedge-2</id>
-    <content type="html"><![CDATA[<p>Recall that the betting-horce-racing-games problem can be formulated as prediction with expert advice (PEA). 
-Let $N$ denote the number of experts. 
-The outcome space is $\Omega := [ 0, + \infty [^N$.
-The prediction space is $\Gamma := \mathcal{P}$, the probability simplex in $\mathbb{R}^N$. 
-The loss function is defined as $\lambda ( \omega, \gamma ) := \langle \omega, \gamma \rangle$ for any $\omega \in \Omega$ and $\gamma \in \Gamma$. 
-For $t = 1, 2, \ldots$,</p>
-
-<ol>
-  <li>Each expert $i \in [N]$ predicts $\gamma_t(i) := ( \delta_{i,j} )_{j \in [N]} \in \Gamma$.</li>
-  <li>Learner predict $\gamma_t \in \Gamma$.</li>
-  <li>Nature chooses an outcome $\omega_t \in \Omega$.</li>
-  <li>Each expert $i \in [N]$ suffers for the loss $\lambda ( \omega_t, \gamma_t (i) )$; Learner suffers for the loss $\lambda ( \omega_t, \gamma_t )$.</li>
-</ol>
-
-<p>Although now we have a PEA game, the aggregating algorithm (AA) cannot be directy applied. 
-To apply the AA, we need the mixability condition satisfied: 
-For some $\eta &gt; 0$, for any probability distribution $P$ on $\Gamma$, there exists some $\gamma^\star \in \Gamma$, such that</p>
-
-<script type="math/tex; mode=display">\mathrm{e}^{- \eta \lambda ( \omega, \gamma^\star )} \geq \int_\Gamma \mathrm{e}^{-\eta \lambda( \omega, \gamma )} \, P ( \mathrm{d} \gamma ) .</script>
 ]]></content>
   </entry>
   
