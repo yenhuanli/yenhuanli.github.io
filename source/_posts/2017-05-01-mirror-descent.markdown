@@ -71,7 +71,9 @@ Notice that unlike projected gradient descent, mirror descent does not need to c
 
 ### Minimizing Lipschitz Continuous Functions by Mirror Descent
 
-It is well-known that mirror descent achieves $O ( 1 / \sqrt{k} )$ convergence rate, as long as $f$ is Lipschitz continuous (and, of course, convex).
+It is well-known that mirror descent achieves $\tilde{O} ( 1 / \sqrt{k} )$ convergence rate, as long as $f$ is Lipschitz continuous (and, of course, convex).
+Below is the proof given in [the paper by Juditsky and Nemirovski](http://www2.isye.gatech.edu/~nemirovs/MLOptChapterI.pdf). 
+Notice that unlike in most existing literature, the step size is not a constant, and $\mathcal{X}$ can be unbounded.
 
 **Proposition.** For any $u \in \mathcal{X}$, 
 
