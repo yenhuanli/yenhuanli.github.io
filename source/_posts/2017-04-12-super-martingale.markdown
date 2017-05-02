@@ -44,7 +44,7 @@ $$
 *Proof.* Choose 
 
 $$
-s_n = \frac{2 \sum_{n = 1}^{n - 1} ( y_n - p_n )}{N}. 
+s_n = \frac{2 \sum_{i = 1}^{n - 1} ( y_i - p_i )}{N}. 
 $$
 
 *Q.E.D.*
@@ -80,7 +80,7 @@ There always exists a strategy for Forecaster, such that $K_0 \geq K_1 \geq K_2 
 ***Proof.***
 If $s_n$ is strictly positive on $[ 0, 1 ]$, choose $p_n = 1$. 
 If $s_n$ is strictly negative on $[ 0, 1 ]$, choose $p_n = 0$.
-Otherwise, by continuity of $s_n$, there must exist some $p^\star$ such that $s_n ( p^\star ) = 0$; choose $p_n = p^\star$.
+Otherwise, by continuity of $s_n$, there must exist some $p^\star \in [0, 1]$ such that $s_n ( p^\star ) = 0$; choose $p_n = p^\star$.
 *Q.E.D.*
 
 ### K29
@@ -92,7 +92,8 @@ For $n = 1, 2, \ldots, N$,
 1. Forecaster announces $p_n \in [ 0, 1 ]$. 
 2. Reality announces $y_n \in \lbrace 0, 1 \rbrace$.
 
-One can associate $y_n = 1$ to a rainy day; then $p_n$ dentoes Forecaster's estimate of the probability that a rainy day will happend. 
+Weather forecasting is an instance of this protocol. 
+One can associate $y_n = 1$ to a rainy day; then $p_n$ denotes Forecaster's estimate of the probability that a rainy day will happen. 
 
 Let $\kappa$ be a kernel on $[ 0, 1 ]$.
 The aim of K29 is to guarantee, for all $p \in [ 0, 1 ]$, 
