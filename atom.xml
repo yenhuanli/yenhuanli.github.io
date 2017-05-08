@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2017-05-08T14:43:33+02:00</updated>
+  <updated>2017-05-08T14:49:11+02:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -144,8 +144,10 @@ Let $k^\star$ be the smallest $k$ such that</p>
 <p>for $k \geq k^\star$. 
 <em>Q.E.D.</em></p>
 
-<p>Notice that to compute each $y^k$, we need to compute $N_k$ additional prox-mappings.
-Therefore, the effective number of iterations is represented by $M_k$, instead of $k$.</p>
+<p>Notice that to compute each $y^k$, we need to compute $T_k$ additional prox-mappings.
+Therefore, the effective number of iterations is represented by $M_k$, instead of $k$, and the convergence rate is understood as</p>
+
+<script type="math/tex; mode=display">O ( 1 / ( \text{effective number iterations} ) ) .</script>
 ]]></content>
   </entry>
   
