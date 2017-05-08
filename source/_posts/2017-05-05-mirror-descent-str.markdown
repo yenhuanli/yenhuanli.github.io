@@ -90,7 +90,7 @@ $$
 Set 
 
 $$
-\Omega \geq \max \left\lbrace D ( u, x_1 ) \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad R_0 \geq \max \left\lbrace \left\Vert u - x^\star \right\Vert \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad \eta_t = \frac{\sqrt{2 \Omega }}{ R L \sqrt{T}} \,\, \text{ for } t = 1, 2, \ldots, T . 
+\Omega \geq \max \left\lbrace D ( u, x_1 ) \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad R_0 \geq \max \left\lbrace \left\Vert u - x^\star \right\Vert \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad \eta_t = \frac{\sqrt{2 \Omega }}{ R_0 L \sqrt{T}} \,\, \text{ for } t = 1, 2, \ldots, T . 
 $$
 
 Then 
