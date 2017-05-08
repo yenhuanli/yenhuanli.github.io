@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2017-04-13T23:25:09+02:00</updated>
+  <updated>2017-05-08T14:37:10+02:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -12,6 +12,331 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Minimizing a Strongly Convex Function by Mirror Descent]]></title>
+    <link href="http://yenhuanli.github.io/blog/2017/05/05/mirror-descent-str/"/>
+    <updated>2017-05-05T15:45:42+02:00</updated>
+    <id>http://yenhuanli.github.io/blog/2017/05/05/mirror-descent-str</id>
+    <content type="html"><![CDATA[<p>Mirror descent (MD) is a famous convex optimization algorithm. 
+When the objective function is Lipschitz continuous, the convergence rate of MD is known to be $O ( t^{-1/2} )$. 
+When the objective function is also strongly convex, intuitively, a better convergence rate should be possible.
+Suprisingly, there are very few related results in existing literature, to the best of my knowledge. 
+This post summarizes one such result in a <a href="http://www2.isye.gatech.edu/~nemirovs/MLOptChapterI.pdf">review article by Juditsky and Nemirovski</a>.</p>
+
+<p>We will consider a standard constrained convex optimization problem:</p>
+
+<script type="math/tex; mode=display">f^\star = \mathrm{arg\, min} \left\lbrace f ( x ) | x \in \mathcal{X} \right\rbrace ,</script>
+
+<p>where $f$ is a convex function, and $\mathcal{X}$ is a compact convex set in $\mathbb{R}^d$. 
+We assume that $f$ is $L$-Lipschitz continuous w.r.t. some norm $\Vert \cdot \Vert$ on $\mathbb{R}^d$.</p>
+
+<h3 id="brief-review-of-mirror-descent">Brief Review of Mirror Descent</h3>
+
+<p>Let $\omega$ be a continuously differentiable $1$-strongly convex function on $\mathcal{X}$, w.r.t. $\Vert \cdot \Vert$.
+Define the corresponding <em>Bregman divergence</em></p>
+
+<script type="math/tex; mode=display">D ( y, x ) := \omega ( y ) - \left[ \omega ( x ) + \left\langle \omega' ( x ), y - x \right\rangle \right] ,</script>
+
+<p>and <em>prox-mapping</em></p>
+
+<script type="math/tex; mode=display">\mathrm{prox} ( \xi; x ) := \mathrm{arg\, min} \left\lbrace \left\langle \xi, u \right\rangle + D ( u, x ) \, \middle| \, x \in \mathcal{X} \right\rbrace .</script>
+
+<p>Let $x_1 \in \mathcal{X}$, and $( \eta_1, \eta_2, \ldots )$ be a sequence of <em>step sizes</em>. 
+The <em>standard</em> MD iterates as follows.</p>
+
+<script type="math/tex; mode=display">x_{t + 1} = \mathrm{prox} ( \eta_t f' ( x_t ) ; x_t ) , \quad t = 1, 2, \ldots .</script>
+
+<p>Define</p>
+
+<script type="math/tex; mode=display">x^t := \frac{ \sum_{\tau = 1}^t \eta_\tau x_\tau }{ \sum_{\tau = 1}^t \eta_\tau } .</script>
+
+<p>The following convergence guarantee can be found in, e.g., <a href="https://web.iem.technion.ac.il/images/user-files/becka/papers/3.pdf">the classic paper by Beck and Teboulle</a>.</p>
+
+<p><strong>Proposition 1.</strong> Fix a positive integer $T$.
+Set</p>
+
+<script type="math/tex; mode=display">\Omega \geq \max \left\lbrace D ( u, x_1 ) \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad \eta_t = \frac{\sqrt{2 \Omega }}{ L \sqrt{T}} \,\, \text{ for } t = 1, 2, \ldots, T .</script>
+
+<p>Then</p>
+
+<script type="math/tex; mode=display">f ( x^T ) - f^\star \leq \frac{L \sqrt{2 \Omega}}{\sqrt{T}} .</script>
+
+<h3 id="a-modified-md-for-minimizing-strongly-convex-functions">A Modified MD for Minimizing Strongly Convex Functions</h3>
+
+<p>Now assume that $f$ is also $\mu$-strongly convex w.r.t. $\Vert \cdot \Vert$.
+How do we exploit this additional information?</p>
+
+<p>Let us choose $\omega$ such that it is strongly convex on the whole $\mathbb{R}^d$, <em>instead of merely $\mathcal{X}$</em>. 
+For any $R &gt; 0$, define $\omega_R ( x ) := \omega ( R^{-1} x )$; denote by $D_R$ the corresponding Bregman divergence, and $\mathrm{prox}_R$ the corresponding prox-mapping.</p>
+
+<p>Let us define an iteration rule very similar to the standard MD; the only difference is that now we replace $\omega$ by $\omega_R$: 
+Let $( \eta_1, \eta_2, \ldots )$ be a given sequence of step sizes.
+For any $x_1 \in \mathcal{X}$, we compute</p>
+
+<script type="math/tex; mode=display">x_{t + 1} = \mathrm{prox}_R ( \eta_t f' ( x_t ) ; x_t ) , \quad t = 1, 2, \ldots .</script>
+
+<p>Define</p>
+
+<script type="math/tex; mode=display">x^t ( R, x_1 ) := \frac{ \sum_{\tau = 1}^t \eta_\tau x_\tau }{ \sum_{\tau = 1}^t \eta_\tau } .</script>
+
+<p><strong>Proposition 2.</strong> Fix a positive integer $T$.
+Set</p>
+
+<script type="math/tex; mode=display">\Omega \geq \max \left\lbrace D ( u, x_1 ) \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad R_0 \geq \max \left\lbrace \left\Vert u - x^\star \right\Vert \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad \eta_t = \frac{\sqrt{2 \Omega }}{ R L \sqrt{T}} \,\, \text{ for } t = 1, 2, \ldots, T .</script>
+
+<p>Then</p>
+
+<script type="math/tex; mode=display">f ( x^T ( R_0, x_1 ) ) - f^\star \leq \frac{R_0 L \sqrt{2 \Omega}}{\sqrt{T}}, \quad \left\Vert x^T ( R_0, x_1 ) - x^\star \right\Vert^2 \leq \frac{R_0 L \sqrt{8 \Omega}}{\mu \sqrt{T}} ,</script>
+
+<p>where $x^\star$ is the unique minimizer of $f$ on $\mathcal{X}$.</p>
+
+<p><em>Proof.</em>
+Notice that $\omega_R$ is $1$-strongly convex w.r.t. $\Vert \cdot \Vert_R := R^{-1} \Vert \cdot \Vert$. 
+The first inequality follows from Proposition 1, using the norm $\Vert \cdot \Vert_R$. 
+The second inequality follows from the following two inequalities, obtained by the strong convexity of $f$ and the optimality of $x^\star$, respectively:</p>
+
+<script type="math/tex; mode=display">f ( x^T ) - f^\star \geq \left\langle f' ( x^\star ) , x^T - x^\star \right\rangle + \frac{\mu}{2} \Vert x^T - x^\star \Vert^2, \quad \left\langle f' ( x^\star ), x^T - x^\star \right\rangle \geq 0 .</script>
+
+<p><em>Q.E.D.</em></p>
+
+<p>Notice that now we have an error bound depending on $R_0$; the smaller $R_0$ is, the smaller the error bounds are.
+Also notice that the bound of the distance between $x^T$ and $x^\star$ is strictly decreasing with $T$. 
+These observations motivate the following <em>restarting</em> strategy: 
+Set $y_0 \in \mathcal{X}$. 
+For $k = 1, 2, \ldots$,</p>
+
+<ol>
+  <li>Set $T_k$ such that $\left\Vert x^{T_k} ( R_{k - 1}, y_{k - 1} ) - x^\star \right\Vert^2 \leq 2^{-1} R_{k - 1}^2$.</li>
+  <li>Compute $y_k = x^{T_k} ( R_{k - 1}, y_{k - 1} )$, with $\eta_t = \frac{\sqrt{2 \Omega }}{ R L \sqrt{T_k}}$ for all $t$.</li>
+  <li>Set $R_k^2 = 2^{-1} R_{k - 1}^2$.</li>
+</ol>
+
+<p>By the proposition we have just proved, it suffices to choose</p>
+
+<script type="math/tex; mode=display">T_k = \left\lceil \frac{32 L^2 \Omega}{\mu^2 R_{k - 1}^2} \right\rceil .</script>
+
+<p><strong>Proposition 3.</strong> Define $M_k = \sum_{\kappa = 1}^k T_{\kappa}$. 
+Let $k^\star$ be the smallest $k$ such that</p>
+
+<script type="math/tex; mode=display">k \leq \frac{L^2 \Omega}{\mu^2 R_0^2} 2^{k + 5} .</script>
+
+<p>Then for $k &lt; k^\star$,</p>
+
+<script type="math/tex; mode=display">f ( y_k ) - f^\star \leq 2^{-(0.5 M_k + 1)} \mu R_0^2, \quad \left\Vert y_k - x^\star \right\Vert^2 \leq 2^{- 0.5 M_k} R_0^2 ;</script>
+
+<p>for $k \geq k^\star$,</p>
+
+<script type="math/tex; mode=display">f ( y_k ) - f^\star \leq \frac{32 L^2 \Omega}{\mu M_k}, \quad \left\Vert y_k - x^\star \right\Vert^2 \leq \frac{64 L^2 \Omega}{\mu^2 M_k} .</script>
+
+<p><em>Proof.</em> It is easily checked, by Proposition 2, that</p>
+
+<script type="math/tex; mode=display">f ( y_k ) - f^\star \leq 2^{-(k + 1)} \mu R_0^2, \quad \left\Vert y_k - x^\star \right\Vert^2 \leq 2^{-k} R_0^2 .</script>
+
+<p>By our choice of $T_k$, it holds that</p>
+
+<script type="math/tex; mode=display">M_k \leq k + \sum_{\kappa = 1}^k \frac{32 L^2 \Omega}{\mu^2 R_{\kappa - 1}^2} = k + \sum_{\kappa = 1}^k \frac{32 L^2 \Omega}{\mu^2 2^{-(\kappa - 1)} R_0^2} \leq k + \frac{L^2 \Omega}{\mu^2 R_0^2} 2^{k + 5} .</script>
+
+<p>Therefore, $M_k \leq 2 k$ for $k &lt; k^\star$, and</p>
+
+<script type="math/tex; mode=display">M_k \leq \frac{L^2 \Omega}{\mu^2 R_0^2} 2^{k + 6}</script>
+
+<p>for $k \geq k^\star$. 
+<em>Q.E.D.</em></p>
+
+<p>Notice that to compute each $y^k$, we need to compute $N_k$ additional prox-mappings.
+Therefore, the effective number of iterations is represented by $M_k$, instead of $k$.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Minimizing Strongly Convex Functions by Mirror Descent]]></title>
+    <link href="http://yenhuanli.github.io/blog/2017/05/01/mirror-descent/"/>
+    <updated>2017-05-01T14:38:13+02:00</updated>
+    <id>http://yenhuanli.github.io/blog/2017/05/01/mirror-descent</id>
+    <content type="html"><![CDATA[<p>Mirror descent is an algorithm to numerically solve convex optimization problems, very popular in machine learning.
+Surprisingly, there are very few existing results on mirror descent applied to strongly convex objective functions. 
+This post summarizes one such result, which I found in <a href="http://www2.isye.gatech.edu/~nemirovs/MLOptChapterI.pdf">a review paper by Juditsky and Nemirovski</a>.</p>
+
+<h3 id="mirror-descent">Mirror Descent</h3>
+
+<p>Consider the convex optimization problem</p>
+
+<script type="math/tex; mode=display">f^\star = \min \lbrace f ( x ) | x \in \mathcal{X} \rbrace,</script>
+
+<p>where $f$ is a real-valued Lipschitz continuous convex function, and $\mathcal{X}$ is a closed convex set in $\mathbb{R}^d$.</p>
+
+<p>To define mirror descent, we need the notion of a <em>distance generating function (DGF)</em>.
+Fix a norm $\Vert \cdot \Vert$ on $\mathbb{R}^d$. 
+A DGF $\omega$ is a real-valued convex function continuously differentiable on $\mathcal{X}$, such that for all $x, y \in \mathcal{X}$,</p>
+
+<script type="math/tex; mode=display">\omega ( y ) \geq \omega ( x ) + \langle \omega' ( x ), y - x \rangle + \frac{1}{2} \Vert y - x \Vert^2 .</script>
+
+<p>Fix a DGF $\omega$.
+The corresponding <em>Bregman divergence</em> is given by</p>
+
+<script type="math/tex; mode=display">D_\omega ( y, x ) := \omega ( y ) - \omega ( x ) - \langle \omega' ( x ) , y - x \rangle .</script>
+
+<p>The corresponding <em>prox-mapping</em> is given by</p>
+
+<script type="math/tex; mode=display">\mathrm{prox}_\omega ( \xi; x ) := \mathrm{arg\, max} \lbrace \langle \xi, u \rangle + D_\omega ( u, x ) \vert u \in \mathcal{X} \rbrace .</script>
+
+<p>Mirror descent iterates as follows.</p>
+
+<ul>
+  <li>Choose $x_1 \in \mathcal{X}$.</li>
+  <li>Let $( \eta_1, \eta_2, \ldots )$ be a given sequence of positive numbers.</li>
+  <li>For $t = 1, 2, \ldots$, compute</li>
+</ul>
+
+<script type="math/tex; mode=display">x_{t+1} = \mathrm{prox}_\omega ( \eta_t f' ( x_t ) ; x_{t} ) .</script>
+
+<ul>
+  <li>Set $x^t$ to be the weighted average of $x_1, \ldots, x_t$ as</li>
+</ul>
+
+<script type="math/tex; mode=display">x^t := \frac{\sum_{\tau = 1}^t \eta_\tau x_\tau}{\sum_{\tau = 1}^t \eta_\tau} .</script>
+
+<p>Notice that $f$ is not necessarily differentiable; $f’ (x)$ is understood as a subgradient of $f$ at $x$.</p>
+
+<p><strong>Example.</strong> The following might be the most well-known example.
+Suppose that $\mathcal{X}$ is the probability simplex in $\mathbb{R}^d$. 
+Choose $\omega ( x ) = \sum_{i = 1}^d x_i \log x_i - \sum_{i = 1}^d x_i$, which, by Pinsker’s inequality, is strongly convex with respect to the $\ell_1$-norm.
+Then $x_{t + 1}$ has a closed-form:</p>
+
+<script type="math/tex; mode=display">( x_{t + 1} )_i = \frac{ ( x_t )_i \mathrm{e}^{- \eta_t ( f' ( x_t ) )_i} }{ \sum_{j = 1}^d ( x_t )_j \mathrm{e}^{- \eta_t ( f' ( x_t ) )_j} } ,  \quad i = 1, 2, \ldots, d ,</script>
+
+<p>where $( v )_i$ denotes the $i$-th element of any vector $v$.</p>
+
+<p><strong>Example.</strong> Notice that choosing $\omega$ to be the $\ell_2$-norm is always valid. 
+In this case, we recover the <a href="https://en.wikipedia.org/wiki/Subgradient_method#Projected_subgradient">projected subgradient method</a>.</p>
+
+<h3 id="minimizing-lipschitz-continuous-functions">Minimizing Lipschitz Continuous Functions</h3>
+
+<p>It is well-known that mirror descent achieves $O ( 1 / \sqrt{k} )$ convergence rate, as long as $f$ is Lipschitz continuous (and, of course, convex).
+Below is the proof given in <a href="https://doi.org/10.1016/S0167-6377(02)00231-6">a classic paper by Beck and Teboulle</a>.</p>
+
+<p><strong>Proposition.</strong> For any $u \in \mathcal{X}$,</p>
+
+<script type="math/tex; mode=display">f ( x^t ) - f ( u ) \leq \frac{ D ( u, x_1 ) + \frac{1}{2} \sum_{\tau = 1}^t \eta_\tau^2 \Vert f' ( x_\tau ) \Vert_*^2 }{ \sum_{\tau = 1}^t \eta_\tau } .</script>
+
+<p><em>Proof.</em> By convexity of $f$, we have</p>
+
+<script type="math/tex; mode=display">f ( x^t ) - f ( u ) \leq \frac{1}{ \sum_{\tau = 1}^t \eta_\tau } \sum_{\tau = 1}^t \eta_\tau \left( f ( x_\tau ) - f ( u ) \right) \leq \frac{1}{ \sum_{\tau = 1}^t \eta_\tau } \sum_{\tau = 1}^t \eta_\tau \langle f' ( x_\tau ) , x_\tau - u \rangle .</script>
+
+<p>Now we derive an upper bound of $\eta_\tau \langle f’ ( x_\tau ), x_\tau - u \rangle$.
+The optimality condition says</p>
+
+<script type="math/tex; mode=display">\langle \eta_\tau f' ( x_\tau ) + \omega'( x_{\tau + 1} ) - \omega' ( x_\tau ) , u - x_{\tau + 1} \rangle \geq 0 ,</script>
+
+<p>from which we obtain</p>
+
+<script type="math/tex; mode=display">\eta_\tau \langle f' ( x_\tau ), x_\tau - u \rangle \leq \eta_\tau \langle f' ( x_\tau ), x_\tau - x_{\tau + 1} \rangle + \langle \omega' ( x_{\tau + 1} ) - \omega' ( x_\tau ) , u - x_{\tau + 1} \rangle .</script>
+
+<p>Applying the <em>three-point equality</em> (which is easy to check by direct calculation), we obtain</p>
+
+<script type="math/tex; mode=display">\eta_\tau \langle f' ( x_\tau ), x_\tau - u \rangle \leq \eta_\tau \langle f' ( x_\tau ), x_\tau - x_{\tau + 1} \rangle + D_\omega ( u, x_\tau ) - D_\omega ( u, x_{\tau + 1} ) - D_\omega ( x_{\tau + 1}, x_\tau ) .</script>
+
+<p>By the strong convexity of $\omega$, we write</p>
+
+<script type="math/tex; mode=display">\eta_\tau \langle f' ( x_\tau ), x_\tau - x_{\tau + 1} \rangle - D_\omega ( x_{\tau + 1}, x_\tau ) \leq \eta_\tau \Vert f' ( x_\tau ) \Vert_* \Vert x_\tau - x_{\tau + 1} \Vert - \frac{1}{2} \Vert x_\tau - x_{\tau + 1} \Vert^2 \leq \frac{\eta_\tau^2}{2} \Vert f' ( x_\tau ) \Vert_*^2 ,</script>
+
+<p>where $\Vert \cdot \Vert_*$ denotes the norm dual to $\Vert \cdot \Vert$.
+Now we have</p>
+
+<script type="math/tex; mode=display">\eta_\tau \langle f' ( x_\tau ), x_\tau - u \rangle \leq D_\omega ( u, x_\tau ) - D_\omega ( u, x_{\tau + 1} ) + \frac{\eta_\tau^2}{2} \Vert f' ( x_\tau ) \Vert_*^2 .</script>
+
+<p>Summing over all $\tau$, the proposition follows. 
+<em>Q.E.D.</em></p>
+
+<p>Notice that $\Vert f’ ( x_t ) \Vert_* \leq L$ for all $t$.
+The following corollary is obvious.</p>
+
+<p><strong>Corollary.</strong> Set</p>
+
+<script type="math/tex; mode=display">\eta_t = \frac{\eta}{\Vert f' ( x_t ) \Vert_* \sqrt{t}} ,</script>
+
+<p>for some $\eta &gt; 0$. Then it holds that, for any $u \in \mathcal{X}$,</p>
+
+<script type="math/tex; mode=display">f ( x^t ) - f ( u ) \leq \frac{L}{2 \sqrt{t}} \left[ \frac{D ( u, x_1 )}{\eta} + \frac{\eta}{2} \left( \log ( t ) + 1 \right) \right] .</script>
+
+<p>The following corollary is technically more involved, and can be found in, e.g., <a href="https://doi.org/10.1016/S0167-6377(02)00231-6">the paper by Beck and Teboulle</a>.</p>
+
+<p><strong>Corollary.</strong> Suppose that</p>
+
+<script type="math/tex; mode=display">\Omega := \max \lbrace D_\omega ( u, x_1 ) | u \in \mathcal{X} \rbrace</script>
+
+<p>is finite.
+Set</p>
+
+<script type="math/tex; mode=display">\eta_t = \frac{\sqrt{2 \Omega}}{ L \sqrt{t} } .</script>
+
+<p>Then it holds that, for any $u \in \mathcal{X}$,</p>
+
+<script type="math/tex; mode=display">f ( x^t ) - f ( u ) \leq L \sqrt{ \frac{2 \Omega}{t} } .</script>
+
+<h3 id="minimizing-lipschitz-continuous-and-strongly-convex-functions">Minimizing Lipschitz Continuous and Strongly Convex Functions</h3>
+
+<p>When the objective function is not only Lipschitz continuous but also strongly convex, it is reasonable to expect a convergence rate better than $O ( 1 / \sqrt{t} )$. 
+The proof below, given in <a href="http://www2.isye.gatech.edu/~nemirovs/MLOptChapterI.pdf">a review paper by Juditsky and Nemirovski</a>, shows that then $O ( 1 / t )$ can be achieved.</p>
+
+<p>Let $\omega$ be a DGF for $\mathbb{R}^d$ (instead of merely $\mathcal{X}$!), with respect to a norm $\Vert \cdot \Vert$.
+For any $R &gt; 0$, define $\omega_R ( \cdot ) := \omega ( R^{-1} \cdot )$; then $\omega_R$ is $1$-strongly convex with respect to $\Vert \cdot \Vert_R := R^{-1} \Vert \cdot \Vert$.
+The corresponding Bregman divergence is given by</p>
+
+<script type="math/tex; mode=display">D_{\omega, R} ( y, x ) := \omega_R ( y ) - \omega_R ( x ) - \langle \omega_R' ( x ), y - x \rangle.</script>
+
+<p>The prox-mapping is given by</p>
+
+<script type="math/tex; mode=display">\mathrm{prox}_{\omega, R} ( \xi; x ) := \mathrm{arg\, min} \lbrace \langle \xi, u \rangle + D_{\omega, R} ( u, x ) | u \in \mathcal{X} \rbrace .</script>
+
+<p>Fix $x_1 \in \mathcal{X}$.
+For any given sequence $(\eta_1, \eta_2, \ldots)$, define</p>
+
+<script type="math/tex; mode=display">x_{t + 1} = \mathrm{prox}_{\omega, R} ( \eta_t f' ( x_t ); x_t ), \quad t = 1, 2, \ldots ,</script>
+
+<p>and</p>
+
+<script type="math/tex; mode=display">x^t ( R, x_1 ) := \frac{\sum_{\tau = 1}^t \eta_\tau x_\tau}{\sum_{\tau = 1}^t \eta_\tau} .</script>
+
+<p><strong>Proposition.</strong> Suppose that $f$ is $L$-Lipschitz continuous and $\mu$-strongly convex on $\mathcal{X}$.
+Suppose that</p>
+
+<script type="math/tex; mode=display">\Omega := \max \lbrace D_\omega ( u, x_1 ) | u \in \mathcal{X} \rbrace</script>
+
+<p>is finite.
+Set $R$ such that $R \geq \Vert x_1 - x^\star \Vert$, where $x^\star$ denotes the minimizer of $f$ on $\mathcal{X}$. 
+Set</p>
+
+<script type="math/tex; mode=display">\eta_\tau = \frac{\sqrt{2 \Omega}}{R L \sqrt{t}}, \quad \tau = 1, 2, \ldots, t .</script>
+
+<p>Then it holds that</p>
+
+<script type="math/tex; mode=display">f ( x^t (R, x_1) ) - f ( x^\star ) \leq \frac{R L \sqrt{2 \Omega}}{\sqrt{t}}, \quad \Vert x^t (R, x_1) - x^\star \Vert^2 \leq \frac{2 R L \sqrt{ 2 \Omega }}{\mu \sqrt{t}} .</script>
+
+<p><em>Proof.</em> Following the proof in the previous sectioin (with the norm $\Vert \cdot \Vert_R$), we have</p>
+
+<script type="math/tex; mode=display">f ( x^t (R, x_1) ) - f ( x^\star ) \leq \frac{ \Omega + \frac{R^2 L^2}{2} \sum_{\tau = 1}^t \eta_\tau^2 }{ \sum_{\tau = 1}^t \eta_\tau } ,</script>
+
+<p>which implies the first inequality with the specific choice of $( \eta_1, \eta_2, \ldots, \eta_t )$.
+The second inequality follows from the strong convexity of $f$.
+<em>Q.E.D.</em></p>
+
+<p>Notice that the convergence speed depends on $R$, the initial distance between $x_1$ and $x^\star$.
+When the current iterate is close enough to $x^\star$, which is guaranteed to happen with a large enough $t$, we can <em>restart</em> with a smaller value of $R$, in order to get a better convergence speed.</p>
+
+<p>Consider the following algorithm.
+Choose $y_0 \in \mathcal{X}$.
+Set $R_0$ such that $R_0 \geq \Vert y_0 - x^\star \Vert$.
+For $k = 1, 2, \ldots$,</p>
+
+<ol>
+  <li>Set $N_k = \left\lceil \frac{ 8 L^2 \Omega}{\mu^2 R_{k - 1}^2} \right\rceil$.</li>
+  <li>Compute $y_k = x^{N_k} ( R_{k - 1}, y_{k - 1} )$, with $\eta_\tau = \frac{\sqrt{2 \Omega}}{R_{k - 1} L \sqrt{N_k}}$ for $\tau = 1, 2, \ldots, N_k$.</li>
+  <li>Set $R_k^2 = 2^{-1} R_{k - 1}^2$.</li>
+</ol>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Defensive Forecasting]]></title>
