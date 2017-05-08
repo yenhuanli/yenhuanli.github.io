@@ -168,5 +168,9 @@ $$
 for $k \geq k^\star$. 
 *Q.E.D.*
 
-Notice that to compute each $y^k$, we need to compute $N_k$ additional prox-mappings.
-Therefore, the effective number of iterations is represented by $M_k$, instead of $k$.
+Notice that to compute each $y^k$, we need to compute $T_k$ additional prox-mappings.
+Therefore, the effective number of iterations is represented by $M_k$, instead of $k$, and the convergence rate is understood as
+
+$$
+O ( 1 / ( \text{effective number iterations} ) ) .
+$$
