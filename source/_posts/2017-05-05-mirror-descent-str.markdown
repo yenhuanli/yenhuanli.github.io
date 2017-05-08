@@ -112,7 +112,7 @@ $$
 
 *Q.E.D.*
 
-Notice that now we have an error bound depending on $R_0$; the smaller $R_0$ is, the smaller the error bounds are.
+Now we have an error bound depending on $R_0$; the smaller $R_0$ is, the smaller the error bounds are.
 Also notice that the bound of the distance between $x^T$ and $x^\star$ is strictly decreasing with $T$. 
 These observations motivate the following *restarting* strategy: 
 Set $y_0 \in \mathcal{X}$. 
