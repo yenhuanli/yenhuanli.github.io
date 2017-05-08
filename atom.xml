@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2017-05-08T14:49:11+02:00</updated>
+  <updated>2017-05-08T15:53:32+02:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -83,7 +83,7 @@ For any $x_1 \in \mathcal{X}$, we compute</p>
 <p><strong>Proposition 2.</strong> Fix a positive integer $T$.
 Set</p>
 
-<script type="math/tex; mode=display">\Omega \geq \max \left\lbrace D ( u, x_1 ) \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad R_0 \geq \max \left\lbrace \left\Vert u - x^\star \right\Vert \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad \eta_t = \frac{\sqrt{2 \Omega }}{ R L \sqrt{T}} \,\, \text{ for } t = 1, 2, \ldots, T .</script>
+<script type="math/tex; mode=display">\Omega \geq \max \left\lbrace D ( u, x_1 ) \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad R_0 \geq \max \left\lbrace \left\Vert u - x^\star \right\Vert \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad \eta_t = \frac{\sqrt{2 \Omega }}{ R_0 L \sqrt{T}} \,\, \text{ for } t = 1, 2, \ldots, T .</script>
 
 <p>Then</p>
 
@@ -100,7 +100,7 @@ The second inequality follows from the following two inequalities, obtained by t
 
 <p><em>Q.E.D.</em></p>
 
-<p>Notice that now we have an error bound depending on $R_0$; the smaller $R_0$ is, the smaller the error bounds are.
+<p>Now we have an error bound depending on $R_0$; the smaller $R_0$ is, the smaller the error bounds are.
 Also notice that the bound of the distance between $x^T$ and $x^\star$ is strictly decreasing with $T$. 
 These observations motivate the following <em>restarting</em> strategy: 
 Set $y_0 \in \mathcal{X}$. 
@@ -147,7 +147,7 @@ Let $k^\star$ be the smallest $k$ such that</p>
 <p>Notice that to compute each $y^k$, we need to compute $T_k$ additional prox-mappings.
 Therefore, the effective number of iterations is represented by $M_k$, instead of $k$, and the convergence rate is understood as</p>
 
-<script type="math/tex; mode=display">O ( 1 / ( \text{effective number iterations} ) ) .</script>
+<script type="math/tex; mode=display">\text{gap to the optimal value} = O ( 1 / ( \text{effective number of iterations} ) ) .</script>
 ]]></content>
   </entry>
   
