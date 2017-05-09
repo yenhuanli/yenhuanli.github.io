@@ -69,34 +69,34 @@ $$
 Now assume that $f$ is also $\mu$-strongly convex w.r.t. $\Vert \cdot \Vert$.
 How do we exploit this additional information? 
 
-Let us choose $\omega$ such that it is strongly convex on the whole $\mathbb{R}^d$, *instead of merely $\mathcal{X}$*. 
-For any $R > 0$, define $\omega_R ( x ) := \omega ( R^{-1} x )$; denote by $D_R$ the corresponding Bregman divergence, and $\mathrm{prox}_R$ the corresponding prox-mapping.
+Let us choose $\omega$ such that it is $1$-strongly convex on the whole $\mathbb{R}^d$, *instead of merely $\mathcal{X}$*. 
+For any $R > 0$, define $\omega_{R, z} ( x ) := \omega ( R^{-1} ( x - z ) )$; denote by $D_{R, z}$ the corresponding Bregman divergence, and $\mathrm{prox}_{R, z}$ the corresponding prox-mapping.
 
-Let us define an iteration rule very similar to the standard MD; the only difference is that now we replace $\omega$ by $\omega_R$: 
+Let us define an iteration rule very similar to the standard MD; the only difference is that now we replace $\omega$ by $\omega_{R, z}$ for some $z \in \mathbb{R}^d$: 
 Let $( \eta_1, \eta_2, \ldots )$ be a given sequence of step sizes.
 For any $x_1 \in \mathcal{X}$, we compute 
 
 $$
-x_{t + 1} = \mathrm{prox}_R ( \eta_t f' ( x_t ) ; x_t ) , \quad t = 1, 2, \ldots .
+x_{t + 1} = \mathrm{prox}_{R, z} ( \eta_t f' ( x_t ) ; x_t ) , \quad t = 1, 2, \ldots .
 $$
 
 Define
 
 $$
-x^t ( R, x_1 ) := \frac{ \sum_{\tau = 1}^t \eta_\tau x_\tau }{ \sum_{\tau = 1}^t \eta_\tau } .
+x^t ( R, z, x_1 ) := \frac{ \sum_{\tau = 1}^t \eta_\tau x_\tau }{ \sum_{\tau = 1}^t \eta_\tau } .
 $$
 
 **Proposition 2.** Fix a positive integer $T$.
 Set 
 
 $$
-\Omega \geq \max \left\lbrace D ( u, x_1 ) \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad R_0 \geq \max \left\lbrace \left\Vert u - x^\star \right\Vert \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad \eta_t = \frac{\sqrt{2 \Omega }}{ R_0 L \sqrt{T}} \,\, \text{ for } t = 1, 2, \ldots, T . 
+\Omega \geq \max \left\lbrace D ( u, x_1 ) \, \middle| \, \left\Vert u \right\Vert \leq 1, u \in \mathbb{R}^d \right\rbrace , \quad R_0 \geq \left\Vert x_1 - x^\star \right\Vert , \quad \eta_t = \frac{\sqrt{2 \Omega }}{ R_0 L \sqrt{T}} \,\, \text{ for all } t . 
 $$
 
 Then 
 
 $$
-f ( x^T ( R_0, x_1 ) ) - f^\star \leq \frac{R_0 L \sqrt{2 \Omega}}{\sqrt{T}}, \quad \left\Vert x^T ( R_0, x_1 ) - x^\star \right\Vert^2 \leq \frac{R_0 L \sqrt{8 \Omega}}{\mu \sqrt{T}} , 
+f ( x^T ( R_0, x_1, x_1 ) ) - f^\star \leq \frac{R_0 L \sqrt{2 \Omega}}{\sqrt{T}}, \quad \left\Vert x^T ( R_0, x_1, x_1 ) - x^\star \right\Vert^2 \leq \frac{R_0 L \sqrt{8 \Omega}}{\mu \sqrt{T}} , 
 $$
 
 where $x^\star$ is the unique minimizer of $f$ on $\mathcal{X}$.
@@ -118,8 +118,8 @@ These observations motivate the following *restarting* strategy:
 Set $y_0 \in \mathcal{X}$. 
 For $k = 1, 2, \ldots$, 
 
-1. Set $T_k$ such that $\left\Vert x^{T_k} ( R_{k - 1}, y_{k - 1} ) - x^\star \right\Vert^2 \leq 2^{-1} R_{k - 1}^2$. 
-2. Compute $y_k = x^{T_k} ( R_{k - 1}, y_{k - 1} )$, with $\eta_t = \frac{\sqrt{2 \Omega }}{ R L \sqrt{T_k}}$ for all $t$.
+1. Set $T_k$ such that $\left\Vert x^{T_k} ( R_{k - 1}, y_{k - 1}, y_{k - 1} ) - x^\star \right\Vert^2 \leq 2^{-1} R_{k - 1}^2$. 
+2. Compute $y_k = x^{T_k} ( R_{k - 1}, y_{k -1}, y_{k - 1} )$, with $\eta_t = \frac{\sqrt{2 \Omega }}{ R L \sqrt{T_k}}$ for all $t$.
 3. Set $R_k^2 = 2^{-1} R_{k - 1}^2$. 
 
 By the proposition we have just proved, it suffices to choose
