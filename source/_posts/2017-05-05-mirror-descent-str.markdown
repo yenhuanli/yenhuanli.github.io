@@ -49,9 +49,19 @@ $$
 x^t := \frac{ \sum_{\tau = 1}^t \eta_\tau x_\tau }{ \sum_{\tau = 1}^t \eta_\tau } . 
 $$
 
-The following convergence guarantee can be found in, e.g., [the classic paper by Beck and Teboulle](https://web.iem.technion.ac.il/images/user-files/becka/papers/3.pdf).
+The following result can be found in, e.g., [the classic paper by Beck and Teboulle](https://web.iem.technion.ac.il/images/user-files/becka/papers/3.pdf).
 
-**Proposition 1.** Fix a positive integer $T$.
+**Proposition 1.** It holds that, for any $u \in \mathcal{X}$, 
+
+$$
+f ( x^t ) - f ( u ) \leq \frac{ D ( u, x_1 ) + \frac{1}{2} \sum_{\tau = 1}^t \eta_\tau^2 \left\Vert f' ( x_\tau ) \right\Vert_*^2 }{ \sum_{\tau = 1}^t \eta_\tau } ,  
+$$
+
+where $\left\Vert \cdot \right\Vert_*$ denotes the dual norm.
+
+Proposition 1 implies the following convergence guarantee for the standard MD. 
+
+**Corollary.** Fix a positive integer $T$.
 Set 
 
 $$
