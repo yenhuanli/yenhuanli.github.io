@@ -162,9 +162,17 @@ The <em>standard</em> MD iterates as follows.</p>
 
 <script type="math/tex; mode=display">x^t := \frac{ \sum_{\tau = 1}^t \eta_\tau x_\tau }{ \sum_{\tau = 1}^t \eta_\tau } .</script>
 
-<p>The following convergence guarantee can be found in, e.g., <a href="https://web.iem.technion.ac.il/images/user-files/becka/papers/3.pdf">the classic paper by Beck and Teboulle</a>.</p>
+<p>The following result can be found in, e.g., <a href="https://web.iem.technion.ac.il/images/user-files/becka/papers/3.pdf">the classic paper by Beck and Teboulle</a>.</p>
 
-<p><strong>Proposition 1.</strong> Fix a positive integer $T$.
+<p><strong>Proposition 1.</strong> It holds that, for any $u \in \mathcal{X}$,</p>
+
+<script type="math/tex; mode=display">f ( x^t ) - f ( u ) \leq \frac{ D ( u, x_1 ) + \frac{1}{2} \sum_{\tau = 1}^t \eta_\tau^2 \left\Vert f' ( x_\tau ) \right\Vert_*^2 }{ \sum_{\tau = 1}^t \eta_\tau } ,</script>
+
+<p>where $\left\Vert \cdot \right\Vert_*$ denotes the dual norm.</p>
+
+<p>Proposition 1 implies the following convergence guarantee for the standard MD.</p>
+
+<p><strong>Corollary.</strong> Fix a positive integer $T$.
 Set</p>
 
 <script type="math/tex; mode=display">\Omega \geq \max \left\lbrace D ( u, x_1 ) \, \middle| \, u \in \mathcal{X} \right\rbrace , \quad \eta_t = \frac{\sqrt{2 \Omega }}{ L \sqrt{T}} \,\, \text{ for } t = 1, 2, \ldots, T .</script>
