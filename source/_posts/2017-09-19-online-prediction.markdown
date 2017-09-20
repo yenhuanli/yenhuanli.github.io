@@ -73,19 +73,62 @@ for all continuous functions $f: \mathcal{X} \times \Delta ( \mathcal{Y} ) \time
 **Remark.** This is not any of the standard definitions of calibration. 
 However, one can observe that it is closely related to the notion of *weak calibration* [proposed by S. M. Kakade and D. P. Foster](https://doi.org/10.1016/j.jcss.2007.04.017), and the notion of *calibration-cum-resolution* [proposed by V. Vovk](https://doi.org/10.1016/j.tcs.2007.07.026). 
 
+One may view the definition above as specifying certain law of large numbers. 
+
 **Theorem 3. ([Vovk](https://arxiv.org/abs/cs/0606093))** Suppose that $\mathcal{X}$ and $\mathcal{Y}$ are compact sets in Euclidean spaces. 
 Then there exists a calibrated forecasting strategy.
 
 ### Proof of Theorem 3
 
-Theorem 3 relies on the fact that for any compact metric space $\Omega$, there always exists some reproducing kernel Hilbert space (RKHS) $\mathcal{H}$ on it, such that the corresponding kernel function $K: \Omega \times \Omega \to \mathbb{R}$ is continuous, the RKHS is dense in $C( \Omega )$, and the embedding constant, defined as
+Theorem 3 relies on the fact that for any compact metric space $\Omega$, there always exists some reproducing kernel Hilbert space (RKHS) $\mathcal{H}$ on it, such that the corresponding kernel function $k: \Omega \times \Omega \to \mathbb{R}$ is continuous, the RKHS is dense in $C( \Omega )$, and the *embedding constant*, defined as
 
 $$
-c_{\mathcal{H}} := \sup_{\omega \in \Omega} \sqrt{ K ( \omega, \omega ) } , 
+c_{\mathcal{H}} := \sup_{\omega \in \Omega} \sqrt{ k ( \omega, \omega ) } , 
 $$
 
 is finite. 
+We call such an RKHS a continuous universal RKHS with finite embedding constant on $\Omega$. 
+See Corollary 1 in [the article by V. Vovk](https://arxiv.org/abs/cs/0606093).
 
-Consider the following probability forecasting strategy. 
+Following the idea of *defensive forecasting*, consider the following protocol. 
+Let $C_0$ be a positive number. 
+For $t = 1, 2, \ldots$, 
+
+1. Reality announces $x_t \in \mathcal{X}$. 
+2. Skeptic announces a continuous function $f_t: \mathcal{Y} \times \Delta ( \mathcal{Y} ) \to \mathbb{R}$, such that $\int_{\mathcal{Y}} f_t ( y, P ) P ( \mathrm{d} y ) \leq 0$ for all $P \in \Delta ( \mathcal{Y} )$. 
+3. Forecaster announces $P_t \in \Delta( \mathcal{Y} )$. 
+4. Reality announces $y_t \in \mathcal{Y}$. 
+5. $C_t := C_{t - 1} + f_t ( y_t, P_t )$. 
+
+The following lemma, arguably the key to the idea of defensive forecasting, can be checked by Ky Fan's minimax theorem.
+
+**Lemma 1.** Let $\mathcal{Y}$ be a metric compact. 
+Forecaster can force the sequence $( C_t )_{t = 0, 1, \ldots}$ to be non-increasing, by choosing
+
+$$
+P_t \in \mathrm{argmin}_{P \in \Delta ( \mathcal{Y} )} \mathrm{sup}_{Q \in \Delta ( \mathcal{Y} )} \int_{\mathcal{Y}} f_t (  y, P) Q( \mathrm{d} y ) . 
+$$
+
+In the defensive forecasting protocol, we choose a specific $f_t$ as follows. 
+Let $\mathcal{H}$ be a continuous universal RKHS with finite embedding constant on $\mathcal{X} \times \Delta ( \mathcal{Y}  ) \times \mathcal{Y}$, and let $k_{x, P, y} \in \mathcal{H}$ be the corresponding representer (i.e., $\left\langle k_{x, P, y}, f \right\rangle_{\mathcal{H}} = f ( x, P, y )$ for all $f \in \mathcal{H}$).
+Set 
+
+$$
+f_t ( y, P ) := 2 \left\langle \sum_{\tau = 1}^{t - 1} \Psi ( x_\tau, P_\tau, y_\tau ), \Psi( x_t, P, y ) \right\rangle_{\mathcal{H}}, 
+$$
+
+where
+
+$$
+\Psi ( x, P, y ) := k_{x, P, y} - \int_{\mathcal{Y}} k_{x, P, y} P ( \mathrm{d} y ) . 
+$$
+
+The following lemma is an application of Lemma 1 (with non-trivial derivations!). 
+
+**Lemma 2.** It holds that, for all $T$ and $f \in \mathcal{H}$, 
+
+$$
+\left\vert \sum_{t = 1}^T \left( f ( x_t, P_t, y_t ) - \int_{\mathcal{Y}} f ( x_t, P_t, y ) P_t ( \mathrm{d} y ) \right) \right\vert \leq 2 c_{\mathcal{H}} \left\Vert f \right\Vert_{\mathcal{H}} \sqrt{T} . 
+$$
 
 *Proof of Theorem 3.*
