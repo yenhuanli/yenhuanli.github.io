@@ -43,4 +43,6 @@ $$
 
 where $( \tilde{\gamma_t} )_{t \in \mathbb{N}}$ is the sequence of predictions made by any continuous prediction strategy.
 
+Any prediction strategy that achieves the theorem above is called universally consistent. 
+
 ### Prediction Strategy
