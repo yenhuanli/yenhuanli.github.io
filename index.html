@@ -9,7 +9,7 @@
   <meta name="author" content="yhli">
 
   
-  <meta name="description" content="Mirror descent (MD) is a famous convex optimization algorithm. When the objective function is Lipschitz continuous, the convergence rate of MD is &hellip;">
+  <meta name="description" content="Introduction Can one predict the future well, without any subjective assumptions? Indeed, there are actually some prediction strategies that work &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -106,6 +106,279 @@ MathJax.Hub.Config({
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/09/20/universally-consistent-prediction/">Universally Consistent Prediction</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-09-20T18:48:19+02:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>6:48 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3 id="introduction">Introduction</h3>
+
+<p>Can one predict the future well, <em>without any subjective assumptions</em>? 
+Indeed, there are actually some prediction strategies that work without any subjective assumption, and approach (arguably) the best possible performance in some sense.
+This post introduces one such strategy described in <a href="https://arxiv.org/abs/cs/0606093">an article by V. Vovk</a>.</p>
+
+<p>Consider the following protocol of <em>online prediction</em>. 
+For $t = 1, 2, \ldots$,</p>
+
+<ol>
+  <li>Reality announces $x_t \in \mathcal{X}$.</li>
+  <li>Predictor announces $\gamma_t \in \Gamma$.</li>
+  <li>Reality announces $y_t \in \mathcal{Y}$.</li>
+</ol>
+
+<p>We assume the perfect information case; that is, all $x_t$’s, $\gamma_t$’s, and $y_t$’s, once announced, are known to both Reality and Predictor.</p>
+
+<p><strong>Exercise.</strong> Find some real-life examples of this protocol. 
+Notice that $\mathcal{X}$ can be the space of histories.</p>
+
+<p>We measure the quality of prediction by a given loss function $\lambda: \mathcal{X} \times \Gamma \times \mathcal{Y} \to \mathbb{R}$, known to both Reality and Predictor. 
+We will consider compact-type losses.</p>
+
+<p><strong>Definition.</strong> A loss function is called compact-type, if for any compact sets $A \subseteq \mathcal{X}$ and $B \subseteq \mathcal{Y}$ and any $M \in \mathbb{R}$, there exists some compact set $C \subset \Gamma$, such that $\lambda ( x, \gamma, y ) &gt; M$ for any $x \in A$, $y \in B$, and $\gamma \notin C$.</p>
+
+<p>A (possibly randomized) prediction strategy is a function $\psi: \mathcal{X} \to \Delta ( \Gamma )$, where $\Delta ( \Gamma )$ denotes the set of all probabiity measures on $\Gamma$. 
+For each $t$, Predictor computes $Q_t := \psi( x_t )$, and chooses $\gamma_t \in \Gamma$ randomly according to $Q_t$.</p>
+
+<p><strong>Definition.</strong> We say that a prediction strategy is continuous, if the associated function $\psi$ is continuous.</p>
+
+<p><strong>Theorem 1 (<a href="https://arxiv.org/abs/cs/0606093">Vovk</a>).</strong> Suppose that $\mathcal{X}$ and $\mathcal{Y}$ are locally compact metric spaces, and $\Gamma$ is a metric space. 
+Suppose that $\lambda$ is continuous and compact-type. 
+Then for any $\varepsilon &gt; 0$, there exists a prediction strategy, such that if <script type="math/tex">\{ x_t \}</script> and <script type="math/tex">\{ y_t \}</script> are precompact,</p>
+
+<script type="math/tex; mode=display">\limsup_{T \to \infty} \frac{1}{T} \sum_{t = 1}^T \left( \lambda ( x_t, \gamma_t, y_t ) - \lambda ( x_t, \tilde{\gamma_t}, y_t ) \right) \leq \varepsilon, \quad \text{a.s.} ,</script>
+
+<p>where $( \tilde{\gamma_t} )_{t \in \mathbb{N}}$ is the sequence of predictions made by any continuous prediction strategy.</p>
+
+<p>Any prediction strategy that achieves the theorem above is called universally consistent.</p>
+
+<h3 id="ideas">Ideas</h3>
+
+<p>The prediction strategy proposed by Vovk consists of two parts. 
+Predictor first computes an estimate of the conditional probability distribution of $y_t$ given the history; then Predictor chooses the optimal $\gamma_t$ minimizing the estimated conditional expected loss.
+Notice that, however, the online prediction protocol is completely deterministic; hence talking about the conditional probability and expected loss, rigorously speaking, is not legal in the sense of measure-theoretic probability.</p>
+
+<p>The first part is called <em>probability forecasting</em>. 
+The protocol of probability forecasting is as follows. 
+For $t = 1, 2, \ldots$,</p>
+
+<ol>
+  <li>Reality announces $x_t \in \mathcal{X}$.</li>
+  <li>Forecaster announces $P_t \in \Delta ( \mathcal{Y} )$.</li>
+  <li>Reality announces $y_t \in \mathcal{Y}$.</li>
+</ol>
+
+<p><strong>Theorem 2 (<a href="https://arxiv.org/abs/cs/0606093">Vovk</a>).</strong> Suppose that $\mathcal{X}$ and $\mathcal{Y}$ are compact metric spaces.
+There exists some forecasting strategy, such that</p>
+
+<script type="math/tex; mode=display">\lim_{T \to \infty} \frac{1}{T} \sum_{t = 1}^T \left( f ( x_t, P_t, y_t ) - \int_{\mathcal{Y}} f ( x_t, P_t, y ) \, P_t ( \mathrm{d} y ) \right) = 0 ,</script>
+
+<p>for any continuous function $f: \mathcal{X} \times \Delta ( \mathcal{Y} ) \times \mathcal{Y} \to \mathbb{R}$.</p>
+
+<p>The forecasting strategy behind Theorem 2 is based on the existence of a universal RKHS $\mathcal{H}$ on $\mathcal{X} \times \Delta ( \mathcal{Y} ) \times \mathcal{Y}$, i.e., an RKHS dense in $C ( \mathcal{X} \times \Delta ( \mathcal{Y} ) \times \mathcal{Y} )$.
+Following the framework of defensive forecasting, one can construct a forecasting strategy such that the inequality in Theorem 2 holds for all functions in $\mathcal{H}$. 
+As $\mathcal{H}$ is dense in $C ( \mathcal{X} \times \Delta ( \mathcal{Y} ) \times \mathcal{Y} )$, one obtains Theorem 2.</p>
+
+<p>Naively speaking, the second part corresponds to finding the randomized action that minimizes the conditional expected loss, i.e., computing</p>
+
+<script type="math/tex; mode=display">\tilde{Q}_t \in \mathrm{argmin}_{Q \in \Delta( \Gamma )} \int_{\mathcal{Y}} \lambda ( x_t, Q, y ) P_t ( \mathrm{d} y ) ,</script>
+
+<p>where $P_t$ is the output of probability forecasting, and</p>
+
+<script type="math/tex; mode=display">\lambda ( x, Q, y ) := \int_{\Gamma} \lambda ( x, \gamma, y ) Q ( \mathrm{d} \gamma ) .</script>
+
+<p>Then Predictor chooses $\gamma_t$ randomly according to $\tilde{Q}_t$.</p>
+
+<p>Theorem 2 considers continuous functions, while $\tilde{Q}_t$ may not be continuously dependent on $(x_t, P_t)$. 
+Therefore, we need to slightly modify the second part.
+What Predictor actually does in the second part is to compute $Q_t := G ( x_t, P_t ) \in \Delta ( \Gamma )$, for some continuous function $G$ satisfying</p>
+
+<script type="math/tex; mode=display">\int_{\mathcal{Y}} \lambda ( x_t, G( x_t, P_t ), y ) P_t ( \mathrm{d} y ) \leq \mathrm{argmin}_{Q \in \Delta( \Gamma )} \int_{\mathcal{Y}} \lambda ( x_t, Q, y ) P_t ( \mathrm{d} y ) + \delta</script>
+
+<p>for some $\delta &gt; 0$.</p>
+
+<p><strong>Lemma 1 (<a href="https://arxiv.org/abs/cs/0606093">Vovk</a>).</strong> Suppose that $\Gamma$ is a compact convex subset of a topological vector space. Such a continuous function $G$ exists for any $\delta &gt; 0$.</p>
+
+<p>In Theorem 1, the conditions on $\mathcal{X}$, $\mathcal{Y}$, and $\Gamma$ are not as strict as those in Theorem 2 and Lemma 1.
+This gap can be addressed by a doubling-like trick. 
+Roughly speaking, Predictor starts with compact subsets $A \subseteq \mathcal{X}$ and $B \subseteq \mathcal{Y}$, and a compact convex subset $C \subseteq \Gamma$. 
+Predictor implements the prediction strategy described above only on $A$, $B$, and $C$.
+If Reality announces some $( x_t, y_t ) \notin A \times B$, Predictor enlarges $A$, $B$ and $C$ such that $( x_t, y_t )$ is contained.</p>
+
+<ol>
+  <li>If Predictor is forced to enlarge the sets for inifinitely many times, <script type="math/tex">\{ x_t \}</script> and <script type="math/tex">\{ y_t \}</script> cannot be both precompact.</li>
+  <li>Otherwise, ultimately Predictor is working with some $A \subseteq \mathcal{X}$, $B \subseteq \mathcal{Y}$, and $C \subseteq \Gamma$, to which Theorem 2 and Lemma 1 apply.</li>
+</ol>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/09/19/online-prediction/">Online Prediction</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-09-19T21:29:38+02:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>9:29 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3 id="introduction">Introduction</h3>
+
+<p>Can one predict the future, <em>without any objective assumption</em>? 
+Indeed, there exists a prediction strategy, which works without any objective assumption, and competes with (arguably) the best possible strategy asymptotically.</p>
+
+<p>Consider the following protocol. 
+For <script type="math/tex">t = 1, 2, \ldots</script>,</p>
+
+<ol>
+  <li>Reality announces <script type="math/tex">x_t \in \mathcal{X}</script>.</li>
+  <li>Predictor announces <script type="math/tex">\gamma_t \in \Gamma</script>.</li>
+  <li>Reality announces <script type="math/tex">y_t \in \mathcal{Y}</script>.</li>
+</ol>
+
+<p><strong>Exercise.</strong> Find some real-life examples of this protocol. Notice that $\mathcal{X}$ can be the space of <em>all possible histories</em>.</p>
+
+<p>A <em>prediction strategy</em> is defined by a function <script type="math/tex">\psi: \mathcal{X} \to \Delta (\Gamma)</script>, where <script type="math/tex">\Delta ( \Gamma )</script> denotes the set of probabiliy measures on <script type="math/tex">\Gamma</script>.
+Having observed $x_t$, Predictor chooses <script type="math/tex">\gamma_t \in \Gamma</script> randomly according to $\psi ( x_t )$.</p>
+
+<p><strong>Definition.</strong> A prediction strategy is called continuous, if the corresponding function <script type="math/tex">\psi</script> is continuous on $\mathcal{X}$.</p>
+
+<p>We measure the quality of a prediction strategy by a loss function <script type="math/tex">\lambda: \mathcal{X} \times \Gamma \times \mathcal{Y} \to \mathbb{R}</script>.</p>
+
+<p><strong>Definition.</strong> A prediction strategy is called <em>universally consistent</em>, if whenever <script type="math/tex">\{ x_1, x_2, \ldots \}</script> and <script type="math/tex">\{ y_1, y_2, \ldots \}</script> are precompact, it holds that</p>
+
+<script type="math/tex; mode=display">\limsup_{T \to \infty} \frac{1}{T} \sum_{t = 1}^T \left( \lambda ( x_t, \gamma_t, y_t ) - \lambda( x_t, g_t, y_t ) \right) \leq 0 , \quad \text{a.s.},</script>
+
+<p>for any sequence <script type="math/tex">( g_t )_{t \in \mathbb{N}}</script> generated by a continuous prediction strategy.</p>
+
+<p>That is, asymptotically, a universally consistent prediction strategy performs at least as well as the best continuous prediction strategy.</p>
+
+<p><strong>Theorem 1.</strong> Suppose that <script type="math/tex">\mathcal{X}</script> and <script type="math/tex">\mathcal{Y}</script> are locally compact metric spaces, <script type="math/tex">\Gamma</script> is a metric space, and <script type="math/tex">\lambda</script> is a continuous compact-type function. Then there exists a universally consistent prediction strategy.</p>
+
+<p>The proof of Theorem 1 is technical. 
+For ease of illustration, only the following simplified version will be considered.</p>
+
+<p><strong>Theorem 2.</strong> Suppose that <script type="math/tex">\mathcal{X}</script>, <script type="math/tex">\mathcal{Y}</script>, and  <script type="math/tex">\Gamma</script> are compact sets in Euclidean spaces, and <script type="math/tex">\lambda</script> is a continuous function. Then there exists a universally consistent prediction strategy.</p>
+
+<p>This post is based on <a href="https://arxiv.org/abs/cs/0606093">an article by V. Vovk</a>.</p>
+
+<h3 id="probability-forecasting">Probability Forecasting</h3>
+
+<p>Intuitively, if we have access to the probability distribution of $y_t$ conditional on all past $x_t$’s and $g_t$’s, making predictions can be easier, as then the prediction protocol is just probabilistically random but not <em>uncertain</em>. 
+While the protocol above is completely deterministic, it is still possible to do <em>probability forecasting</em>, to produce some estimate of the <em>conditional probability distribution</em>. 
+We will see that such a good probability forecasting strategy permits one to construct a universally consistent prediction strategy.</p>
+
+<p>The protocol for probability forecasting is as follows. 
+For $t = 1, 2, \ldots$,</p>
+
+<ol>
+  <li>Reality announces <script type="math/tex">x_t \in \mathcal{X}</script>.</li>
+  <li>Forecaster announces <script type="math/tex">P_t \in \Delta ( \mathcal{Y} )</script>.</li>
+  <li>Reality announces $y_t \in \mathcal{Y}$.</li>
+</ol>
+
+<p><strong>Exercise.</strong> Find some real-life examples of the protocol.
+A famous one is weather forecasting; see, e.g., <a href="http://www.jstor.org/stable/2287720">this paper by A. P. Dawid</a>.</p>
+
+<p><strong>Definition.</strong> We say that a forecasting strategy is calibrated, if</p>
+
+<script type="math/tex; mode=display">\lim_{T \to \infty} \frac{1}{T} \sum_{t = 1}^T \left( f ( x_t, P_t, y_t ) - \int_{\mathcal{Y}} f ( x_t, P_t, y ) P_t ( \mathrm{d} y ) \right) = 0 ,</script>
+
+<p>for all continuous functions $f: \mathcal{X} \times \Delta ( \mathcal{Y} ) \times \mathcal{Y} \to \mathbb{R}$.</p>
+
+<p><strong>Remark.</strong> This is not any of the standard definitions of calibration. 
+However, one can observe that it is closely related to the notion of <em>weak calibration</em> <a href="https://doi.org/10.1016/j.jcss.2007.04.017">proposed by S. M. Kakade and D. P. Foster</a>, and the notion of <em>calibration-cum-resolution</em> <a href="https://doi.org/10.1016/j.tcs.2007.07.026">proposed by V. Vovk</a>.</p>
+
+<p>One may view the definition above as specifying certain law of large numbers.</p>
+
+<p><strong>Theorem 3. (<a href="https://arxiv.org/abs/cs/0606093">Vovk</a>)</strong> Suppose that $\mathcal{X}$ and $\mathcal{Y}$ are compact sets in Euclidean spaces. 
+Then there exists a calibrated forecasting strategy.</p>
+
+<h3 id="proof-of-theorem-3">Proof of Theorem 3</h3>
+
+<p>Theorem 3 relies on the fact that for any compact metric space $\Omega$, there always exists some reproducing kernel Hilbert space (RKHS) $\mathcal{H}$ on it, such that the corresponding kernel function $k: \Omega \times \Omega \to \mathbb{R}$ is continuous, the RKHS is dense in $C( \Omega )$, and the <em>embedding constant</em>, defined as</p>
+
+<script type="math/tex; mode=display">c_{\mathcal{H}} := \sup_{\omega \in \Omega} \sqrt{ k ( \omega, \omega ) } ,</script>
+
+<p>is finite. 
+We call such an RKHS a continuous universal RKHS with finite embedding constant on $\Omega$. 
+See Corollary 1 in <a href="https://arxiv.org/abs/cs/0606093">the article by V. Vovk</a>.</p>
+
+<p>Following the idea of <em>defensive forecasting</em>, consider the following protocol. 
+Let $C_0$ be a positive number. 
+For $t = 1, 2, \ldots$,</p>
+
+<ol>
+  <li>Reality announces $x_t \in \mathcal{X}$.</li>
+  <li>Skeptic announces a continuous function $f_t: \mathcal{Y} \times \Delta ( \mathcal{Y} ) \to \mathbb{R}$, such that $\int_{\mathcal{Y}} f_t ( y, P ) P ( \mathrm{d} y ) \leq 0$ for all $P \in \Delta ( \mathcal{Y} )$.</li>
+  <li>Forecaster announces $P_t \in \Delta( \mathcal{Y} )$.</li>
+  <li>Reality announces $y_t \in \mathcal{Y}$.</li>
+  <li>$C_t := C_{t - 1} + f_t ( y_t, P_t )$.</li>
+</ol>
+
+<p>The following lemma, arguably the key to the idea of defensive forecasting, can be checked by Ky Fan’s minimax theorem.</p>
+
+<p><strong>Lemma 1.</strong> Let $\mathcal{Y}$ be a metric compact. 
+Forecaster can force the sequence $( C_t )_{t = 0, 1, \ldots}$ to be non-increasing, by choosing</p>
+
+<script type="math/tex; mode=display">P_t \in \mathrm{argmin}_{P \in \Delta ( \mathcal{Y} )} \mathrm{sup}_{Q \in \Delta ( \mathcal{Y} )} \int_{\mathcal{Y}} f_t (  y, P) Q( \mathrm{d} y ) .</script>
+
+<p>In the defensive forecasting protocol, we choose a specific $f_t$ as follows. 
+Let $\mathcal{H}$ be a continuous universal RKHS with finite embedding constant on $\mathcal{X} \times \Delta ( \mathcal{Y}  ) \times \mathcal{Y}$, and let $k_{x, P, y} \in \mathcal{H}$ be the corresponding representer (i.e., $\left\langle k_{x, P, y}, f \right\rangle_{\mathcal{H}} = f ( x, P, y )$ for all $f \in \mathcal{H}$).
+Set</p>
+
+<script type="math/tex; mode=display">f_t ( y, P ) := 2 \left\langle \sum_{\tau = 1}^{t - 1} \Psi ( x_\tau, P_\tau, y_\tau ), \Psi( x_t, P, y ) \right\rangle_{\mathcal{H}},</script>
+
+<p>where</p>
+
+<script type="math/tex; mode=display">\Psi ( x, P, y ) := k_{x, P, y} - \int_{\mathcal{Y}} k_{x, P, y} P ( \mathrm{d} y ) .</script>
+
+<p>The following lemma is an application of Lemma 1 (with non-trivial derivations!).</p>
+
+<p><strong>Lemma 2.</strong> It holds that, for all $T$ and $f \in \mathcal{H}$,</p>
+
+<script type="math/tex; mode=display">\left\vert \sum_{t = 1}^T \left( f ( x_t, P_t, y_t ) - \int_{\mathcal{Y}} f ( x_t, P_t, y ) P_t ( \mathrm{d} y ) \right) \right\vert \leq 2 c_{\mathcal{H}} \left\Vert f \right\Vert_{\mathcal{H}} \sqrt{T} .</script>
+
+<p><em>Proof of Theorem 3.</em></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
