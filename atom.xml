@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2017-09-22T21:09:20+02:00</updated>
+  <updated>2017-09-22T21:27:01+02:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -48,9 +48,12 @@ As the protocol is deterministic, we do not say “probability of the event <scr
 The requirements in general depend on the actual application scenario. 
 In this post, we will only consider a minimal requirement—any good prediction strategy should be <em>calibrated</em>.</p>
 
-<p>Roughly speaking, the notion of calibration requires the predictions to comply with the empirical frequency. 
-Consider the following discretization argument. 
-Fix some $\varepsilon &gt; 0$. 
+<p>Roughly speaking, the notion of calibration requires the predictions to comply with the empirical frequency, i.e., for any $\rho \in ( 0, 1 )$, it holds that</p>
+
+<script type="math/tex; mode=display">\frac{\sum_{t = 1}^T \mathbb{I}_{ \{ p_t \approx \rho, y_t = 1 \} }}{\sum_{t = 1}^T \mathbb{I}_{ \{ p_t \approx \rho \} }} \approx \rho .</script>
+
+<p>To make the notion precise, consider the following discretization argument. 
+Fix some $\varepsilon \in ( 0, 1 )$. 
 Let us decompose the interval $[ 0, 1 ]$ as</p>
 
 <script type="math/tex; mode=display">[ 0, 1 ] = \left[ 0, \varepsilon \right) \cup \left[ \varepsilon, 2 \varepsilon \right) \cup \cdots \cup \left[ (M - 2) \varepsilon, (M - 1) \varepsilon \right) \cup \left[ ( M - 1 ) \varepsilon, 1 \right] := I_1 \cup I_2 \cup \cdots \cup I_{M - 1} \cup I_M .</script>
