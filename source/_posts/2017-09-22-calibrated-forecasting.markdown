@@ -77,7 +77,7 @@ $$
 
 Surprisingly, even when one knows nothing about the mechanism generating the sequence $$( y_t )_{t \in \mathbb{N}}$$, calibration is achievable.
 
-**Theorem 1.** Suppose that Reality, before announcing $y_t$, does not know the exact value of $p_t$. 
+**Theorem.** Suppose that Reality, before announcing $y_t$, does not know the exact value of $p_t$. 
 For any $\varepsilon > 0$, there exists an $\varepsilon$-calibrated probability forecasting strategy. 
 
 Some quick observations: 
@@ -90,9 +90,7 @@ If Forecaster uses a deterministic strategy, for which $p_t$ is a deterministic 
 
 ### An Achieving Strategy
 
-A calibrated forecasting strategy can be derived by the idea Blackwell approachability. 
-Let us ignore the theory behind for now. 
-A description of the strategy is described as follows.
+A calibrated forecasting strategy can be derived by the idea of Blackwell approachability. 
 
 The strategy only chooses $p_t$ from the set $$\{ c_m \}$$; effectively, Forecaster only needs to choose $$m_t \in \{ 1, 2, \ldots, M \}$$ for all $t$. 
 Define, for all $m$, 
@@ -115,7 +113,9 @@ $$
 \left\langle \bar{f}_{t - 1} - \mathrm{proj} ( \bar{f}_{t - 1} ), f ( P_t, Q ) - \mathrm{proj} ( \bar{f}_{t - 1} ) \right\rangle \leq 0 , 
 $$
 
-and then announces $m_t$ randomly according to $p_t$. 
+where $\mathrm{proj}$ denotes projection onto the $1$-norm ball of radius $\varepsilon$ in $\mathbb{R}^M$, and then announces $m_t$ randomly according to $p_t$. 
+
+**Lemma.** Such $P_t$ always exists.
 
 **Remark.** In practice, one can compute $P_t$ by solving the saddle point problem: 
 
