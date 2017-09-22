@@ -133,3 +133,4 @@ I will introduce the theory of Blackwell approachability in the next post.
 1. A. P. Dawid. 1982. The well calibrated Bayesian. *J. Am. Stat. Assoc.*
 2. D. P. Foster. 1999. A proof of calibration via Blackwell's approachability theorem. *Games Econ. Behav.*
 3. N. Cesa-Bianchi and G. Lugosi. 2006. *Prediction, Learning, and Games*.
+4. S. Mannor and G. Stoltz. 2010. A geometric proof of calibration. *Math. Oper. Res.*
