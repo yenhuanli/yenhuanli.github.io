@@ -67,12 +67,12 @@ $$
 \limsup_{T \to \infty} \sum_{m = 1}^M \left\vert \rho_m (T) - c_m \right\vert \frac{ \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } }{ T } \leq \varepsilon , \quad \text{a.s.}
 $$
 
-Some simple algebraic manipulations lead to the following equivalent defnition.
+Some simple algebraic manipulations lead to the following (slightly different) defnition.
 
 **Definition.** A (possibly randomized) prediction strategy is $$\varepsilon$$-calibrated, if the resulting sequence of predictions satisfy
 
 $$
-\limsup_{T \to \infty} \frac{1}{T} \sum_{m = 1}^M \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } \left\vert p_t - y_t \right\vert \leq \varepsilon , \quad \text{a.s.} 
+\limsup_{T \to \infty} \frac{1}{T} \sum_{m = 1}^M \left\vert \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } ( p_t - y_t ) \right\vert \leq \varepsilon , \quad \text{a.s.} 
 $$
 
 Surprisingly, even when one knows nothing about the mechanism generating the sequence $$( y_t )_{t \in \mathbb{N}}$$, calibration is achievable.
