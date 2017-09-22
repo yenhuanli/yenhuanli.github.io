@@ -9,7 +9,7 @@
   <meta name="author" content="yhli">
 
   
-  <meta name="description" content="Introduction Can one predict the future well, without any subjective assumptions? Indeed, there are actually some prediction strategies that work &hellip;">
+  <meta name="description" content="Probability Forecasting Can one predict the weather ignorantly yet accurately? To be concrete, suppose we are given the weather record of the past &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -106,6 +106,151 @@ MathJax.Hub.Config({
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/09/22/calibrated-forecasting/">Calibrated Forecasting</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-09-22T13:37:36+02:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2017</span></span> <span class='time'>1:37 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3 id="probability-forecasting">Probability Forecasting</h3>
+
+<p>Can one predict the weather <em>ignorantly yet accurately</em>? 
+To be concrete, suppose we are given the weather record of the past 100 days,</p>
+
+<script type="math/tex; mode=display">\text{wet}, \text{wet}, \text{dry}, \text{wet}, \text{dry}, \ldots;</script>
+
+<p>we cannot access any other information (e.g., temperature, satellite images, etc.), and we know nothing about meteorology. 
+Can we tell how likely it will rain tomorrow?</p>
+
+<p>This problem can be cast as a <em>probability forecasting</em> problem.
+The protocol of probability forecasting is as follows. 
+For <script type="math/tex">t = 1, 2, \ldots</script>,</p>
+
+<ol>
+  <li>Predictor announces <script type="math/tex">p_t \in [ 0, 1 ]</script>.</li>
+  <li>Reality announces <script type="math/tex">y_t \in \{ 0, 1 \}</script>.</li>
+</ol>
+
+<p>The goal of Predictor is to make accurate predictions, such that $p_t$ is a good estimate of the likelihood of the event <script type="math/tex">\{ y_t = 1 \}</script>. 
+As the protocol is deterministic, we do not say “probability of the event <script type="math/tex">\{ y_t = 1 \}</script>”.</p>
+
+<p>Thinking of ‘$0$’ as ‘dry’, and ‘$1$’ as ‘wet’, we recover the original weather forecasting problem.</p>
+
+<h3 id="calibration">Calibration</h3>
+
+<p>What precisely are the requirements a good prediction strategy should satisfy? 
+The requirements in general depend on the actual application scenario. 
+In this post, we will only consider a minimal requirement—any good prediction strategy should be <em>calibrated</em>.</p>
+
+<p>Roughly speaking, the notion of calibration requires the predictions to comply with the empirical frequency. 
+Consider the following discretization argument. 
+Fix some $\varepsilon &gt; 0$. 
+Let us decompose the interval $[ 0, 1 ]$ as</p>
+
+<script type="math/tex; mode=display">[ 0, 1 ] = \left[ 0, \varepsilon \right) \cup \left[ \varepsilon, 2 \varepsilon \right) \cup \cdots \cup \left[ (M - 2) \varepsilon, (M - 1) \varepsilon \right) \cup \left[ ( M - 1 ) \varepsilon, 1 \right] := I_1 \cup I_2 \cup \cdots \cup I_{M - 1} \cup I_M .</script>
+
+<p>where $M := \lceil \varepsilon^{-1} \rceil$. 
+We denote the center of $I_m$ by $c_m$.
+Define</p>
+
+<script type="math/tex; mode=display">\rho_m ( T ) := \frac{ \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m, y_t = 1 \} } }{ \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } } ,</script>
+
+<p>if the divisor is non-zero, and $\rho_m := c_m$ otherwise. 
+We would like, for all $m$,</p>
+
+<script type="math/tex; mode=display">\limsup_{T \to \infty} \left\vert \rho_m (T) - c_m \right\vert \leq \varepsilon, \quad \text{a.s.}</script>
+
+<p>We do not really want to care about those $m$’s such that $\sum_{t = 1}^T \mathbb{I}_{ { p_t \in I_m } } = o( T )$, as they are irrelevant in the long run. 
+A compact formulation of the requirement is</p>
+
+<script type="math/tex; mode=display">\limsup_{T \to \infty} \sum_{m = 1}^M \left\vert \rho_m (T) - c_m \right\vert \frac{ \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } }{ T } \leq \varepsilon , \quad \text{a.s.}</script>
+
+<p>Some simple algebraic manipulations lead to the following equivalent defnition.</p>
+
+<p><strong>Definition.</strong> A (possibly randomized) prediction strategy is <script type="math/tex">\varepsilon</script>-calibrated, if the resulting sequence of predictions satisfy</p>
+
+<script type="math/tex; mode=display">\limsup_{T \to \infty} \frac{1}{T} \sum_{m = 1}^M \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } \left\vert p_t - y_t \right\vert \leq \varepsilon .</script>
+
+<p>Surprisingly, even when one knows nothing about the mechanism generating the sequence <script type="math/tex">( y_t )_{t \in \mathbb{N}}</script>, calibration is achievable.</p>
+
+<p><strong>Theorem 1.</strong> Suppose that Reality, before announcing $y_t$, does not know the exact value of $p_t$. 
+For any $\varepsilon &gt; 0$, there exists an $\varepsilon$-calibrated probability forecasting strategy.</p>
+
+<p>Some quick observations:</p>
+
+<ol>
+  <li>
+    <p>If $y_t$ can depend on the exact value of $p_t$, calibration is impossible.
+For example, Reality can always choose $y_t = 1$ whenever $p_t \leq 0.5$, and $y_t = 0$ otherwise.</p>
+  </li>
+  <li>
+    <p>The remark above also shows the neceesity of a randomized forecasting strategy.
+If Forecaster uses a deterministic strategy, for which $p_t$ is a deterministic function of $p_1, y_1, p_2, y_2, \ldots, p_{t - 1}, y_{t - 1}$, then Reality can also compute the exact value of $p_t$.</p>
+  </li>
+</ol>
+
+<h3 id="an-achieving-strategy">An Achieving Strategy</h3>
+
+<p>A calibrated forecasting strategy can be derived by the idea Blackwell approachability. 
+Let us ignore the theory behind for now. 
+A description of the strategy is described as follows.</p>
+
+<p>The strategy only chooses $p_t$ from the set <script type="math/tex">\{ c_m \}</script>; effectively, Forecaster only needs to choose <script type="math/tex">m_t \in \{ 1, 2, \ldots, M \}</script> for all $t$. 
+Define, for all $m$,</p>
+
+<script type="math/tex; mode=display">f_t ( m, y ) := ( 0, \ldots, 0, c_m - y, 0, \ldots, 0 ) \in \mathbb{R}^M .</script>
+
+<p>We already know that Forecaster must adopt a randomized strategy; in general, Reality’s strategy can be also randomized. 
+Suppose that Forecaster chooses $m_t$ randomly according to a probability distribution $P_t$ on <script type="math/tex">\{ 1, 2, \ldots, M \}</script>, and Reality chooses $y_t$ randomly according to a probabilty distribution $Q_t$ on <script type="math/tex">\{ 0, 1 \}</script>. 
+Define</p>
+
+<script type="math/tex; mode=display">f_t ( P_t, Q_t ) := \sum_{m = 1}^M P_t (m) Q_t (y) \, f_t ( m, y ), \quad \bar{f}_t := \frac{1}{t} \sum_{\tau = 1}^t f_t ( P_{\tau}, Q_{\tau} ) .</script>
+
+<p><strong>Forecaster’s Strategy.</strong> For each $t$, Forecaster first computes some $P_t$ such that for any probability distribution $Q$ on <script type="math/tex">\{ 0, 1 \}</script>,</p>
+
+<script type="math/tex; mode=display">\left\langle \bar{f}_{t - 1} - \mathrm{proj} ( \bar{f}_{t - 1} ), f ( P_t, Q ) - \mathrm{proj} ( \bar{f}_{t - 1} ) \right\rangle \leq 0 ,</script>
+
+<p>and then announces $m_t$ randomly according to $p_t$.</p>
+
+<p><strong>Remark.</strong> In practice, one can compute $P_t$ by solving the saddle point problem:</p>
+
+<script type="math/tex; mode=display">P_t \in \mathrm{argmin}_P \mathrm{max}_Q \left\langle \bar{f}_{t - 1} - \mathrm{proj} ( \bar{f}_{t - 1} ), f ( P, Q ) - \mathrm{proj} ( \bar{f}_{t - 1} ) \right\rangle .</script>
+
+<p>Notice that the objective function is bilinear; there are a variety of existing algorithms that solve this problem.</p>
+
+<p>The strategy seems mysterious at first glance. 
+I will introduce the theory of Blackwell approachability in the next post.</p>
+
+<h3 id="references">References</h3>
+
+<ol>
+  <li>A. P. Dawid. 1982. The well calibrated Bayesian. <em>J. Am. Stat. Assoc.</em></li>
+  <li>D. P. Foster. 1999. A proof of calibration via Blackwell’s approachability theorem. <em>Games Econ. Behav.</em></li>
+  <li>N. Cesa-Bianchi and G. Lugosi. 2006. <em>Prediction, Learning, and Games</em>.</li>
+</ol>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
