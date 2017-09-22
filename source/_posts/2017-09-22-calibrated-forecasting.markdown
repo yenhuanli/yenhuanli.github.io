@@ -36,9 +36,14 @@ What precisely are the requirements a good prediction strategy should satisfy?
 The requirements in general depend on the actual application scenario. 
 In this post, we will only consider a minimal requirement---any good prediction strategy should be *calibrated*.
 
-Roughly speaking, the notion of calibration requires the predictions to comply with the empirical frequency. 
-Consider the following discretization argument. 
-Fix some $\varepsilon > 0$. 
+Roughly speaking, the notion of calibration requires the predictions to comply with the empirical frequency, i.e., for any $\rho \in ( 0, 1 )$, it holds that
+
+$$
+\frac{\sum_{t = 1}^T \mathbb{I}_{ \{ p_t \approx \rho, y_t = 1 \} }}{\sum_{t = 1}^T \mathbb{I}_{ \{ p_t \approx \rho \} }} \approx \rho . 
+$$
+
+To make the notion precise, consider the following discretization argument. 
+Fix some $\varepsilon \in ( 0, 1 )$. 
 Let us decompose the interval $[ 0, 1 ]$ as 
 
 $$
