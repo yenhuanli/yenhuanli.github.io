@@ -113,7 +113,7 @@ $$
 \left\langle \bar{f}_{t - 1} - \mathrm{proj} ( \bar{f}_{t - 1} ), f ( P_t, Q ) - \mathrm{proj} ( \bar{f}_{t - 1} ) \right\rangle \leq 0 , 
 $$
 
-where $\mathrm{proj}$ denotes projection onto the $1$-norm ball of radius $\varepsilon$ in $\mathbb{R}^M$, and then announces $m_t$ randomly according to $p_t$. 
+where $\mathrm{proj}$ denotes projection onto the $1$-norm ball of radius $\varepsilon$ in $\mathbb{R}^M$, and then announces $m_t$ randomly according to $P_t$. 
 
 **Lemma.** Such $P_t$ always exists.
 
