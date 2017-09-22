@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2017-09-22T20:07:02+02:00</updated>
+  <updated>2017-09-22T20:15:34+02:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -79,7 +79,7 @@ A compact formulation of the requirement is</p>
 
 <p>Surprisingly, even when one knows nothing about the mechanism generating the sequence <script type="math/tex">( y_t )_{t \in \mathbb{N}}</script>, calibration is achievable.</p>
 
-<p><strong>Theorem 1.</strong> Suppose that Reality, before announcing $y_t$, does not know the exact value of $p_t$. 
+<p><strong>Theorem.</strong> Suppose that Reality, before announcing $y_t$, does not know the exact value of $p_t$. 
 For any $\varepsilon &gt; 0$, there exists an $\varepsilon$-calibrated probability forecasting strategy.</p>
 
 <p>Some quick observations:</p>
@@ -97,9 +97,7 @@ If Forecaster uses a deterministic strategy, for which $p_t$ is a deterministic 
 
 <h3 id="an-achieving-strategy">An Achieving Strategy</h3>
 
-<p>A calibrated forecasting strategy can be derived by the idea Blackwell approachability. 
-Let us ignore the theory behind for now. 
-A description of the strategy is described as follows.</p>
+<p>A calibrated forecasting strategy can be derived by the idea of Blackwell approachability.</p>
 
 <p>The strategy only chooses $p_t$ from the set <script type="math/tex">\{ c_m \}</script>; effectively, Forecaster only needs to choose <script type="math/tex">m_t \in \{ 1, 2, \ldots, M \}</script> for all $t$. 
 Define, for all $m$,</p>
@@ -116,7 +114,9 @@ Define</p>
 
 <script type="math/tex; mode=display">\left\langle \bar{f}_{t - 1} - \mathrm{proj} ( \bar{f}_{t - 1} ), f ( P_t, Q ) - \mathrm{proj} ( \bar{f}_{t - 1} ) \right\rangle \leq 0 ,</script>
 
-<p>and then announces $m_t$ randomly according to $p_t$.</p>
+<p>where $\mathrm{proj}$ denotes projection onto the $1$-norm ball of radius $\varepsilon$ in $\mathbb{R}^M$, and then announces $m_t$ randomly according to $p_t$.</p>
+
+<p><strong>Lemma.</strong> Such $P_t$ always exists.</p>
 
 <p><strong>Remark.</strong> In practice, one can compute $P_t$ by solving the saddle point problem:</p>
 
