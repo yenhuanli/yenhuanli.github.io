@@ -158,7 +158,7 @@ As the protocol is deterministic, we do not say “probability of the event <scr
 The requirements in general depend on the actual application scenario. 
 In this post, we will only consider a minimal requirement—any good prediction strategy should be <em>calibrated</em>.</p>
 
-<p>Roughly speaking, the notion of calibration requires the predictions to comply with the empirical frequency, i.e., for any $\rho \in ( 0, 1 )$, it holds that</p>
+<p>Roughly speaking, the notion of calibration requires the predictions to comply with the empirical frequencies, i.e., for any $\rho \in ( 0, 1 )$, it holds that</p>
 
 <script type="math/tex; mode=display">\frac{\sum_{t = 1}^T \mathbb{I}_{ \{ p_t \approx \rho, y_t = 1 \} }}{\sum_{t = 1}^T \mathbb{I}_{ \{ p_t \approx \rho \} }} \approx \rho .</script>
 
@@ -170,7 +170,7 @@ Let us decompose the interval $[ 0, 1 ]$ as</p>
 
 <p>where $M := \lceil \varepsilon^{-1} \rceil$. 
 We denote the center of $I_m$ by $c_m$.
-Define</p>
+Define the empirical frequencies</p>
 
 <script type="math/tex; mode=display">\rho_m ( T ) := \frac{ \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m, y_t = 1 \} } }{ \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } } ,</script>
 
@@ -179,7 +179,7 @@ We would like, for all $m$,</p>
 
 <script type="math/tex; mode=display">\limsup_{T \to \infty} \left\vert \rho_m (T) - c_m \right\vert \leq \varepsilon, \quad \text{a.s.}</script>
 
-<p>We do not really want to care about those $m$’s such that $\sum_{t = 1}^T \mathbb{I}_{ { p_t \in I_m } } = o( T )$, as they are irrelevant in the long run. 
+<p>We do not really want to care about those $m$’s for which <script type="math/tex">\sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } = o( T )</script>, as they are irrelevant in the long run. 
 A compact formulation of the requirement is</p>
 
 <script type="math/tex; mode=display">\limsup_{T \to \infty} \sum_{m = 1}^M \left\vert \rho_m (T) - c_m \right\vert \frac{ \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } }{ T } \leq \varepsilon , \quad \text{a.s.}</script>
@@ -237,7 +237,7 @@ Define</p>
 
 <p>Notice that the objective function is bilinear; there are a variety of existing algorithms that solve this problem.</p>
 
-<p>The strategy seems mysterious at first glance. 
+<p>The strategy looks mysterious at first glance. 
 I will introduce the theory of Blackwell approachability in the next post.</p>
 
 <h3 id="references">References</h3>
