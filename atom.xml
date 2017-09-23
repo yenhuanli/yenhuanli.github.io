@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2017-09-22T21:41:16+02:00</updated>
+  <updated>2017-09-23T09:56:40+02:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -64,7 +64,7 @@ Define</p>
 
 <script type="math/tex; mode=display">\rho_m ( T ) := \frac{ \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m, y_t = 1 \} } }{ \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } } ,</script>
 
-<p>if the divisor is non-zero, and $\rho_m := c_m$ otherwise. 
+<p>if the divisor is non-zero, and $\rho_m (T) := c_m$ otherwise. 
 We would like, for all $m$,</p>
 
 <script type="math/tex; mode=display">\limsup_{T \to \infty} \left\vert \rho_m (T) - c_m \right\vert \leq \varepsilon, \quad \text{a.s.}</script>
@@ -93,8 +93,8 @@ For any $\varepsilon &gt; 0$, there exists an $\varepsilon$-calibrated probabili
 For example, Reality can always choose $y_t = 1$ whenever $p_t \leq 0.5$, and $y_t = 0$ otherwise.</p>
   </li>
   <li>
-    <p>The remark above also shows the neceesity of a randomized forecasting strategy.
-If Forecaster uses a deterministic strategy, for which $p_t$ is a deterministic function of $p_1, y_1, p_2, y_2, \ldots, p_{t - 1}, y_{t - 1}$, then Reality can also compute the exact value of $p_t$.</p>
+    <p>The remark above also shows the necessity of a randomized forecasting strategy.
+If Forecaster uses a deterministic strategy, for which $p_t$ is a deterministic function of $p_1, y_1, p_2, y_2, \ldots, p_{t - 1}, y_{t - 1}$, then Reality can also compute exact value of $p_t$.</p>
   </li>
 </ol>
 
@@ -134,6 +134,8 @@ I will introduce the theory of Blackwell approachability in the next post.</p>
 
 <ol>
   <li>A. P. Dawid. 1982. The well calibrated Bayesian. <em>J. Am. Stat. Assoc.</em></li>
+  <li>D. Oakes. 1985. Self-calibrating priors do not exist. <em>J. Am. Stat. Assoc.</em></li>
+  <li>A. P. Dawid. 1985. Comment: The impossibility of inductive inference. <em>J. Am. Stat. Assoc.</em></li>
   <li>D. P. Foster. 1999. A proof of calibration via Blackwell’s approachability theorem. <em>Games Econ. Behav.</em></li>
   <li>N. Cesa-Bianchi and G. Lugosi. 2006. <em>Prediction, Learning, and Games</em>.</li>
   <li>S. Mannor and G. Stoltz. 2010. A geometric proof of calibration. <em>Math. Oper. Res.</em></li>
