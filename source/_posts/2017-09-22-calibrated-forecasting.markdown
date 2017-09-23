@@ -36,7 +36,7 @@ What precisely are the requirements a good prediction strategy should satisfy?
 The requirements in general depend on the actual application scenario. 
 In this post, we will only consider a minimal requirement---any good prediction strategy should be *calibrated*.
 
-Roughly speaking, the notion of calibration requires the predictions to comply with the empirical frequency, i.e., for any $\rho \in ( 0, 1 )$, it holds that
+Roughly speaking, the notion of calibration requires the predictions to comply with the empirical frequencies, i.e., for any $\rho \in ( 0, 1 )$, it holds that
 
 $$
 \frac{\sum_{t = 1}^T \mathbb{I}_{ \{ p_t \approx \rho, y_t = 1 \} }}{\sum_{t = 1}^T \mathbb{I}_{ \{ p_t \approx \rho \} }} \approx \rho . 
@@ -52,7 +52,7 @@ $$
 
 where $M := \lceil \varepsilon^{-1} \rceil$. 
 We denote the center of $I_m$ by $c_m$.
-Define
+Define the empirical frequencies
 
 $$
 \rho_m ( T ) := \frac{ \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m, y_t = 1 \} } }{ \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } } , 
@@ -65,7 +65,7 @@ $$
 \limsup_{T \to \infty} \left\vert \rho_m (T) - c_m \right\vert \leq \varepsilon, \quad \text{a.s.}
 $$
 
-We do not really want to care about those $m$'s such that $\sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } = o( T )$, as they are irrelevant in the long run. 
+We do not really want to care about those $m$'s for which $$\sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } = o( T )$$, as they are irrelevant in the long run. 
 A compact formulation of the requirement is
 
 $$
@@ -130,7 +130,7 @@ $$
 
 Notice that the objective function is bilinear; there are a variety of existing algorithms that solve this problem.
 
-The strategy seems mysterious at first glance. 
+The strategy looks mysterious at first glance. 
 I will introduce the theory of Blackwell approachability in the next post. 
 
 ### References 
