@@ -58,7 +58,7 @@ $$
 \rho_m ( T ) := \frac{ \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m, y_t = 1 \} } }{ \sum_{t = 1}^T \mathbb{I}_{ \{ p_t \in I_m \} } } , 
 $$
 
-if the divisor is non-zero, and $\rho_m := c_m$ otherwise. 
+if the divisor is non-zero, and $\rho_m (T) := c_m$ otherwise. 
 We would like, for all $m$, 
 
 $$
@@ -90,8 +90,8 @@ Some quick observations:
 1. If $y_t$ can depend on the exact value of $p_t$, calibration is impossible.
 For example, Reality can always choose $y_t = 1$ whenever $p_t \leq 0.5$, and $y_t = 0$ otherwise. 
 
-2. The remark above also shows the neceesity of a randomized forecasting strategy.
-If Forecaster uses a deterministic strategy, for which $p_t$ is a deterministic function of $p_1, y_1, p_2, y_2, \ldots, p_{t - 1}, y_{t - 1}$, then Reality can also compute the exact value of $p_t$. 
+2. The remark above also shows the necessity of a randomized forecasting strategy.
+If Forecaster uses a deterministic strategy, for which $p_t$ is a deterministic function of $p_1, y_1, p_2, y_2, \ldots, p_{t - 1}, y_{t - 1}$, then Reality can also compute exact value of $p_t$. 
 
 ### An Achieving Strategy
 
@@ -136,6 +136,8 @@ I will introduce the theory of Blackwell approachability in the next post.
 ### References 
 
 1. A. P. Dawid. 1982. The well calibrated Bayesian. *J. Am. Stat. Assoc.*
-2. D. P. Foster. 1999. A proof of calibration via Blackwell's approachability theorem. *Games Econ. Behav.*
-3. N. Cesa-Bianchi and G. Lugosi. 2006. *Prediction, Learning, and Games*.
-4. S. Mannor and G. Stoltz. 2010. A geometric proof of calibration. *Math. Oper. Res.*
+2. D. Oakes. 1985. Self-calibrating priors do not exist. *J. Am. Stat. Assoc.*
+3. A. P. Dawid. 1985. Comment: The impossibility of inductive inference. *J. Am. Stat. Assoc.*
+4. D. P. Foster. 1999. A proof of calibration via Blackwell's approachability theorem. *Games Econ. Behav.*
+5. N. Cesa-Bianchi and G. Lugosi. 2006. *Prediction, Learning, and Games*.
+6. S. Mannor and G. Stoltz. 2010. A geometric proof of calibration. *Math. Oper. Res.*
