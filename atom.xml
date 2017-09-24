@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2017-09-23T10:04:16+02:00</updated>
+  <updated>2017-09-24T13:17:43+02:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -107,15 +107,15 @@ Define, for all $m$,</p>
 
 <script type="math/tex; mode=display">f_t ( m, y ) := ( 0, \ldots, 0, c_m - y, 0, \ldots, 0 ) \in \mathbb{R}^M .</script>
 
-<p>We already know that Forecaster must adopt a randomized strategy; in general, Reality’s strategy can be also randomized. 
-Suppose that Forecaster chooses $m_t$ randomly according to a probability distribution $P_t$ on <script type="math/tex">\{ 1, 2, \ldots, M \}</script>, and Reality chooses $y_t$ randomly according to a probabilty distribution $Q_t$ on <script type="math/tex">\{ 0, 1 \}</script>. 
+<p>We already know that Forecaster must adopt a randomized strategy. 
+Suppose that Forecaster chooses $m_t$ randomly according to some probability distribution $P_t$ on <script type="math/tex">\{ 1, 2, \ldots, M \}</script>. 
 Define</p>
 
-<script type="math/tex; mode=display">f_t ( P_t, Q_t ) := \sum_{m = 1}^M P_t (m) Q_t (y) \, f_t ( m, y ), \quad \bar{f}_t := \frac{1}{t} \sum_{\tau = 1}^t f_t ( P_{\tau}, Q_{\tau} ) .</script>
+<script type="math/tex; mode=display">f_t ( P_t, y_t ) := \sum_{m = 1}^M P_t (m) \, f_t ( m, y_t ), \quad \tilde{f}_t := \frac{1}{t} \sum_{\tau = 1}^t f_t ( P_{\tau}, y_\tau ) .</script>
 
 <p><strong>Forecaster’s Strategy.</strong> For each $t$, Forecaster first computes some $P_t$ such that for any probability distribution $Q$ on <script type="math/tex">\{ 0, 1 \}</script>,</p>
 
-<script type="math/tex; mode=display">\left\langle \bar{f}_{t - 1} - \mathrm{proj} ( \bar{f}_{t - 1} ), f ( P_t, Q ) - \mathrm{proj} ( \bar{f}_{t - 1} ) \right\rangle \leq 0 ,</script>
+<script type="math/tex; mode=display">\left\langle \tilde{f}_{t - 1} - \mathrm{proj} ( \tilde{f}_{t - 1} ), f ( P_t, Q ) - \mathrm{proj} ( \tilde{f}_{t - 1} ) \right\rangle \leq 0 ,</script>
 
 <p>where $\mathrm{proj}$ denotes projection onto the $1$-norm ball of radius $\varepsilon$ in $\mathbb{R}^M$, and then announces $m_t$ randomly according to $P_t$.</p>
 
@@ -123,7 +123,7 @@ Define</p>
 
 <p><strong>Remark.</strong> In practice, one can compute $P_t$ by solving the saddle point problem:</p>
 
-<script type="math/tex; mode=display">P_t \in \mathrm{argmin}_P \mathrm{max}_Q \left\langle \bar{f}_{t - 1} - \mathrm{proj} ( \bar{f}_{t - 1} ), f ( P, Q ) - \mathrm{proj} ( \bar{f}_{t - 1} ) \right\rangle .</script>
+<script type="math/tex; mode=display">P_t \in \mathrm{argmin}_P \mathrm{max}_Q \left\langle \tilde{f}_{t - 1} - \mathrm{proj} ( \tilde{f}_{t - 1} ), f ( P, Q ) - \mathrm{proj} ( \tilde{f}_{t - 1} ) \right\rangle .</script>
 
 <p>Notice that the objective function is bilinear; there are a variety of existing algorithms that solve this problem.</p>
 
