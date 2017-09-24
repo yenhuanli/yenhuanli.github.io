@@ -4,7 +4,7 @@
   <title><![CDATA[Que-sais je?]]></title>
   <link href="http://yenhuanli.github.io/atom.xml" rel="self"/>
   <link href="http://yenhuanli.github.io/"/>
-  <updated>2017-09-24T19:50:56+02:00</updated>
+  <updated>2017-09-24T19:58:50+02:00</updated>
   <id>http://yenhuanli.github.io/</id>
   <author>
     <name><![CDATA[yhli]]></name>
@@ -68,7 +68,7 @@ However, it might be possible to ensure that her average payoff will ultimately 
 
 <p><strong>Theorem 1.</strong> A convex set <script type="math/tex">\mathcal{X} \subseteq \mathbb{R}^d</script> is approachable to Alice, if and only if for any $Q \in \Delta ( \mathcal{B} )$, there exists some $P \in \Delta ( \mathcal{A} )$ such that $f ( P, Q ) \in \mathcal{X}$.</p>
 
-<p><strong>Exercise.</strong> Suppose that for each $t$, Bob can choose his action $b_t$ after Alice announces $a_t$. 
+<p><strong>Exercise.</strong> Suppose that for each $t$, Bob’s action $b_t$ can be dependent on Alice’s action $a_t$. 
 Show that then even when the if and only if condition holds, $\mathcal{X}$ may not be approachable to Alice.</p>
 
 <p>The only if part of Theorem 1 is easy to check. 
