@@ -216,7 +216,7 @@ With Theorem 1, it is an easy exercise to prove the theorem in the [previous pos
 
 The strategy of Alice presented above is not exactly the original one proposed by Blackwell, as the original one does not lead to the $O ( 1 / \sqrt{T} )$ with-high-probability convergence rate in Theorem 2. 
 The strategy presented above was described in the book by Cesa-Bianchi and Lugosi, without proof. 
-The proof above is a mix of the arguments and results in the following references.
+The proof above is basically a mix of the arguments and results in the following references.
 
 
 1. Blackwell, D., 1956. An analog of the minimax theorem for vector payoffs. *Pac. J. Math.*

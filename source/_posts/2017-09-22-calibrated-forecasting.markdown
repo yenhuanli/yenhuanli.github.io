@@ -131,13 +131,13 @@ $$
 Notice that the objective function is bilinear; there are a variety of existing algorithms that solve this problem.
 
 The strategy looks mysterious at first glance. 
-I will introduce the theory of Blackwell approachability in the next post. 
+I will introduce the theory of Blackwell approachability in the [next post](http://yenhuanli.github.io/blog/2017/09/23/blackwell-approachability/). 
 
 ### References 
 
-1. A. P. Dawid. 1982. The well calibrated Bayesian. *J. Am. Stat. Assoc.*
-2. D. Oakes. 1985. Self-calibrating priors do not exist. *J. Am. Stat. Assoc.*
-3. A. P. Dawid. 1985. Comment: The impossibility of inductive inference. *J. Am. Stat. Assoc.*
-4. D. P. Foster. 1999. A proof of calibration via Blackwell's approachability theorem. *Games Econ. Behav.*
-5. N. Cesa-Bianchi and G. Lugosi. 2006. *Prediction, Learning, and Games*.
-6. S. Mannor and G. Stoltz. 2010. A geometric proof of calibration. *Math. Oper. Res.*
+5. Cesa-Bianchi, N. and Lugosi, G., 2006. *Prediction, Learning, and Games*.
+1. Dawid, A.P., 1982. The well calibrated Bayesian. *J. Am. Stat. Assoc.*
+3. Dawid, A. P., 1985. Comment: The impossibility of inductive inference. *J. Am. Stat. Assoc.*
+4. Foster, D. P., 1999. A proof of calibration via Blackwell's approachability theorem. *Games Econ. Behav.*
+6. Mannor, S. and Stoltz, G., 2010. A geometric proof of calibration. *Math. Oper. Res.*
+2. Oakes, D., 1985. Self-calibrating priors do not exist. *J. Am. Stat. Assoc.*
