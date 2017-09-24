@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Blackwell Approachability - Que-sais je?</title>
+  <meta name="author" content="yhli">
+
+  
+  <meta name="description" content="Introduction Suppose that Alice and Bob is playing a so-called two-player zero-sum game with perfect information. Alice chooses her action from a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yenhuanli.github.io/blog/2017/09/23/blackwell-approachability">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Que-sais je?" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-77006714-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Que-sais je?</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      <form action="https://www.google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="yenhuanli.github.io" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Blackwell Approachability</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-09-23T21:52:59+02:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2017</span></span> <span class='time'>9:52 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h3 id="introduction">Introduction</h3>
+
+<p>Suppose that Alice and Bob is playing a so-called two-player zero-sum game with perfect information. 
+Alice chooses her action from a finite <em>action set</em> <script type="math/tex">\mathcal{A}</script>; Bob chooses his action from a finite action set <script type="math/tex">\mathcal{B}</script>.
+There is a <em>payoff function</em> $f$, which assigns to each action pair $(a, b) \in \mathcal{A} \times \mathcal{B}$ a payoff $f ( a, b ) \in \mathbb{R}$; Bob’s payoff is then simply $-f (a, b)$. 
+In general, Alice and Bob may choose their actions randomly, so we consider the expected payoff: for any probability distribution $P \in \Delta ( \mathcal{A} )$ and $Q \in \Delta ( \mathcal{B} )$, define</p>
+
+<script type="math/tex; mode=display">f ( P, Q ) := \sum_{a \in \mathcal{A}} \sum_{b \in \mathcal{B}} f ( a, b ) P ( a ) Q ( b ) .</script>
+
+<p>If Alice does not have any additional information about Bob, it is reasonable to consider the very robust minimax strategy, i.e., to choose her action <script type="math/tex">a \in \mathcal{A}</script> randomly according to</p>
+
+<script type="math/tex; mode=display">P^\star \in \mathrm{arg\, max}_{P} \mathrm{min}_Q f ( P, Q ) .</script>
+
+<p>No matter what Bob’s strategy is, Alice is guaranteed to achieve at least the minimax expected payoff.</p>
+
+<p>If the payoff function $f$ is vector-valued, talking about the minimax expected payoff becomes nonsense, as we cannot compare two vectors. 
+This post introduces an analog for the vector-valued payoff case, proposed by David Blackwell in <a href="https://projecteuclid.org/euclid.pjm/1103044235">this classic paper</a>.</p>
+
+<h3 id="blackwell-approachability">Blackwell Approachability</h3>
+
+<p>In the rest of this post, suppose that the payoff function $f$ takes values in <script type="math/tex">\mathbb{R}^d</script>.</p>
+
+<p>Blackwell considered the following protocol of repeated games. 
+For $t = 1, 2, \ldots$,</p>
+
+<ol>
+  <li>Alice announces $a_t \in \mathcal{A}$.</li>
+  <li>Bob announces $b_t \in \mathcal{B}$, without known $a_t$.</li>
+</ol>
+
+<p>In general, Alice can use a randomized strategy. 
+For convenience, let us say that Alice chooses $a_t$ randomly according to some probability distribution <script type="math/tex">P_t \in \Delta ( \mathcal{A} )</script>.</p>
+
+<p>Recall that Alice cannot achieve the “minimax expected payoff” in this vector-payoff case, as it is just not well-define. 
+However, it might be possible to ensure that her average payoff will ultimately lies in some specific subset of $\mathbb{R}^d$.</p>
+
+<p>Define the average payoff</p>
+
+<script type="math/tex; mode=display">\bar{f}_t := \frac{1}{t} \sum_{\tau = 1}^t f ( a_\tau, b_\tau ) .</script>
+
+<p><strong>Definition.</strong> Let $\mathcal{X} \subseteq \mathbb{R}^d$. The set $\mathcal{X}$ is said to be approachable by Alice, if for any sequence <script type="math/tex">( b_t )_{t \in \mathbb{N}}</script>,</p>
+
+<script type="math/tex; mode=display">\lim_{T \to \infty} \mathrm{dist} ( \bar{f}_T, \mathcal{X} ) = 0 , \quad \text{a.s.},</script>
+
+<p>where $\mathrm{dist} ( \bar{f}_T, \mathcal{X} )$ denotes the $2$-norm distance between $\bar{f}_T$ and the projection of $\bar{f}_T$ onto $\mathcal{X}$.</p>
+
+<p>If we only consider convex sets, there is an exact characterization of approachable sets.</p>
+
+<p><strong>Theorem 1.</strong> A convex set <script type="math/tex">\mathcal{X} \subseteq \mathbb{R}^d</script> is approachable to Alice, if and only if for any $Q \in \Delta ( \mathcal{B} )$, there exists some $P \in \Delta ( \mathcal{A} )$ such that $f ( P, Q ) \in \mathcal{X}$.</p>
+
+<p><strong>Exercise.</strong> Suppose that for each $t$, Bob can choose his action $b_t$ after Alice announces $a_t$. 
+Show that then even when the if and only if condition holds, $\mathcal{X}$ may not be approachable to Alice.</p>
+
+<p>The only if part of Theorem 1 is easy to check. 
+Suppose that there exists some $Q^\star \in \Delta ( \mathcal{B} )$, such that <script type="math/tex">f ( P, Q^\star ) \notin \mathcal{X}</script> for any <script type="math/tex">P \in \Delta ( \mathcal{A} )</script>. 
+To guarantee that Alice fails to approach $\mathcal{X}$, Bob can always choose $b_t$ randomly according to $Q^\star$ for all $t$.</p>
+
+<p>We will focus on the if part of Theorem 1 in the rest of this post.</p>
+
+<h3 id="blackwells-condition-and-alices-strategy">Blackwell’s Condition and Alice’s Strategy</h3>
+
+<p>To prove the if part of Theorem 1, we need to show the existence of an approaching strategy. 
+Indeed, the proof is constructive; there is an explicitly defined approaching strategy based on the following lemma.</p>
+
+<p><strong>Lemma 1.</strong> Suppose that for any $Q \in \Delta ( \mathcal{B} )$, there exists some $P \in \Delta ( \mathcal{A} )$ such that $f ( P, Q ) \in \mathcal{X}$. 
+Then for any $v \in \mathbb{R}^d$, there exists some $P \in \Delta ( \mathcal{A} )$, such that</p>
+
+<script type="math/tex; mode=display">\left\langle v - \mathrm{proj} ( v ), f ( P, Q ) - \mathrm{proj} ( v ) \right\rangle  \leq 0, \quad \text{for all } Q \in \Delta ( \mathcal{B} ) ,</script>
+
+<p>where $\mathrm{proj}$ denotes the projection (w.r.t. the $2$-norm) onto $\mathcal{X}$.</p>
+
+<p><em>Proof.</em> By definition, $\mathrm{proj} (v)$ is the minimizer of the $2$-norm distance to $v$ in $\mathcal{X}$. 
+The optimality condition says</p>
+
+<script type="math/tex; mode=display">\left\langle v - \mathrm{proj} ( v ), w - \mathrm{proj} ( v ) \right\rangle \leq 0, \quad \text{for all } w \in \mathcal{X} .</script>
+
+<p>What we want to prove can be equivalently written as</p>
+
+<script type="math/tex; mode=display">\mathrm{min}_{P} \mathrm{max}_{Q} \left\langle v - \mathrm{proj} ( v ), f ( P, Q ) - \mathrm{proj} ( v ) \right\rangle \leq 0 .</script>
+
+<p>Applying von Neumann’s minimax theorem, we can exchange the order of $\min$ and $\max$, and write</p>
+
+<script type="math/tex; mode=display">\mathrm{max}_{Q} \mathrm{min}_{P} \left\langle v - \mathrm{proj} ( v ), f ( P, Q ) - \mathrm{proj} ( v ) \right\rangle \leq 0 .</script>
+
+<p>The lemma follows from the optimality condition. $Q.E.D.$</p>
+
+<p>We call the condition in Lemma 1 <em>Blackwell’s condition</em>, following the convention in literature. 
+Blackwell’s condition ensures that the following strategy for Alice is well-defined.</p>
+
+<p><strong>Alice’s Strategy.</strong> Define the expected and average expected payoff:</p>
+
+<script type="math/tex; mode=display">f_t := f( P_t, b_t ) := \sum_{a \in \mathcal{A}} f( a, b_t ) P_t( a ), \quad \tilde{f}_t := \frac{1}{t} \sum_{\tau = 1}^t f ( P_t, b_t ) .</script>
+
+<p>For each $t \in \mathbb{N}$, Alice computes some $P_t$ such that</p>
+
+<script type="math/tex; mode=display">\left\langle \tilde{f}_{t - 1} - \mathrm{proj} ( \tilde{f}_{t - 1} ), f ( P_t, Q ) - \mathrm{proj} ( \tilde{f}_{t - 1} ) \right\rangle  \leq 0, \quad \text{for all } Q \in \Delta ( \mathcal{B} ) ,</script>
+
+<p>and then announces $a_t$ randomly according to $P_t$.</p>
+
+<p><strong>Remark.</strong> In practice, $P_t$ can be computed as</p>
+
+<script type="math/tex; mode=display">P_t \in \mathrm{arg\, min}_{P} \max_{Q} \left\langle \tilde{f}_{t - 1} - \mathrm{proj} ( \tilde{f}_{t - 1} ), f ( P, Q ) - \mathrm{proj} ( \tilde{f}_{t - 1} ) \right\rangle .</script>
+
+<p>The is a bilinear saddle point problem; there exists a variety of algorithms solving such a problem.</p>
+
+<h3 id="proof-of-theorem-1">Proof of Theorem 1</h3>
+
+<p>Since $\mathcal{X}$ is approachable if and only if its closure is approachable, we assume that $\mathcal{X}$ is closed w.l.o.g. 
+We will also assume that $\mathcal{X}$ is bounded for convenience; we will relax this unnecessary condition at the end of the proof.</p>
+
+<p>Theorem 1 is in fact a corollary of the following theorem.</p>
+
+<p><strong>Theorem 2.</strong> Suppose that the if and only if condition in Theorem 1 holds. 
+Suppose that Alice adopts the strategy described above.
+Then for each $T \in \mathbb{N}$ and $\delta \in ( 0, 1 )$, with probability at least <script type="math/tex">1 - \delta</script>, it holds that</p>
+
+<script type="math/tex; mode=display">\mathrm{dist} ( \bar{f}_T, \mathcal{X} ) = O \left( \frac{M + R}{\sqrt{T}} + M \sqrt{ \frac{\log(1 / \delta)}{T} } \right) ,</script>
+
+<p>where <script type="math/tex">M := \max_{a, b} \left\Vert f ( a, b ) \right\Vert_2</script>, and <script type="math/tex">R := \max_{w \in \mathcal{X}} \left\Vert w \right\Vert_2</script>.</p>
+
+<p>To prove Theorem 2, we start with the following lemma.</p>
+
+<p><strong>Lemma 2.</strong> For all $T \in \mathbb{N}$, it holds that</p>
+
+<script type="math/tex; mode=display">\mathrm{dist} \left( \tilde{f}_T, \mathcal{X} \right) \leq \frac{M + R}{\sqrt{T}} .</script>
+
+<p><em>Proof.</em> 
+Define <script type="math/tex">\pi_t := \mathrm{proj} ( f_t )</script> and <script type="math/tex">\tilde{\pi}_t := \mathrm{proj} ( \tilde{f}_t )</script>.
+By definition, we have</p>
+
+<script type="math/tex; mode=display">\left\Vert \tilde{f}_{t + 1} - \tilde{\pi}_{t + 1} \right\Vert_2^2 \leq \left\Vert \tilde{f}_{t + 1} - \tilde{\pi}_{t} \right\Vert_2^2.</script>
+
+<p>Writing <script type="math/tex">\tilde{f}_{t + 1} = [t / (t + 1)] \tilde{f}_t + [1 / (t+1)] f_{t + 1}</script>, we have</p>
+
+<script type="math/tex; mode=display">\mathrm{RHS} = \left( \frac{t}{t + 1} \right)^2 \left\Vert \tilde{f}_t - \tilde{\pi}_t \right\Vert_2^2 + \left( \frac{1}{t + 1} \right)^2 \left\Vert f_{t + 1} - \tilde{\pi}_t \right\Vert_2^2 + \frac{2 t}{(t + 1)^2} \left\langle \tilde{f}_t - \tilde{\pi}_t, f_{t + 1} - \tilde{\pi}_t \right\rangle .</script>
+
+<p>Applying Lemma 1 and the triangle inequality, we obtain</p>
+
+<script type="math/tex; mode=display">\mathrm{RHS} \leq \left( \frac{t}{t + 1} \right)^2 \left\Vert \tilde{f}_t - \tilde{\pi}_t \right\Vert_2^2 + \left( \frac{1}{t + 1} \right)^2 ( M + R )^2 .</script>
+
+<p>The lemma can be then easily checked by induction. <em>Q.E.D.</em></p>
+
+<p><em>Proof of Theorem 2.</em> Recall that <script type="math/tex">\bar{f}_t</script> denotes the average payoff; define <script type="math/tex">\bar{\pi}_t := \mathrm{proj}( \bar{f}_t )</script>. 
+We start with the decomposition,</p>
+
+<script type="math/tex; mode=display">\mathrm{dist} ( \bar{f}_T, \mathcal{X} ) = \left\Vert \bar{f}_T - \bar{\pi}_T \right\Vert_2 \leq \left\Vert \bar{f}_T - \tilde{f}_T \right\Vert_2 + \left\Vert \tilde{f}_T - \tilde{\pi}_T \right\Vert_2 + \left\Vert \tilde{\pi}_T - \bar{\pi}_T \right\Vert_2</script>
+
+<p>By Lemma 2 and the non-expansiveness of projections, we have</p>
+
+<script type="math/tex; mode=display">\mathrm{RHS} \leq \frac{M + R}{\sqrt{T}} + 2 \left\Vert \bar{f}_T - \bar{\pi}_T \right\Vert_2 .</script>
+
+<p>Define <script type="math/tex">X_t := \sum_{\tau = 1}^t f ( a_\tau, b_\tau ) - f ( P_\tau, b_\tau )</script>. 
+Then <script type="math/tex">( X_t )_{t \in \mathbb{N}}</script> forms a vector-valued martingale. 
+Applying the Azuma inequality for Banach-space valued martingales, we obtain, for any $u &gt; 0$,</p>
+
+<script type="math/tex; mode=display">\mathsf{P} \left( \left\Vert \bar{f}_T - \tilde{f}_T \right\Vert_2 \geq u \right) = O \left( \exp \left( - \frac{C T u^2 }{M^2} \right) \right) ,</script>
+
+<p>for some constant $C &gt; 0$. <em>Q.E.D.</em></p>
+
+<p>In general, the set to be approached may not be bounded; then $R = + \infty$ if we directly apply the definition. 
+Notice that, however, only sets lie in the convex hull of <script type="math/tex">\{ f ( a, b ) \}</script> can be approached. 
+Denote the convex hull by $\mathcal{F}$. 
+Hence, it suffices to replace $\mathcal{X}$ by <script type="math/tex">\mathcal{X} \cap \mathcal{F}</script>, which is always bounded by construction; then it is easily checked that $R$ can be bounded above by $M$ to slightly simplify the expressions.</p>
+
+<h3 id="calibrated-forecasting">Calibrated Forecasting</h3>
+
+<p>One might wonder why one should consider vector-valued payoffs. 
+An interesting application is calibrated forecasting. 
+With Theorem 1, it is an easy exercise to prove the theorem in the <a href="http://yenhuanli.github.io/blog/2017/09/22/calibrated-forecasting/">previous post</a>, showing the existence of an $\varepsilon$-calibrated forecasting strategy.</p>
+
+<h3 id="references">References</h3>
+
+<p>The strategy of Alice presented above is not exactly the original one proposed by Blackwell, as the original one does not lead to the $O ( 1 / \sqrt{T} )$ with-high-probability convergence rate in Theorem 2. 
+The strategy presented above was described in the book by Cesa-Bianchi and Lugosi, without proof. 
+The proof above is a mix of the arguments and results in the following references.</p>
+
+<ol>
+  <li>Blackwell, D., 1956. An analog of the minimax theorem for vector payoffs. <em>Pac. J. Math.</em></li>
+  <li>Cesa-Bianchi, N. and Lugosi, G., 2006. <em>Prediction, Learning, and Games</em>.</li>
+  <li>Naor, A., 2012. On the Banach-space-valued Azuma inequality and small-set isoperimetry of Alon–Roichman graphs. <em>Combinatorics Probab. Comput.</em></li>
+  <li>Sorin, S., 2002. <em>A First Course on Zero-Sum Repeated Games</em>.</li>
+</ol>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    yhli
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2017-09-23T21:52:59+02:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2017</span></span> <span class='time'>9:52 pm</span></time>
+      
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yenhuanli.github.io/blog/2017/09/23/blackwell-approachability/" data-via="" data-counturl="http://yenhuanli.github.io/blog/2017/09/23/blackwell-approachability/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2017/09/22/calibrated-forecasting/" title="Previous Post: Calibrated Forecasting">&laquo; Calibrated Forecasting</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2017 - yhli -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
