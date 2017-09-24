@@ -104,18 +104,18 @@ $$
 f_t ( m, y ) := ( 0, \ldots, 0, c_m - y, 0, \ldots, 0 ) \in \mathbb{R}^M . 
 $$
 
-We already know that Forecaster must adopt a randomized strategy; in general, Reality's strategy can be also randomized. 
-Suppose that Forecaster chooses $m_t$ randomly according to a probability distribution $P_t$ on $$\{ 1, 2, \ldots, M \}$$, and Reality chooses $y_t$ randomly according to a probabilty distribution $Q_t$ on $$\{ 0, 1 \}$$. 
+We already know that Forecaster must adopt a randomized strategy. 
+Suppose that Forecaster chooses $m_t$ randomly according to some probability distribution $P_t$ on $$\{ 1, 2, \ldots, M \}$$. 
 Define
 
 $$
-f_t ( P_t, Q_t ) := \sum_{m = 1}^M P_t (m) Q_t (y) \, f_t ( m, y ), \quad \bar{f}_t := \frac{1}{t} \sum_{\tau = 1}^t f_t ( P_{\tau}, Q_{\tau} ) . 
+f_t ( P_t, y_t ) := \sum_{m = 1}^M P_t (m) \, f_t ( m, y_t ), \quad \tilde{f}_t := \frac{1}{t} \sum_{\tau = 1}^t f_t ( P_{\tau}, y_\tau ) . 
 $$
 
 **Forecaster's Strategy.** For each $t$, Forecaster first computes some $P_t$ such that for any probability distribution $Q$ on $$\{ 0, 1 \}$$, 
 
 $$
-\left\langle \bar{f}_{t - 1} - \mathrm{proj} ( \bar{f}_{t - 1} ), f ( P_t, Q ) - \mathrm{proj} ( \bar{f}_{t - 1} ) \right\rangle \leq 0 , 
+\left\langle \tilde{f}_{t - 1} - \mathrm{proj} ( \tilde{f}_{t - 1} ), f ( P_t, Q ) - \mathrm{proj} ( \tilde{f}_{t - 1} ) \right\rangle \leq 0 , 
 $$
 
 where $\mathrm{proj}$ denotes projection onto the $1$-norm ball of radius $\varepsilon$ in $\mathbb{R}^M$, and then announces $m_t$ randomly according to $P_t$. 
@@ -125,7 +125,7 @@ where $\mathrm{proj}$ denotes projection onto the $1$-norm ball of radius $\vare
 **Remark.** In practice, one can compute $P_t$ by solving the saddle point problem: 
 
 $$
-P_t \in \mathrm{argmin}_P \mathrm{max}_Q \left\langle \bar{f}_{t - 1} - \mathrm{proj} ( \bar{f}_{t - 1} ), f ( P, Q ) - \mathrm{proj} ( \bar{f}_{t - 1} ) \right\rangle . 
+P_t \in \mathrm{argmin}_P \mathrm{max}_Q \left\langle \tilde{f}_{t - 1} - \mathrm{proj} ( \tilde{f}_{t - 1} ), f ( P, Q ) - \mathrm{proj} ( \tilde{f}_{t - 1} ) \right\rangle . 
 $$
 
 Notice that the objective function is bilinear; there are a variety of existing algorithms that solve this problem.
