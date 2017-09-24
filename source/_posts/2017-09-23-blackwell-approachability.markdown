@@ -62,7 +62,7 @@ If we only consider convex sets, there is an exact characterization of approacha
 
 **Theorem 1.** A convex set $$\mathcal{X} \subseteq \mathbb{R}^d$$ is approachable to Alice, if and only if for any $Q \in \Delta ( \mathcal{B} )$, there exists some $P \in \Delta ( \mathcal{A} )$ such that $f ( P, Q ) \in \mathcal{X}$. 
 
-**Exercise.** Suppose that for each $t$, Bob can choose his action $b_t$ after Alice announces $a_t$. 
+**Exercise.** Suppose that for each $t$, Bob's action $b_t$ can be dependent on Alice's action $a_t$. 
 Show that then even when the if and only if condition holds, $\mathcal{X}$ may not be approachable to Alice. 
 
 The only if part of Theorem 1 is easy to check. 
