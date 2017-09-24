@@ -129,7 +129,7 @@ $$
 P_t \in \mathrm{arg\, min}_{P} \max_{Q} \left\langle \tilde{f}_{t - 1} - \mathrm{proj} ( \tilde{f}_{t - 1} ), f ( P, Q ) - \mathrm{proj} ( \tilde{f}_{t - 1} ) \right\rangle . 
 $$
 
-The is a bilinear saddle point problem; there exists a variety of algorithms solving such a problem. 
+This is a bilinear saddle point problem; there exists a variety of algorithms solving such a problem. 
 
 ### Proof of Theorem 1
 
